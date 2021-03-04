@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :friend_reviews
+  resources :friends
   resources :reviews
   resources :users
   root 'home#index'
