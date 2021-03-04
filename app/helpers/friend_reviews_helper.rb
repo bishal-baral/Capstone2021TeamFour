@@ -1,0 +1,2 @@
+module FriendReviewsHelper
+end

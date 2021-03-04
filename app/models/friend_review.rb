@@ -1,0 +1,2 @@
+class FriendReview < ApplicationRecord
+end
