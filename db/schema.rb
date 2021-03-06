@@ -12,8 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2021_03_04_040916) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "friend_reviews", force: :cascade do |t|
-    t.integer "friend_review_id"
     t.integer "user_id"
     t.integer "review_id"
     t.datetime "created_at", precision: 6, null: false
@@ -21,7 +23,6 @@ ActiveRecord::Schema.define(version: 2021_03_04_040916) do
   end
 
   create_table "friends", force: :cascade do |t|
-    t.integer "friend_id"
     t.integer "user_one"
     t.integer "user_two"
     t.datetime "created_at", precision: 6, null: false
@@ -29,7 +30,6 @@ ActiveRecord::Schema.define(version: 2021_03_04_040916) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "review_id"
     t.string "content"
     t.integer "user_id"
     t.datetime "post_date"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2021_03_04_040916) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "user_id"
     t.datetime "join_date"
     t.string "username"
     t.datetime "created_at", precision: 6, null: false
