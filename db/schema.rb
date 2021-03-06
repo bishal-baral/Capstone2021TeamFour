@@ -23,13 +23,14 @@ ActiveRecord::Schema.define(version: 2021_03_04_040916) do
   end
 
   create_table "friends", force: :cascade do |t|
-    t.integer "user_one"
-    t.integer "user_two"
+    t.integer "user_id"
+    t.integer "friend_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.string "media"
     t.string "content"
     t.integer "user_id"
     t.datetime "post_date"
