@@ -58,8 +58,8 @@ end
     friend_id: friend_two
   })
   Friend.create({
-    user_id: friend_one,
-    friend_id: friend_two
+    user_id: friend_two,
+    friend_id: friend_one
   })
 
   # Send each other a review each
