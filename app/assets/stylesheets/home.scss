@@ -11,6 +11,7 @@ body {
 
 .page-header {
   text-align: center;
+  border-bottom: 0.25em dotted;
 }
 
 .friend-list {
@@ -19,4 +20,24 @@ body {
   width: 20%;
   height: 20%;
   background-color: rgb(238, 238, 238);
+  border-style: solid;
+}
+
+.container {
+  margin-top: 2em;
+  border-top: solid 1em black;
+  border-radius: 2em;
+  background-color: black;
+}
+
+.friend-name {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  padding: 0.25em;
+  border-radius: 0.2em;
+}
+
+.jumbotron {
+  padding: 3em !important;
 }
