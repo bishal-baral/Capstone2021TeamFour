@@ -1,3 +1,43 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  margin-left: 2.5em;
+  margin-bottom: 2.5em;
+}
+
+.page-header {
+  text-align: center;
+  border-bottom: 0.25em dotted;
+}
+
+.friend-list {
+  margin-left: 9%;
+  padding: 2em;
+  width: 20%;
+  height: 20%;
+  background-color: rgb(238, 238, 238);
+  border-style: solid;
+}
+
+.container {
+  margin-top: 2em;
+  border-top: solid 1em black;
+  border-radius: 2em;
+  background-color: black;
+}
+
+.friend-name {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  padding: 0.25em;
+  border-radius: 0.2em;
+}
+
+.jumbotron {
+  padding: 3em !important;
+}
