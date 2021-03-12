@@ -5,8 +5,20 @@
 @import "bootstrap";
 
 body {
-  margin-left: 2.5em;
-  margin-bottom: 2.5em;
+}
+
+.navbar {
+  min-height: 7%;
+}
+
+.content {
+  margin-top: 7%;
+}
+
+.logo-box {
+  width: 20%;
+  display: inline-block;
+  margin-top: 1em;
 }
 
 .page-header {
@@ -23,12 +35,10 @@ body {
   border-style: solid;
 }
 
-.container {
-  margin-top: 2em;
-  border-top: solid 1em black;
-  border-radius: 2em;
-  background-color: black;
-}
+// .container {
+//   border: solid 1em black;
+//   border-radius: 2em;
+// }
 
 .friend-name {
   display: inline-block;
@@ -40,4 +50,8 @@ body {
 
 .jumbotron {
   padding: 3em !important;
+}
+
+.footer {
+  background-color: darkgray;
 }
