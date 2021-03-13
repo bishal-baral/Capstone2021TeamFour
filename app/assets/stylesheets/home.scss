@@ -35,10 +35,13 @@ body {
   border-style: solid;
 }
 
-// .container {
-//   border: solid 1em black;
-//   border-radius: 2em;
-// }
+
+.container {
+  margin-top: 2em;
+  border-top: solid 1em black;
+  border-radius: 2em;
+  background-color: black;
+}
 
 .friend-name {
   display: inline-block;
@@ -50,8 +53,4 @@ body {
 
 .jumbotron {
   padding: 3em !important;
-}
-
-.footer {
-  background-color: darkgray;
 }
