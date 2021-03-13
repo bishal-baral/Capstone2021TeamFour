@@ -5,8 +5,20 @@
 @import "bootstrap";
 
 body {
-  margin-left: 2.5em;
-  margin-bottom: 2.5em;
+}
+
+.navbar {
+  min-height: 7%;
+}
+
+.content {
+  margin-top: 7%;
+}
+
+.logo-box {
+  width: 20%;
+  display: inline-block;
+  margin-top: 1em;
 }
 
 .page-header {
@@ -22,6 +34,7 @@ body {
   background-color: rgb(238, 238, 238);
   border-style: solid;
 }
+
 
 .container {
   margin-top: 2em;

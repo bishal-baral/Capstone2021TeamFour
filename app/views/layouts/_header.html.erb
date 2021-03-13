@@ -1,0 +1,16 @@
+    <header class="navbar navbar-fixed-top navbar-inverse navbar-light" style="background-color: #00000;">
+      <div class="container">
+       
+        <nav>
+         <div class="logo-box">
+        <%= link_to "img" , root_path, class: "logo-img" %>
+        <%= link_to "We-View", root_path, class: "logo-text" %>
+        </div>
+          <ul class="nav navbar-nav navbar-right" >
+            <li ><%= link_to "Home",  root_path  %></li>
+            <li ><%= link_to "Feed",  feed_path  %></li>
+            <li><%= link_to "Events",   events_path %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
