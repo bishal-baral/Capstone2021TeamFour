@@ -1,0 +1,19 @@
+<% provide(:title, 'Create Review') %>
+<h1>Create a review!</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @review, local: true) do |f| %>
+      <%= f.label :media %>
+      <%= f.text_field :media %>
+
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+
+      <%= f.label :recommended %>
+      <%= f.check_box :recommended %>
+
+      <%= f.submit "Publish Review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
