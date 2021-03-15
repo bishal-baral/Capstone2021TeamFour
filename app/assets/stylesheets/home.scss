@@ -54,3 +54,20 @@ body {
 .jumbotron {
   padding: 3em !important;
 }
+
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.h1-signup{
+  text-align: center;
+}
+
+input {
+  height: auto !important;
+}
