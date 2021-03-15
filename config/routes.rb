@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/feed', to: 'static_pages#feed'
   get '/create_review', to: 'reviews#new'
   get '/create_event', to: 'events#new'
+  get '/signup', to: 'users#new'
 
   resources :friend_reviews, :friends, :reviews, :users, :events
   root :to => 'home#index'
