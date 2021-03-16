@@ -22,7 +22,9 @@ FriendReview.delete_all
       to: DateTime.now, 
       format: :default
     }),
-    username: Faker::Name.first_name
+    username: Faker::Name.first_name,
+    email: Faker::Internet.email,
+    password: Faker::Internet.password(min_length: 10, max_length: 20)
   })
 
   # Make a random number of reivews per user

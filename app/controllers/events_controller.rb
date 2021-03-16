@@ -17,7 +17,7 @@ class EventsController < ApplicationController
       redirect_to '/'
     else
       # Figure out how to turn this into a path var
-      render 'events/new'
+      render 'new'
     end
   end
 
