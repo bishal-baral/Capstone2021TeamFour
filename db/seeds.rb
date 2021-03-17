@@ -13,6 +13,7 @@ Review.delete_all
 Friend.delete_all
 FriendReview.delete_all
 
+# Create plaintext for local passwords
 pw_store = File.open("passwords.txt", "w")
 
 # Make ten users.
@@ -21,6 +22,7 @@ pw_store = File.open("passwords.txt", "w")
   pw = Faker::Internet.password(min_length: 10, max_length: 20)
   user_email = Faker::Internet.email
   pw_store.puts "#{name}: #{user_email}, #{pw}"
+
   u = User.create({
     # Pretend they don't all join at the same time
     join_date: Faker::Time.between({
@@ -52,6 +54,7 @@ pw_store = File.open("passwords.txt", "w")
     })
   end
 end
+pw_store.close
 
 # Make twenty pairs of friends, and have each friend send the other a review
 20.times do
