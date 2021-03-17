@@ -13,8 +13,16 @@ Review.delete_all
 Friend.delete_all
 FriendReview.delete_all
 
+# Create plaintext for local passwords
+pw_store = File.open("passwords.txt", "w")
+
 # Make ten users.
 10.times do
+  name = Faker::Name.first_name
+  pw = Faker::Internet.password(min_length: 10, max_length: 20)
+  user_email = Faker::Internet.email
+  pw_store.puts "#{name}: #{user_email}, #{pw}"
+
   u = User.create({
     # Pretend they don't all join at the same time
     join_date: Faker::Time.between({
@@ -22,7 +30,10 @@ FriendReview.delete_all
       to: DateTime.now, 
       format: :default
     }),
-    username: Faker::Name.first_name
+    username: name,
+    code: rand(1000...9999),
+    email: user_email,
+    password: BCrypt::Password.create(pw)
   })
 
   # Make a random number of reivews per user
@@ -43,6 +54,7 @@ FriendReview.delete_all
     })
   end
 end
+pw_store.close
 
 # Make twenty pairs of friends, and have each friend send the other a review
 20.times do

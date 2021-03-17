@@ -18,8 +18,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to '/'
     else
-      # Figure out how to turn this into a path var
-      render 'reviews/new'
+      render 'new'
     end
   end
 
