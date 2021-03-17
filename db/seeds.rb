@@ -23,8 +23,10 @@ FriendReview.delete_all
       format: :default
     }),
     username: Faker::Name.first_name,
+    code: rand(1000...9999),
     email: Faker::Internet.email,
-    password: Faker::Internet.password(min_length: 10, max_length: 20)
+    password: BCrypt::Password.create(Faker::Internet.password(min_length: 10, 
+                                                               max_length: 20))
   })
 
   # Make a random number of reivews per user

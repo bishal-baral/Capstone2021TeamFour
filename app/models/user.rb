@@ -12,6 +12,7 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
   # To hash the password.
-  validates :password, presence: true, length: {minimum: 6}
+  validates :code, presence: true, length: { is: 4 }
+
   has_secure_password
 end

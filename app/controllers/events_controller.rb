@@ -11,6 +11,11 @@ class EventsController < ApplicationController
 
     # eventually autogenerate a stream link, or give the users one idk
     @event = Event.new(event_params)
+    # Leave this as current time + a day for now
+    # When setting it, make sure is a future time.
+    # Also need an invitee list.
+
+    @event.scheduled_time = Time.now + 24 * 60
     # add something about session's user here
     @event.user_id = User.all.sample.id
     if @event.save
