@@ -1,6 +1,5 @@
 class User < ApplicationRecord
 
-  #has_many :friends
 
   # sets the 'sent_by_id' in Friendship schema
   # inverse of 'sent_by' in Friendship model
@@ -11,7 +10,7 @@ class User < ApplicationRecord
 
   has_many :friend_request, class_name: 'Friendship',
                             foreign_key: 'sent_to_id',
-                            inverse_of: 'sent_to'
+                            inverse_of: 'sent_to',
                             dependent: :destroy
 
   has_many :friends, -> { merge(Friendship.friends) },
