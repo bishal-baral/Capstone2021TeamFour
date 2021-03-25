@@ -33,7 +33,7 @@ pw_store = File.open("passwords.txt", "w")
     username: name,
     code: rand(1000...9999),
     email: user_email,
-    password: BCrypt::Password.create(pw)
+    password: pw
   })
 
   # Make a random number of reivews per user
