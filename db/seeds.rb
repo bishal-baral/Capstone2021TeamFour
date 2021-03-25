@@ -8,9 +8,10 @@
 
 # Clear the databases before seeding
 #TODO Is there some way to disable this on prod?
-User.delete_all
+User.destroy_all
 Review.delete_all
-Friend.delete_all
+#Friend.delete_all
+Friendship.destroy_all
 FriendReview.delete_all
 
 # Create plaintext for local passwords
@@ -65,13 +66,19 @@ pw_store.close
   end
 
   # Duplicate the pairs so it's easier to search
-  Friend.create({
-    user_id: friend_one,
-    friend_id: friend_two
-  })
-  Friend.create({
-    user_id: friend_two,
-    friend_id: friend_one
+  # Friend.create({
+  #   user_id: friend_one,
+  #   friend_id: friend_two
+  # })
+  # Friend.create({
+  #   user_id: friend_two,
+  #   friend_id: friend_one
+  # })
+
+  Friendship.create({
+    sent_by_id: friend_one,
+    sent_to_id: friend_two,
+    status: true
   })
 
   # Send each other a review each

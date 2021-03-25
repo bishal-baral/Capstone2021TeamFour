@@ -1,0 +1,22 @@
+<h1> views/friendship/index. We can show the friends here once the data has been seeded. </h1>
+
+<h2> Friend's List <h2>
+  <% @friends.each do |friend| %>
+    <%= friend.username %>
+    <%= friend.code %>
+  <% end %>
+
+<h2> Friend Requests <h2>
+  <% @friend_requests.each do |friend_request| %>
+    <%= friend_request.username %>
+    <%= friend_request.code %>
+  <% end %>
+
+<h2> Pending Requests <h2>
+ <% @pending_requests.each do |pending_request| %>
+    <%= pending_request.username %>
+    <%= pending_request.code %>
+  <% end %>
+
+
+  

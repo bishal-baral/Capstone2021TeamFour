@@ -5,6 +5,6 @@ class Friendship < ApplicationRecord
   belongs_to :sent_by, class_name: 'User', foreign_key: 'sent_by_id'
   
   #Define a scope here to access the friends easily
-  scope :friends, { where('status =?' = true) }
-  scope :not_friends, { where('status =?' = false) }
+  scope :friends, -> { where('status =?', true) }
+  scope :not_friends, -> { where('status =?', false) }
 end
