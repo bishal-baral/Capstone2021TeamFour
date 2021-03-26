@@ -6,7 +6,6 @@ class HomeController < ApplicationController
   def index
     @users = User.all
     @reviews = Review.all
-    @friends = Friend.all
   end
 
   def show

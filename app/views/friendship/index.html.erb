@@ -1,0 +1,35 @@
+<h1> views/friendship/index. </h1>
+<%= current_user.id %>
+
+<h2> Friend's List <h2>
+  <% @friends.each do |friend| %>
+    <%= friend.username %>
+    <%= friend.code %>
+  <% end %>
+
+<h2> Friend Requests <h2>
+  <% @friend_requests.each do |friend_request| %>
+    <%= friend_request.username %>
+    <%= friend_request.code %>
+    <%= button_to "Accept", {:controller => "friendship", :action => "accept_friend", :user_id => friend_request.id} ,:method=>:put %> 
+    <%= button_to "Decline", {:controller => "friendship", :action => "decline_friend", :user_id => friend_request.id} ,:method=>:delete %>   
+  <% end %>
+
+<h2> Pending Requests <h2>
+ <% @pending_requests.each do |pending_request| %>
+    <%= pending_request.username %>
+    <%= pending_request.code %>
+  <% end %>
+
+  
+
+<%= form_tag(result_path, :method => "get") do %>  
+  <div class="input-group">  
+    <%= search_field_tag :username, params[:username], placeholder: "Username", class: "form-control" %> 
+    <%= search_field_tag :code, params[:code], placeholder: "Code", class: "form-control" %> 
+    
+    <div class="input-group-btn">  
+      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+    </div>  
+  </div>  
+<% end %>

@@ -10,7 +10,14 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :friend_reviews, :friends, :reviews, :users, :events
+  get '/friendship', to: 'friendship#index'
+  put '/friendship', to: 'friendship#accept_friend'
+  post '/friendship', to: 'friendship#create'
+  delete '/friendship', to: 'friendship#decline_friend'
+  get '/result', to: 'friendship#result'
+  
+
+  resources :friend_reviews, :friendship, :reviews, :users, :events
   root :to => 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

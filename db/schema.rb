@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_17_222335) do
+ActiveRecord::Schema.define(version: 2021_03_25_042235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,9 +28,14 @@ ActiveRecord::Schema.define(version: 2021_03_17_222335) do
     t.integer "review_id"
   end
 
-  create_table "friends", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "friend_id"
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "sent_to_id", null: false
+    t.bigint "sent_by_id", null: false
+    t.boolean "status", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sent_by_id"], name: "index_friendships_on_sent_by_id"
+    t.index ["sent_to_id"], name: "index_friendships_on_sent_to_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -50,4 +55,6 @@ ActiveRecord::Schema.define(version: 2021_03_17_222335) do
     t.index ["username", "code"], name: "index_users_on_username_and_code", unique: true
   end
 
+  add_foreign_key "friendships", "users", column: "sent_by_id"
+  add_foreign_key "friendships", "users", column: "sent_to_id"
 end

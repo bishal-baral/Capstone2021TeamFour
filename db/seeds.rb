@@ -8,9 +8,9 @@
 
 # Clear the databases before seeding
 #TODO Is there some way to disable this on prod?
-User.delete_all
+User.destroy_all
 Review.delete_all
-Friend.delete_all
+Friendship.destroy_all
 FriendReview.delete_all
 
 # Create plaintext for local passwords
@@ -21,7 +21,8 @@ pw_store = File.open("passwords.txt", "w")
   name = Faker::Name.first_name
   pw = Faker::Internet.password(min_length: 10, max_length: 20)
   user_email = Faker::Internet.email
-  pw_store.puts "#{name}: #{user_email}, #{pw}"
+  code = rand(1000...9999)
+  pw_store.puts "#{name}: #{user_email}, #{pw}, #{code}"
 
   u = User.create({
     # Pretend they don't all join at the same time
@@ -31,9 +32,9 @@ pw_store = File.open("passwords.txt", "w")
       format: :default
     }),
     username: name,
-    code: rand(1000...9999),
+    code: code,
     email: user_email,
-    password: BCrypt::Password.create(pw)
+    password: pw
   })
 
   # Make a random number of reivews per user
@@ -65,13 +66,19 @@ pw_store.close
   end
 
   # Duplicate the pairs so it's easier to search
-  Friend.create({
-    user_id: friend_one,
-    friend_id: friend_two
-  })
-  Friend.create({
-    user_id: friend_two,
-    friend_id: friend_one
+  # Friend.create({
+  #   user_id: friend_one,
+  #   friend_id: friend_two
+  # })
+  # Friend.create({
+  #   user_id: friend_two,
+  #   friend_id: friend_one
+  # })
+
+  Friendship.create({
+    sent_by_id: friend_one,
+    sent_to_id: friend_two,
+    status: true
   })
 
   # Send each other a review each
