@@ -10,7 +10,6 @@
 #TODO Is there some way to disable this on prod?
 User.destroy_all
 Review.delete_all
-#Friend.delete_all
 Friendship.destroy_all
 FriendReview.delete_all
 
@@ -22,7 +21,8 @@ pw_store = File.open("passwords.txt", "w")
   name = Faker::Name.first_name
   pw = Faker::Internet.password(min_length: 10, max_length: 20)
   user_email = Faker::Internet.email
-  pw_store.puts "#{name}: #{user_email}, #{pw}"
+  code = rand(1000...9999)
+  pw_store.puts "#{name}: #{user_email}, #{pw}, #{code}"
 
   u = User.create({
     # Pretend they don't all join at the same time
@@ -32,7 +32,7 @@ pw_store = File.open("passwords.txt", "w")
       format: :default
     }),
     username: name,
-    code: rand(1000...9999),
+    code: code,
     email: user_email,
     password: pw
   })

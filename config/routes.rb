@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/friendship', to: 'friendship#index'
+  put '/friendship', to: 'friendship#accept_friend'
+  post '/friendship', to: 'friendship#create'
+  delete '/friendship', to: 'friendship#decline_friend'
+  get '/result', to: 'friendship#result'
   
 
   resources :friend_reviews, :friendship, :reviews, :users, :events
