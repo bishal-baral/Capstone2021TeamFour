@@ -1,0 +1,29 @@
+<% provide(:title, "Your Profile") %>
+
+<div class="friend-list">
+<%user = current_user%>
+
+  <h2>Friends</h2>
+    <ol>
+    <%current_user.friends.each do |friend| %>
+      <li><%= friend.username %></li>
+    <%end %>
+    </ol>     
+</div>
+
+<div class="reveiw-container">
+  <div class="container">
+    <div class="jumbotron">
+    <h1>Reviews</h1>
+    <h2> Here is what you reviewed!</h2>
+    </div>
+    <div class="jumbotron">
+        <% @reviews.where(user_id: user.id).each do |review|%>
+          <ul> 
+            <li> <u><b><p><%= review.media %>:</p></b></u></li>
+             <p><%= review.content %></p>
+          </ul>
+      <%end%>
+    </div>
+  </div>
+</div>
