@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
   resources :events
-  get '/feed', to: 'static_pages#feed'
+get '/profile', to: 'users#profile'
   get '/create_review', to: 'reviews#new'
   get '/create_event', to: 'events#new'
   get '/signup', to: 'users#new'

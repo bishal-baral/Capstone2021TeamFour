@@ -30,6 +30,12 @@ class UsersController < ApplicationController
     @reviews = Review.all
   end
 
+  def profile
+    
+    @reviews = Review.all
+  end
+  
+
   private
 
     def user_params

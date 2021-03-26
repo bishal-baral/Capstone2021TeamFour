@@ -1,21 +1,6 @@
-<h1> We-View Home Page for <%= @user.username %> </h1>
-
-<% user_1 = current_user %>
-<% friend_id_array = []  %> <%# for user_1 %>
+<% provide(:title, "Home") %>
 
 <%# to avoid duplicate reviews from the same friend_id, friend_id's are turned into a set  %>
-
-
-
-<div class="friend-list">
-
-  <h2>Friends</h2>
-    <ol>
-    <%current_user.friends.each do |friend| %>
-    <li><%= friend.username %></li>
-  <%end %>
-</ol>
-</div>
 
 <div class="reveiw-container">
   <div class="container">
@@ -24,11 +9,15 @@
     <h2> Here is what your friends reviewed!</h2>
     </div>
     <div class="jumbotron">
+    
       <%current_user.friends.each do |friend| %>
         <h3 class= "friend-name"><%= friend.username %></h3>
         <% @reviews.where(user_id: friend.id).each do |friend_who_reviewed|%>
-          <ul>   <li> <u><b><p><%= friend_who_reviewed.media %>:</p></b></u></li>
-          <p><%= friend_who_reviewed.content %></p>
+          <ul> 
+          <li> <u><b><p><%= friend_who_reviewed.media %>:</p></b></u></li>
+             <p><%= friend_who_reviewed.content %></p>
+          </ul>
+          
         <%end%>
       <%end%>
     </div>
