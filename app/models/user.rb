@@ -34,8 +34,8 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
-  # To hash the password.
   validates :code, presence: true, length: { is: 4 }
 
+  # To hash the password.
   has_secure_password
 end

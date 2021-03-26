@@ -1,11 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 1
-  join_date: 2021-03-03 22:05:31
-  username: MyString
+  id: 216
+  join_date: 2020-12-12 08:20:46
+  username: "Greg"
+  password_digest: "IkQm3CfQ9kS7jCgB"
+  email: "tamela@braun.biz"
+  code: 5782
 
 two:
-  user_id: 1
-  join_date: 2021-03-03 22:05:31
-  username: MyString
+  id: 217
+  join_date: 2020-10-10 13:34:14
+  username: "Liliana"
+  password_digest: "C2vYc3KmMjQ0j"
+  email: "dortha_rolfson@effertz.co"
+  code: 5174

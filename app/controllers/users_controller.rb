@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user.save
       reset_session
       log_in @user
-      flash[:sucess] = "Caught you on the flippity flip"
+      flash[:success] = "Caught you on the flippity flip"
       redirect_to @user
     else
       render 'new'
