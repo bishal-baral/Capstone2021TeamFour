@@ -11,7 +11,7 @@
 User.destroy_all
 Review.delete_all
 Friendship.destroy_all
-FriendReview.delete_all
+# FriendReview.delete_all
 
 # Create plaintext for local passwords
 pw_store = File.open("passwords.txt", "w")
@@ -59,37 +59,30 @@ pw_store.close
 
 # Make twenty pairs of friends, and have each friend send the other a review
 20.times do
-  friend_one = User.all.sample.id
-  friend_two = User.all.sample.id
-  while friend_one == friend_two do
+  begin
+    friend_one = User.all.sample.id
     friend_two = User.all.sample.id
+    friendo = Friendship.create({
+      sent_by_id: friend_one,
+      sent_to_id: friend_two,
+      status: true
+    })
+
+  rescue
+    retry
   end
 
-  # Duplicate the pairs so it's easier to search
-  # Friend.create({
-  #   user_id: friend_one,
-  #   friend_id: friend_two
-  # })
-  # Friend.create({
-  #   user_id: friend_two,
-  #   friend_id: friend_one
-  # })
-
-  Friendship.create({
-    sent_by_id: friend_one,
-    sent_to_id: friend_two,
-    status: true
-  })
 
   # Send each other a review each
-  FriendReview.create({
-    user_id: friend_one,
-    review_id: Review.where(user_id: friend_two).sample.id
-  })
-  FriendReview.create({
-    user_id: friend_two,
-    review_id: Review.where(user_id: friend_one).sample.id
-  })
+  # We're not using these yet
+  # FriendReview.create({
+  #   user_id: friend_one,
+  #   review_id: Review.where(user_id: friend_two).sample.id
+  # })
+  # FriendReview.create({
+  #   user_id: friend_two,
+  #   review_id: Review.where(user_id: friend_one).sample.id
+  # })
 
 end
 
