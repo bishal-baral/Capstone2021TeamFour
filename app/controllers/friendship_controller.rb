@@ -59,7 +59,7 @@ class FriendshipController < ApplicationController
       flash[:danger] = 'Friend Request Failed!'
     end
       redirect_back(fallback_location: root_path)
-    end
+  end
   
 
     def accept_friend

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   get 'sessions/new'
-  get '/feed', to: 'static_pages#feed'
+
+  get '/profile', to: 'users#profile'
   get '/create_review', to: 'reviews#new'
   get '/create_event', to: 'events#new'
   get '/signup', to: 'users#new'
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/home', to: 'users#show'
 
   get '/friendship', to: 'friendship#index'
   put '/friendship', to: 'friendship#accept_friend'
