@@ -1,0 +1,21 @@
+<% provide(:title, "All Events") %>
+
+
+<div class="events-container">
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Events</h1>
+      <h2> Here is the list of events!</h2>
+    </div>
+    <div>
+      <%@event.each do |event| %>
+        <div class="jumbotron">
+          <h3>
+            <%= event.title %>
+          </h3>
+
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>

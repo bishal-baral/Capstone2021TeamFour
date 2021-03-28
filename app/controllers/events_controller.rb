@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
   def show
+    @event = Event.all
   end
 
   def new
@@ -19,7 +20,7 @@ class EventsController < ApplicationController
     # add something about session's user here
     @event.user_id = current_user.id
     if @event.save
-      redirect_to '/'
+      redirect_to '/events'
     else
       # Figure out how to turn this into a path var
       render 'new'

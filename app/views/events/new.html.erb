@@ -7,6 +7,11 @@
     <%= form_with(model: @event, local: true) do |f| %>
       <%= f.label :title %>
       <%= f.text_field :title %>
+
+      <%= f.label :stream_link %>
+      <%= f.text_field :stream_link %>
+
+      <%= select_date Date.today, :prefix => :start_date %>
       
       <!-- Figure out how the hell to do the time. 
            Probably a few different variables in another form? -->

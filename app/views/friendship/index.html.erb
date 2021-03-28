@@ -33,8 +33,9 @@
   </ol>
 </div>
 
-  
+
 <div class="form-box">
+<h2>Search Friends!</h2>
 <%= form_tag(result_path, :method => "get") do %>  
   <div class="input-group">  
     <%= search_field_tag :username, params[:username], placeholder: "Username", class: "form-control" %> 
