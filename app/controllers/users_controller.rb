@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       reset_session
       log_in @user
       flash[:success] = "Caught you on the flippity flip"
-      redirect_to @user
+      render 'profile'
     else
       render 'new'
     end
