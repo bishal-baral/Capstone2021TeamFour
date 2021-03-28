@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       reset_session
       log_in @user
       flash[:success] = "Caught you on the flippity flip"
-      redirect_to @user
+      render 'profile'
     else
       render 'new'
     end
@@ -27,7 +27,11 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @reviews = Review.all
+    temp_revs = []
+    @user.friends.each do |friend|
+      temp_revs += friend.reviews
+    end
+    @reviews = temp_revs.sort_by{ |r| r.post_date }.reverse
   end
 
   def profile

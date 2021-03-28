@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     
     @review = Review.new(review_params)
     # add something about session's user here
-    @review.user_id = User.all.sample.id
+    @review.user_id = current_user.id
 
     # Add who on friend list to send to
     if @review.save
@@ -25,6 +25,6 @@ class ReviewsController < ApplicationController
   private 
 
     def review_params
-      params.require(:review).permit(:user, :media, :content, :recommended)
+      params.require(:review).permit(:media, :content, :recommended)
     end
 end

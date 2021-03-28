@@ -17,7 +17,7 @@ class EventsController < ApplicationController
 
     @event.scheduled_time = Time.now + 24 * 60
     # add something about session's user here
-    @event.user_id = User.all.sample.id
+    @event.user_id = current_user.id
     if @event.save
       redirect_to '/'
     else

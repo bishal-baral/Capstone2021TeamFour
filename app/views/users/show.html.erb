@@ -5,20 +5,24 @@
 <div class="reveiw-container">
   <div class="container">
     <div class="jumbotron">
-    <h1>Reviews</h1>
-    <h2> Here is what your friends reviewed!</h2>
+      <h1>Reviews</h1>
+      <h2> Here is what your friends reviewed!</h2>
     </div>
-    <div class="jumbotron">
-    
-      <%current_user.friends.each do |friend| %>
-        <h3 class= "friend-name"><%= friend.username %></h3>
-        <% @reviews.where(user_id: friend.id).each do |friend_who_reviewed|%>
-          <ul> 
-          <li> <u><b><p><%= friend_who_reviewed.media %>:</p></b></u></li>
-             <p><%= friend_who_reviewed.content %></p>
-          </ul>
-          
-        <%end%>
+    <div>
+      <%@reviews.each do |review| %>
+        <div class="jumbotron">
+          <h3>
+            <%= review.user.username %>
+            <% if review.recommended %>
+              recommends
+            <% else %>
+              does not recommend
+            <% end %>
+            <%= review.media %>
+          </h3>
+          <p> <%= review.content %> </p>
+          <p> <%= review.post_date.to_date %> </p>
+        </div>
       <%end%>
     </div>
   </div>
