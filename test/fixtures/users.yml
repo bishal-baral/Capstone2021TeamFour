@@ -1,11 +1,29 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+#PW: G4qScZ5m13OvS2h7B
 one:
-  user_id: 1
-  join_date: 2021-03-03 22:05:31
-  username: MyString
+  id: 216
+  join_date: 2020-12-12 08:20:46
+  username: "Greg"
+  password_digest: "$2a$12$4yhM5PlgTRsX8J.fX/nm9OmT1rBL//a3gb3MD6RtksiTPbZ0uVbA2"
+  email: "tamela@braun.biz"
+  code: 5782
 
+#PW: 2CeMh360U4kD18wBh
 two:
-  user_id: 1
-  join_date: 2021-03-03 22:05:31
-  username: MyString
+  id: 217
+  join_date: 2020-10-10 13:34:14
+  username: "Liliana"
+  password_digest: "$2a$12$PbgXWTE98UdioQStG2H1jO1kmbKZiCNw./cQcqaEGUoQQILNO/chi"
+  email: "dortha_rolfson@effertz.co"
+  code: 5174
+
+# PW: Eu6T0iOb6ZsB3jUbCyC0
+three:
+  id: 218
+  join_date: 2020-11-04 12:59:21
+  username: "Russel"
+  password_digest: "$2a$12$t0Qz.bBPjaVq.e2tXjjo1.8TDQ3GNo2KJ4t1YN6l.LmRwgRFo3ERK"
+  email: "timmy.kerluke@botsford.net"
+  code: 3794
+

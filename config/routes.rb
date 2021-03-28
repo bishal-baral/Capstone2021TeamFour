@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
   get 'sessions/new'
-  resources :events
-get '/profile', to: 'users#profile'
+
+  get '/profile', to: 'users#profile'
   get '/create_review', to: 'reviews#new'
   get '/create_event', to: 'events#new'
   get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

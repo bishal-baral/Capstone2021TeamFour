@@ -7,8 +7,4 @@ class HomeController < ApplicationController
     @users = User.all
     @reviews = Review.all
   end
-
-  def show
-
-  end
 end

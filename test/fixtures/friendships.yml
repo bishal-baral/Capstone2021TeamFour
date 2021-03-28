@@ -1,9 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  sent_to: one
-  sent_by: one
-
-two:
-  sent_to: two
-  sent_by: two
+  id: 1
+  sent_to: 216
+  sent_by: 217
+  status: true
