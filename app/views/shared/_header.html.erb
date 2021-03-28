@@ -1,53 +1,50 @@
-    <header >
-<script>
-function openNav() {
-  document.getElementById("left-sidebar").style.width = "250px";
-}
+<header >
+  <script>
+  function openNav() {
+    document.getElementById("left-sidebar").style.width = "250px";
+  }
 
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-  document.getElementById("left-sidebar").style.width = "0";
-}</script>
-       <% if logged_in? %>
-       <div id="left-sidebar" class="sidenav closebtn" onmouseleave="closeNav()">
-         <%# <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> %>
-            <%= link_to "Home",  home_path  %>
-            <%= link_to "Friendship",  friendship_path  %>
-            <%= link_to "Create Event", create_event_path %>
-            <%= link_to "Post Review", create_review_path %>
-            <%= link_to "Profile",  profile_path  %>
-            <%= link_to "Log-out",  logout_path, method: :delete %>
-        </div>
-        <% user = current_user%>
-      <div class="logged-in-nav">
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+    document.getElementById("left-sidebar").style.width = "0";
+  }
+  </script>
+  <% if logged_in? %>
+    <div id="left-sidebar" class="sidenav closebtn" onmouseleave="closeNav()">
+      <%# <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> %>
+      <%= link_to "Home", home_path  %>
+      <%= link_to "Friendship", friendship_path  %>
+      <%= link_to "Create Event", create_event_path %>
+      <%= link_to "Post Review", create_review_path %>
+      <%= link_to "Profile", profile_path  %>
+      <%= link_to "Log-out", logout_path, method: :delete %>
+    </div>
+    <% user = current_user%>
+    <div class="logged-in-nav">
       <%# &#8203; %>
       <div class="inner-logged-in-nav">
 
         <div class="user-head-text">
-        <h1><%= user.username%>'s We-View</h1>
+          <h1><%= user.username%>'s We-View</h1>
         </div>
-                <div class="menu-box" onmouseover="openNav()">
-        <br> Menu 
-        <br> <br> 
-
+        <div class="menu-box" onmouseover="openNav()">
+          <br> Menu <br> <br> 
         </div>
-        </div>
-      </div> 
-      <%else%>
-      <nav class="navbar navbar-inverse  navbar-fixed-top" style="background-color: #00000;">
-        <div class="container-fluid">
-          
-          <div class="navbar-header">
-            <%# <div class="logo-box" > %>
-              <%= link_to "We-View", root_path, class:"navbar-brand"%>
+      </div>
+    </div> 
+  <%else%>
+    <nav class="navbar navbar-inverse  navbar-fixed-top" style="background-color: #00000;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%# <div class="logo-box" > %>
+          <%= link_to "We-View", root_path, class:"navbar-brand"%>
           <%# </div> %>
         </div>
-          <ul class="nav navbar-nav navbar-right">
-              <li ><%= link_to "Sign-up",  signup_path %></li>
-              <li ><%= link_to "Log-in",  login_path %></li>
-            <%end%>
-          </ul>
-        </div>
-      </nav>
-
-        </header>
+        <ul class="nav navbar-nav navbar-right">
+          <li ><%= link_to "Sign-up",  signup_path %></li>
+          <li ><%= link_to "Log-in",  login_path %></li>
+        </ul>
+      </div>
+    </nav>
+  <%end%>
+</header>

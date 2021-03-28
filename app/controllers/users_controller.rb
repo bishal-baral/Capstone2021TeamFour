@@ -27,7 +27,11 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @reviews = Review.all
+    temp_revs = []
+    @user.friends.each do |friend|
+      temp_revs += friend.reviews
+    end
+    @reviews = temp_revs.sort_by{ |r| r.post_date }.reverse
   end
 
   def profile
