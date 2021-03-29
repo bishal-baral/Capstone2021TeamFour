@@ -8,15 +8,17 @@
       <%= f.label :title %>
       <%= f.text_field :title %>
 
-      <%= f.label :stream_link %>
+      <%= f.label :stream_link, "Stream Link (submit a valid youtube link)" %>
       <%= f.text_field :stream_link %>
+    
+    <%= select_tag 'invitees[]', options_for_select(current_user.friends.map{ |friend| [friend.username, friend.id]}, current_user.friends.pluck(:id)), multiple: true, size: 10 %>
 
-      <%= select_date Date.today, :prefix => :start_date %>
-      
-      <!-- Figure out how the hell to do the time. 
+
+      <!-- Figure out how the hell to d(the time. 
            Probably a few different variables in another form? -->
 
       <%= f.submit "Create Event", class: "btn" %>
     <% end %>
+
   </div>
 </div>

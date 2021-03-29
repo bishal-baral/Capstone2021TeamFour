@@ -16,7 +16,7 @@
       <%@reviews.each do |review| %>
         <div class="jumbotron">
           <h3>
-            <%= review.user.username %>
+          <%= link_to review.user.username, friend_profile_path( user_id:review.user.id), method: :post%>
            <% if review.recommended %>
               <span style="color:green;"> recommends </span>
             <% else %>

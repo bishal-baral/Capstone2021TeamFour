@@ -35,7 +35,11 @@ class UsersController < ApplicationController
   end
 
   def profile
-    
+    @reviews = Review.all
+  end
+
+  def friend_profile
+    @user = User.all.find_by(id: params[:user_id])
     @reviews = Review.all
   end
   

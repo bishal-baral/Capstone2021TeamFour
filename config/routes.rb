@@ -7,12 +7,19 @@ Rails.application.routes.draw do
 
   get '/create_event', to: 'events#new'
   get '/events', to: 'events#show'
+  post '/events', to: 'events#create'
+  get '/event_screen', to: 'events#event_screen'
+  post '/event_screen', to: 'events#event_screen'
+
+
 
   get '/profile', to: 'users#profile'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   get '/home', to: 'users#show'
   get '/profile', to: 'users#profile'
+  get '/friend_profile', to: 'users#friend_profile'
+  post '/friend_profile', to: 'users#friend_profile'
 
   get 'sessions/new'
   get '/login', to: 'sessions#new'
