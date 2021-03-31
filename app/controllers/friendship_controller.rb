@@ -27,7 +27,7 @@ class FriendshipController < ApplicationController
   def create
 
     #Disallow the ability to send yourself a friend request
-    ## For some reason the ids are not the same tpye so it doesn't work if we don't convert both of them "s"
+    # For some reason the ids are not the same tpye so it doesn't work if we don't convert both of them "s"
     if current_user.id.to_s == params[:user_id].to_s
       flash[:danger] = "You can't send a request to yourself"
       redirect_to friendship_path

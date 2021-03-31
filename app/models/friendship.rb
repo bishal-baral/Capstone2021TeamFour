@@ -8,7 +8,7 @@ class Friendship < ApplicationRecord
   scope :friends, -> { where('status =?', true) }
   scope :not_friends, -> { where('status =?', false) }
 
-  validate :users_exist, :user_friend_not_same, :duplicate_friendship
+  validate :users_exist, :user_friend_not_same
 
   def user_friend_not_same
     if sent_to_id == sent_by_id
@@ -26,10 +26,5 @@ class Friendship < ApplicationRecord
     end
   end
 
-  def duplicate_friendship
-    if Friendship.where(sent_by_id: :sent_to_id, 
-                        sent_to_id: :sent_by_id).count > 0
-      errors.add(:sent_by_id, "friendship already exists")
-    end
-  end
+
 end
