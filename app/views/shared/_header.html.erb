@@ -14,8 +14,7 @@
       <%# <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> %>
       <%= link_to "Home", home_path  %>
       <%= link_to "Friendship", friendship_path  %>
-      <%= link_to "Create Event", create_event_path %>
-      <%= link_to "Post Review", create_review_path %>
+      <%= link_to "Events", events_path %>
       <%= link_to "Profile", profile_path  %>
       <%= link_to "Log-out", logout_path, method: :delete %>
     </div>
@@ -25,7 +24,7 @@
       <div class="inner-logged-in-nav">
 
         <div class="user-head-text">
-          <h1><%= user.username%>'s We-View</h1>
+          <h1 ><a href=/home style= "color: black; text-decoration: underline;"><%= user.username%>'s We-View</a></h1>
         </div>
         <div class="menu-box" onmouseover="openNav()">
           <br> Menu <br> <br> 

@@ -6,7 +6,7 @@
   <h2>Friends</h2>
     <ol>
     <%current_user.friends.each do |friend| %>
-      <li><%= friend.username %></li>
+      <li><%= link_to friend.username, friend_profile_path( user_id:friend.id), method: :post%></li>
     <%end %>
     </ol>     
 </div>
@@ -20,7 +20,12 @@
     <div class="jumbotron">
         <% @reviews.where(user_id: user.id).each do |review|%>
           <ul> 
-            <li> <u><b><p><%= review.media %>:</p></b></u></li>
+            <li> <b><p><% if review.recommended %>
+              <span style="color:green;"> Recommends </span>
+            <% else %>
+              <span style="color:red;"> Doesn't recommend </span>
+            <% end %>
+            <b><%= review.media %></b></p></b></li>
              <p><%= review.content %></p>
           </ul>
       <%end%>

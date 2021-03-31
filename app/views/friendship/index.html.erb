@@ -5,7 +5,8 @@
  <ol>
   <% @friends.each do |friend| %>
  
-    <li><%= friend.username %> <%= friend.code %></li>
+          <li><%= link_to friend.username, friend_profile_path( user_id:friend.id), method: :post%></li>
+
   <% end %>
   </ol>
 </div>
@@ -20,7 +21,7 @@
     <%= button_to "Decline", {:controller => "friendship", :action => "decline_friend", :user_id => friend_request.id} ,:method=>:delete %> </li>
   <% end %>
    </ol>
-  </div>
+  </div> 
 
 <div class="friend-list">
 <h3> <b> Pending Requests </b> <h3>
@@ -33,8 +34,9 @@
   </ol>
 </div>
 
-  
+
 <div class="form-box">
+<h2>Search Friends!</h2>
 <%= form_tag(result_path, :method => "get") do %>  
   <div class="input-group">  
     <%= search_field_tag :username, params[:username], placeholder: "Username", class: "form-control" %> 

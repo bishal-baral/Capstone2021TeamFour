@@ -1,0 +1,25 @@
+<% provide(:title, "Friend Profile") %>
+
+
+<div class="reveiw-container">
+  <div class="container">
+    <div class="jumbotron">
+    <h1><%=@user.username%>'s Profile</h1>
+    <h2> Here is what they reviewed!</h2>
+    </div>
+
+    <div class="jumbotron">
+        <% @reviews.where(user_id: @user.id).each do |review|%>
+          <ul> 
+            <li> <b><p><% if review.recommended %>
+              <span style="color:green;"> Recommends </span>
+            <% else %>
+              <span style="color:red;"> Doesn't recommend </span>
+            <% end %>
+            <b><%= review.media %>:</b></p></b></li>
+             <p><%= review.content %></p>
+          </ul>
+      <%end%>
+    </div>
+  </div>
+</div>
