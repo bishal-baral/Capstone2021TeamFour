@@ -27,7 +27,7 @@ class FriendshipController < ApplicationController
   def create
 
     #Disallow the ability to send yourself a friend request
-    ## For some reason the ids are not the same tpye so it doesn't work if we don't convert both of them "s"
+    # For some reason the ids are not the same tpye so it doesn't work if we don't convert both of them "s"
     if current_user.id.to_s == params[:user_id].to_s
       flash[:danger] = "You can't send a request to yourself"
       redirect_to friendship_path
@@ -44,20 +44,21 @@ class FriendshipController < ApplicationController
       flash[:warning] = "You already have a request from this person"
       redirect_to friendship_path
       return
-    # If they are already friends. Mostly useful if the data has been seeded.
-    elsif possible_friend?(User.find(params[:user_id]))
-      flash[:warning] = "You are already friends with this person"
-      redirect_to friendship_path
-      return
     end
   
     @user = User.find(params[:user_id])
     @friendship = current_user.friend_sent.build(sent_to_id: params[:user_id])
-    if @friendship.save
-      flash[:success] = 'Friend Request Sent!'
-    else
+
+    sucess = false
+    begin
+      sucess = @friendship.save
+    rescue => exception
       flash[:danger] = 'Friend Request Failed!'
+      redirect_to friendship_path
+      return
     end
+
+      flash[:success] = 'Friend Request Sent!'
       redirect_back(fallback_location: root_path)
   end
   
