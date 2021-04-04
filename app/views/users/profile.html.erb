@@ -18,18 +18,16 @@
     <h2> Here is what you reviewed!</h2>
     </div>
     <div class="jumbotron">
-      <% if @reviews %>
-          <% @reviews.where(user_id: user.id).each do |review|%>
-            <ul> 
-              <li> <b><p><% if review.recommended %>
-                <span style="color:green;"> Recommends </span>
-              <% else %>
-                <span style="color:red;"> Doesn't recommend </span>
-              <% end %>
-              <b><%= review.media %></b></p></b></li>
-              <p><%= review.content %></p>
-            </ul>
-        <%end%>
+        <% @reviews.where(user_id: user.id).each do |review|%>
+          <ul> 
+            <li> <b><p><% if review.recommended %>
+              <span style="color:green;"> Recommends </span>
+            <% else %>
+              <span style="color:red;"> Doesn't recommend </span>
+            <% end %>
+            <b><%= review.media %></b></p></b></li>
+             <p><%= review.content %></p>
+          </ul>
       <%end%>
     </div>
   </div>
