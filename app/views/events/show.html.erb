@@ -18,9 +18,7 @@
             <%= event.title %> 
           </h3>
 <h6><span>Date: <%= event.scheduled_time%></span></h6>
-    <span>Friends Invited: <% user_array = @users[event]%>
-                            <%= user_array.to_sentence%>
-                                  </span>
+    <span>Friends Invited: <%= event.invitees%> </span>
           <%= button_to "Attend", {:controller => "events", :action => "event_screen", :event_id => event.id}, {:style => "width: 20%;"} %> 
         </div>
       <%end%>
