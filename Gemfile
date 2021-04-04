@@ -28,7 +28,6 @@ gem 'pg'
 gem 'bcrypt',         '3.1.13'
 
 gem 'simple_form'
-gem 'datetime_picker_input' 
 gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
