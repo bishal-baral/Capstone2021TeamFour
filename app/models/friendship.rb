@@ -32,6 +32,4 @@ class Friendship < ApplicationRecord
       errors.add(:sent_by_id, "friendship already exists")
     end
   end
-
-
 end
