@@ -7,17 +7,18 @@
     <%= form_with(model: @event, local: true) do |f| %>
       <%= f.label :title %>
       <%= f.text_field :title %>
+
       <%= f.label :stream_link, "Stream Link (submit a valid youtube link)" %>
       <%= f.text_field :stream_link %>
     
-    <%= select_tag :attendees, options_for_select(current_user.friends.map{ |friend| [friend.username, friend.id]}, current_user.friends.pluck(:id)), multiple: true, size: 10 %>
+    <%= select_tag 'invitees[]', options_for_select(current_user.friends.map{ |friend| [friend.username, friend.id]}, current_user.friends.pluck(:id)), multiple: true, size: 10 %>
 
 
-
+      <!-- Figure out how the hell to d(the time. 
+           Probably a few different variables in another form? -->
 
       <%= f.submit "Create Event", class: "btn" %>
     <% end %>
 
   </div>
 </div>
-© 2021 GitHub, Inc.
