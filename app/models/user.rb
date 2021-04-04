@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   has_many :friend_reviews
   has_many :reviews
-
+  has_many :invitees
   
   before_save { self.email = email.downcase }
   #Email validations
