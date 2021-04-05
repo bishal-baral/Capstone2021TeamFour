@@ -29,6 +29,27 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def tag
+    @review = Review.find_by(id: params[:id])
+    @tag = Tag.new
+  end
+
+  def add_tag
+    @review = Review.find_by(id: params[:id])
+    tag_cat = params[:category]
+    tag_name = params[:name]
+
+    if valid_tag(tag_cat, tag_name) && tag_cat != ""
+      @tag = grab_tag(tag_cat, tag_name)
+      if ReviewTag.find_by(tag_id: @tag.id, review_id: @review.id).nil?
+        ReviewTag.create(tag_id: @tag.id, review_id: @review.id)
+      end
+      redirect_to '/profile'
+    else
+      render "/add_tag/#{review.id}"
+    end
+  end
+
   private 
 
     def review_params
@@ -46,7 +67,7 @@ class ReviewsController < ApplicationController
     end
 
     def grab_tag(cat, name)
-      tag = Tag.find_by(category: cat, name: name)
+      tag = Tag.find_by(category: cat.capitalize, name: name.capitalize)
       if tag.nil?
         tag = Tag.create(category: cat, name: name)
       end

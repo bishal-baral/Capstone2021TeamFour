@@ -1,0 +1,16 @@
+<% provide(:title, 'Add tag') %>
+<h1>Add a tag to <%= @review.media %> </h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(url: "/add_tag/#{@review.id}", method: :post) do |f| %>
+      <%= f.label :category %>
+      <%= f.text_field :category %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.submit "Add tag", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

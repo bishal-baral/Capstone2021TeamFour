@@ -11,10 +11,19 @@
 User.destroy_all
 Review.delete_all
 Friendship.destroy_all
+Tag.destroy_all
+ReviewTag.destroy_all
 # FriendReview.delete_all
 
 # Create plaintext for local passwords
 pw_store = File.open("passwords.txt", "w")
+
+
+Tag.create(category: "Medium", name: "TV show")
+Tag.create(category: "Medium", name: "Youtube")
+Tag.create(category: "Medium", name: "Anime")
+Tag.create(category: "Medium", name: "Video game")
+movie = Tag.create(category: "Medium", name: "Movie")
 
 # Make ten users.
 10.times do
@@ -39,7 +48,7 @@ pw_store = File.open("passwords.txt", "w")
 
   # Make a random number of reivews per user
   rand(3..7).times do
-    Review.create({
+    r = Review.create({
       media: Faker::Movie.title,
 
       # I felt like chuck norris idk 
@@ -52,6 +61,12 @@ pw_store = File.open("passwords.txt", "w")
         format: :default
       }), 
       recommended: Faker::Boolean.boolean
+    })
+    
+    # Add them to the movie tag
+    ReviewTag.create({
+      review_id: r.id,
+      tag_id: movie.id
     })
   end
 end
@@ -71,18 +86,5 @@ pw_store.close
   rescue
     retry
   end
-
-
-  # Send each other a review each
-  # We're not using these yet
-  # FriendReview.create({
-  #   user_id: friend_one,
-  #   review_id: Review.where(user_id: friend_two).sample.id
-  # })
-  # FriendReview.create({
-  #   user_id: friend_two,
-  #   review_id: Review.where(user_id: friend_one).sample.id
-  # })
-
 end
 
