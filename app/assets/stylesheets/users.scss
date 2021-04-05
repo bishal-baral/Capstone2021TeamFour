@@ -1,3 +1,18 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "bootstrap";
+
+.bd-highlight {
+  background-color: rgba(86,61,124,.15);
+  border: 1px solid rgba(86,61,124,.15);
+  padding: 5px;
+}
+
+.flex-row {
+  padding-right: 10px;
+}
+
+.row {
+  padding-left: 20px;
+}

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-
-
-
-
   get '/create_review', to: 'reviews#new'
 
   get '/create_event', to: 'events#new'
@@ -11,8 +7,6 @@ Rails.application.routes.draw do
   get '/event_screen', to: 'events#event_screen'
   post '/event_screen', to: 'events#event_screen'
 
-
-
   get '/profile', to: 'users#profile'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
@@ -20,6 +14,9 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#profile'
   get '/friend_profile', to: 'users#friend_profile'
   post '/friend_profile', to: 'users#friend_profile'
+
+  get '/add_tag/:id', to: 'reviews#tag'
+  post '/add_tag/:id', to: 'reviews#add_tag'
 
   get 'sessions/new'
   get '/login', to: 'sessions#new'

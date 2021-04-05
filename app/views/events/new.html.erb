@@ -10,7 +10,11 @@
       <%= f.label :stream_link, "Stream Link (submit a valid youtube link)" %>
       <%= f.text_field :stream_link %>
     
-    <%= select_tag :attendees, options_for_select(current_user.friends.map{ |friend| [friend.username, friend.id]}, current_user.friends.pluck(:id)), multiple: true, size: 10 %>
+    <%= select_tag :attendees, 
+        options_for_select(current_user.friends.map{ |friend| [friend.username, 
+                                                               friend.id] }, 
+                           current_user.friends.pluck(:id)), 
+        multiple: true, size: 10 %>
 
 
 

@@ -14,21 +14,40 @@
 <div class="reveiw-container">
   <div class="container">
     <div class="jumbotron">
-    <h1>Reviews</h1>
-    <h2> Here is what you reviewed!</h2>
+      <h1>Reviews</h1>
+      <h2> Here is what you reviewed!</h2>
     </div>
     <div class="jumbotron">
       <% if @reviews %>
-          <% @reviews.where(user_id: user.id).each do |review|%>
-            <ul> 
-              <li> <b><p><% if review.recommended %>
-                <span style="color:green;"> Recommends </span>
-              <% else %>
-                <span style="color:red;"> Doesn't recommend </span>
+        <% @reviews.each do |review|%>
+          <ol> 
+            <li>
+              <p>
+                <% if review.recommended %>
+                  <span style="color:green;"> Recommends </span>
+                <% else %>
+                  <span style="color:red;"> Doesn't recommend </span>
+                <% end %>
+                <b><%= review.media %></b>
+              </p>
+            </li>
+            <div class="row">
+              <% if review.tags.length > 0 %>
+                <% review.tags.each do |tag| %>
+                  <div class="d-inline-flex flex-row">
+                    <div class="p-2 bd-highlight"><%= tag.category %> </div>
+                    <div class="p-2 bd-highlight"><%= tag.name %> </div>
+                  </div>
+                <% end %>
               <% end %>
-              <b><%= review.media %></b></p></b></li>
-              <p><%= review.content %></p>
-            </ul>
+              <div class="d-inline-flex flex-row p-2 bd-highlight">
+                <%= link_to "add tag", "/add_tag/#{review.id}"%>
+              </div>
+            </div>
+            <p>
+              <%= review.content %>
+            </p>
+          </ol>
         <%end%>
       <%end%>
     </div>

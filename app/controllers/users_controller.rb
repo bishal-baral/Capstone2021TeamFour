@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @reviews = Review.all
+    @reviews = current_user.reviews
   end
 
   def friend_profile

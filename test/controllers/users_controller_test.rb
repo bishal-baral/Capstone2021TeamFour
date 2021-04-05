@@ -20,7 +20,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
                                       password_confirmation: @pw } }
     @user = User.find_by(username: @username)
     assert_not_nil @user
-    assert_redirected_to @user
     assert_equal session[:user_id], @user.id
   end
     
@@ -41,7 +40,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show user profile" do
-    get '/users/216'
+    post '/signup', params: { user: { username: @username,
+                                      email: @email,
+                                      password: @pw,
+                                      password_confirmation: @pw } }
+    @user = User.find_by(username: @username)
+    get "/users/#{@user.id}"
     assert_response :success
   end
 

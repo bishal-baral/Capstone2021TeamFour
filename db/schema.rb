@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_01_051119) do
+ActiveRecord::Schema.define(version: 2021_04_04_184725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,12 +43,27 @@ ActiveRecord::Schema.define(version: 2021_04_01_051119) do
     t.integer "event_id"
   end
 
+  create_table "review_tags", force: :cascade do |t|
+    t.integer "review_id"
+    t.integer "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.string "media"
     t.string "content"
     t.integer "user_id"
     t.datetime "post_date"
     t.boolean "recommended"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "category"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category", "name"], name: "index_tags_on_category_and_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

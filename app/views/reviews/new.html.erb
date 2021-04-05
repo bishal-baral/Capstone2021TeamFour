@@ -13,6 +13,12 @@
       <%= f.label :recommended %>
       <%= f.check_box :recommended %>
 
+      <%= f.label :tag_category %>
+      <%= f.text_field :tag_category %>
+
+      <%= f.label :tag_name %>
+      <%= f.text_field :tag_name %>
+
       <%= f.submit "Publish Review", class: "btn btn-primary" %>
     <% end %>
   </div>
