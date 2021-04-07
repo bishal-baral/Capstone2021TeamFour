@@ -1,4 +1,5 @@
 # README
+**heroku link**: https://peaceful-tor-26333.herokuapp.com/
 
 	•	Ruby version: 2.7.2
 	•	Rails version: 6.1.3
@@ -105,5 +106,26 @@
 		Event -> Invitees
 
 
+	Gems, API, libraries
 
-**heroku link**: https://peaceful-tor-26333.herokuapp.com/
+		Gems used:
+		'rails', '~> 6.1.3'
+		'sass-rails', '>= 6'
+		'webpacker', '~> 5.0'
+		'turbolinks', '~> 5'
+		'jbuilder', '~> 2.7'
+		'redis', '~> 4.0'
+		'bcrypt', '~> 3.1.7'
+		'image_processing', '~> 1.2'
+		'bootstrap-sass', '3.4.1'
+		'bootsnap', '>= 1.4.4'
+		'faker'
+		'pg'
+		'simple_form'
+		'bootstrap-datepicker-rails'
+		'byebug'
+		'dotenv-rails'
+		'opentok'
+
+		We are using Vonage API through opentok gem to implement our screensharing functionality.
+
