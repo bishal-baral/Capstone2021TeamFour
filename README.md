@@ -27,7 +27,7 @@
 		•	'rake db:create && rake db:schema:load' 
 		•	'rails server' and run it on the local server.
   
-**Functionalities: **
+## Functionalities:
 		•	Post your review for medias like Movies, Youtube, Games etc. 
 		•	Add friends, get recommendations and look at friend reviews
 		•	Create events and invite friends to watch-parties where you could screen share, chat and video-chat.
