@@ -6,27 +6,27 @@
 	•	Bundler version: 2.1.4
   
 ## To run this app, you would need to install the following:
-	Install homebrew 
-	•	'/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"' 
-	Install rbenv
-	•	'brew install rbenv' 
-	Install Ruby 
-	◦	'rbenv install 2.7.2'
-	•	'rbenv global 2.7.2 (set this version to global)' 
-	Install Rails
-	     ◦	gem install rails
-		Install Bundler 
-		•	'gem install bundler -v 2.1.4' 
-		Go into the app directory and run, 
-		•	'bundle install' 
-		Install yarn 
-		•	'brew install yarn' 
-		Since the app uses postgresql, 
-		•	'brew install postgresql' 
-		After installing all the above, run 
-		•	'rake db:create && rake db:schema:load' 
-		•	'rails server' and run it on the local server.
-  
+* Install homebrew
+	* '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+* Install rbenv
+ 	* 'brew install rbenv'
+* Install Ruby
+	* 'rbenv install 2.7.2'
+	* 'rbenv global 2.7.2 (set this version to global)'
+* Install Rails
+     	* gem install rails
+* Install Bundler
+	* 'gem install bundler -v 2.1.4'
+* Go into the app directory and run,
+	* 'bundle install'
+* Install yarn
+	* 'brew install yarn'
+* Since the app uses postgresql,
+	* 'brew install postgresql'
+* After installing all the above, run
+	* 'rake db:create && rake db:schema:load'
+	* 'rails server' and run it on the local server.
+
 ## Functionalities:
 		•	Post your review for medias like Movies, Youtube, Games etc. 
 		•	Add friends, get recommendations and look at friend reviews
