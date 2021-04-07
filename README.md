@@ -1,24 +1,37 @@
 # README
+Tables:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Name: Users
+Columns: string username, string password_digest, string email, integer code, index [username, code] uniqueness foreign_key friendship sent_by_id, sent_to_id
 
-Things you may want to cover:
+Name: Events
+Columns: integer user_id, string stream_link, datetime scheduled time, string title
 
-* Ruby version
+Name: Invitees
+Columns: integer user_id, integer event_id
 
-* System dependencies
+Name: Friendships
+Columns: bigint sent_to_id, bigint sent_by_id, boolean status, index [sent_by_id, sent_to_id] uniqueness
 
-* Configuration
+Name: ReviewTags
+Columns: integer review_id, integer tag_id
 
-* Database creation
+Name: Reviews
+Columns: string media, string content, integer user_id, datetime post_date boolean recommended 
 
-* Database initialization
+Name: Tags
+Columns: string category, string name, 
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Associations:
+User -> friend_sent
+User -> friend_request
+User -> friends
+User -> pending_requests
+User -> received_requests
+User -> Reviews
+User -> Invitees
+Tag -> ReviewTag
+Review -> ReviewTag
+Review -> Tags through ReviewTags
+Event -> Invitees
