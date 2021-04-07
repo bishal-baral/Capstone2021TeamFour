@@ -35,39 +35,74 @@ Functionalities:
 PAPER PROTOTYPE:
 https://drive.google.com/file/d/1kAMbcARXaXgGn0ZymGUXxLOKftl4Kged/view?usp=sharing
 
+
+The URL Patterns are as follows:
+
+	Home page: /
+
+	User urls:
+	Signup: /signup
+	Display user's feed: /home,
+	Show user's profile: /profile 
+	Show user's friends' profiles: /friend_profile
+
+	Event urls: 
+	Show events: /events
+	Create events: /create_event
+	Display the event while attending: /event_screen
+
+	Review urls: 
+	Create reveiws: /create_review,
+	Add a tag to the review: /add_tag/:id
+
+	Session urls:
+	Login: /login 
+	Logout: /logout
+
+	Friendship urls:
+	Display all the friends and requests and allow search: /friendship
+	Display the results of the search: /result
+
+
+
+Below is the schema, written following simple schema format.
+
 Tables:
 
-Name: Users
-Columns: string username, string password_digest, string email, integer code, index [username, code] uniqueness foreign_key friendship sent_by_id, sent_to_id
+	Name: Users
+	Columns: string username, string password_digest, string email, integer code, index [username, code] uniqueness foreign_key friendship sent_by_id, sent_to_id
 
-Name: Events
-Columns: integer user_id, string stream_link, datetime scheduled time, string title
+	Name: Events
+	Columns: integer user_id, string stream_link, datetime scheduled time, string title
 
-Name: Invitees
-Columns: integer user_id, integer event_id
+	Name: Invitees
+	Columns: integer user_id, integer event_id
 
-Name: Friendships
-Columns: bigint sent_to_id, bigint sent_by_id, boolean status, index [sent_by_id, sent_to_id] uniqueness
+	Name: Friendships
+	Columns: bigint sent_to_id, bigint sent_by_id, boolean status, index [sent_by_id, sent_to_id] uniqueness
 
-Name: ReviewTags
-Columns: integer review_id, integer tag_id
+	Name: ReviewTags
+	Columns: integer review_id, integer tag_id
 
-Name: Reviews
-Columns: string media, string content, integer user_id, datetime post_date boolean recommended 
+	Name: Reviews
+	Columns: string media, string content, integer user_id, datetime post_date boolean recommended 
 
-Name: Tags
-Columns: string category, string name, 
+	Name: Tags
+	Columns: string category, string name, 
 
 
 Associations:
-User -> friend_sent
-User -> friend_request
-User -> friends
-User -> pending_requests
-User -> received_requests
-User -> Reviews
-User -> Invitees
-Tag -> ReviewTag
-Review -> ReviewTag
-Review -> Tags through ReviewTags
-Event -> Invitees
+	User -> friend_sent
+	User -> friend_request
+	User -> friends
+	User -> pending_requests
+	User -> received_requests
+	User -> Reviews
+	User -> Invitees
+	Tag -> ReviewTag
+	Review -> ReviewTag
+	Review -> Tags through ReviewTags
+	Event -> Invitees
+
+
+
