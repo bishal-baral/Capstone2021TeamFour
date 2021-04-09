@@ -1,6 +1,21 @@
 <% provide(:title, "Home") %>
+<div class="page-header gradient-design">
+  <div class="container pt-3 justify-content-center">
+    <div class="row align-items-center d-flex justify-content-center">
+    <div class="col-md-6">
+    <h1>Welcome to We-View</h1>
+    <p>This is We-View.</p>
+    <%= button_to "Login", login_path, type:"button", class: "btn btn-outline-success", method: :get  %>
+    <%= button_to "Sign Up", signup_path, type:"button", class: "btn btn-outline-warning", method: :get  %>
+    </div>
+    <div class="col-md-6">
+         <%= image_tag ("goku-svg.svg"), alt:"goku-svg", class: "goku-img" %>
+    </div>
+  </div>
+  </div>
+  
+</div>
 
-<h1>Welcome to We-View</h1>
 
 
 
