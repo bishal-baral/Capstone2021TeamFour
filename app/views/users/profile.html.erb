@@ -40,10 +40,28 @@
                   </div>
                 <% end %>
               <% end %>
-              <div class="d-inline-flex flex-row p-2 bd-highlight">
-                <%= link_to "add tag", "/add_tag/#{review.id}"%>
-              </div>
+              
             </div>
+            <br>
+              <%= simple_form_for @tag, 
+                                  html: { class: "form-inline" }, 
+                                  url: "/add_tag/#{review.id}" do |form| %>
+                <div class="row">
+                  <div class="p-2 bd-highlight">
+                    <%= form.input :category, 
+                                   placeholder: 'category', 
+                                   label: false %>
+                  </div>
+                  <div class="p-2 bd-highlight">
+                    <%= form.input :name, 
+                                   placeholder: 'name', 
+                                   label: false %>
+                  </div>
+                  <div class="p-2 bd-highlight">
+                    <%= form.button :submit %>
+                  </div>
+                </div>
+              <% end %>
             <p>
               <%= review.content %>
             </p>

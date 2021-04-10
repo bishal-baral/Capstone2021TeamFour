@@ -23,6 +23,8 @@
 	* 'brew install yarn'
 * Since the app uses postgresql,
 	* 'brew install postgresql'
+* Installing the simple form gem
+  * 'rails generate simple_form:install --bootstrap'
 * After installing all the above, run
 	* 'rake db:create && rake db:schema:load'
 	* 'rails server' and run it on the local server.

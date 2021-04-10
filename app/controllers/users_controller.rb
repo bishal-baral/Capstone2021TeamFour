@@ -36,6 +36,7 @@ class UsersController < ApplicationController
 
   def profile
     @reviews = current_user.reviews
+    @tag = Tag.new
   end
 
   def friend_profile
