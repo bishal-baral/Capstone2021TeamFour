@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   get '/home', to: 'users#show'
-  get '/profile', to: 'users#profile'
+  post '/search', to: 'users#search'
   get '/friend_profile', to: 'users#friend_profile'
   post '/friend_profile', to: 'users#friend_profile'
 

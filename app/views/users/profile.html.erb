@@ -31,37 +31,36 @@
                 <b><%= review.media %></b>
               </p>
             </li>
-            <div class="row">
-              <% if review.tags.length > 0 %>
+            <% if review.tags.length > 0 %>
+              <div class="row">
                 <% review.tags.each do |tag| %>
                   <div class="d-inline-flex flex-row">
                     <div class="p-2 bd-highlight"><%= tag.category %> </div>
                     <div class="p-2 bd-highlight"><%= tag.name %> </div>
                   </div>
                 <% end %>
-              <% end %>
-              
-            </div>
+              </div>
+            <% end %>
             <br>
-              <%= simple_form_for @tag, 
-                                  html: { class: "form-inline" }, 
-                                  url: "/add_tag/#{review.id}" do |form| %>
-                <div class="row">
-                  <div class="p-2 bd-highlight">
-                    <%= form.input :category, 
-                                   placeholder: 'category', 
-                                   label: false %>
-                  </div>
-                  <div class="p-2 bd-highlight">
-                    <%= form.input :name, 
-                                   placeholder: 'name', 
-                                   label: false %>
-                  </div>
-                  <div class="p-2 bd-highlight">
-                    <%= form.button :submit %>
-                  </div>
+            <%= simple_form_for @tag,
+                                html: { class: "form-inline" },
+                                url: "/add_tag/#{review.id}" do |form| %>
+              <div class="row">
+                <div class="p-2 bd-highlight">
+                  <%= form.input :category,
+                                 placeholder: 'category',
+                                 label: false %>
                 </div>
-              <% end %>
+                <div class="p-2 bd-highlight">
+                  <%= form.input :name,
+                                 placeholder: 'name',
+                                label: false %>
+                </div>
+                <div class="p-2 bd-highlight">
+                  <%= form.button :submit %>
+                </div>
+              </div>
+            <% end %>
             <p>
               <%= review.content %>
             </p>

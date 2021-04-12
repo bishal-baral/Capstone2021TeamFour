@@ -39,7 +39,6 @@ class ReviewsController < ApplicationController
     tag_cat = params[:tag][:category]
     tag_name = params[:tag][:name]
     
-
     if valid_tag(tag_cat, tag_name) && tag_cat != ""
       @tag = grab_tag(tag_cat, tag_name)
       if ReviewTag.find_by(tag_id: @tag.id, review_id: @review.id).nil?
