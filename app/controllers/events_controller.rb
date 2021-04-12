@@ -1,8 +1,4 @@
-# frozen_string_literal: true
-
-require 'opentok'
 class EventsController < ApplicationController
-  
 
   def show
     @event = Event.where(user_id: current_user.id )
@@ -32,12 +28,7 @@ class EventsController < ApplicationController
       # Add all the users of the event as User to the @users array
       @users[event] = users_array
     end
-
-    @invited_events = []
-    @invited_events_id = Invitee.where(user_id: current_user.id)
-    @invited_events_id.each do |invitee|
-      @invited_events << Event.find_by(user_id: invitee.event_id)
-    end
+    
   end
 
   def new
@@ -54,6 +45,7 @@ class EventsController < ApplicationController
     # Also need an invitee list.
     
     @event.scheduled_time = Time.now + 24 * 60
+
 
     # add something about session's user here
     @event.user_id = current_user.id
@@ -83,56 +75,9 @@ class EventsController < ApplicationController
       end
   end
   
-  skip_before_action :verify_authenticity_token
-  before_action :set_opentok_vars
 
-  def set_opentok_vars()
-    @api_key = "" 
-    @api_secret = "" #we'll add them later
-    # @session_id = Session.create_or_load_session_id
-    @moderator_name = current_user.username
-    @name ||= params[:name]
-    # @token = Session.create_token(@name, @moderator_name, @session_id)
-  end
-
-  def json_request?
-    request.format.json?
-  end
-
-  def landing; 
-    @event_id = params[:event_id]
-    @event = Event.find_by(id: @event_id)
-    @event_title = @event.title
-    @event_userid = @event.user_id
-    @host_username = User.find_by(id: @event_userid).username
-  end
-
-  def name
-    @name = name_params[:name]
-    if name_params[:password] == ENV['PARTY_PASSWORD']
-      redirect_to party_url(name: @name)
-    else
-      redirect_to('/', flash: { error: 'Incorrect password' })
-    end
-  end
-
-  def index; end
-
-  def chat; end
-
-  def screenshare
-    @darkmode = 'dark'
-  end
-
-  def webhook; end
 
   private
-
-  def name_params
-    params.permit(:name, :password, :authenticity_token, :commit)
-  end
-
-
     def event_params
       params.require(:event).permit(:title, :stream_link, :attendees)
     end
