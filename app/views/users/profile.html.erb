@@ -20,6 +20,9 @@
     <div class="jumbotron">
       <% if @reviews %>
         <% @reviews.each do |review|%>
+          <% if review.cover.attached? %>
+            <%= image_tag (url_for review.cover.variant(resize_to_limit: [150, 100]).processed) %>
+          <% end %> <!-- add clause for default image, add place to upload pfps -->
           <ol> 
             <li>
               <p>

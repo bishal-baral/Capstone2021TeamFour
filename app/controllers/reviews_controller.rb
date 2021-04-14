@@ -53,7 +53,7 @@ class ReviewsController < ApplicationController
   private 
 
     def review_params
-      params.require(:review).permit(:media, :content, :recommended)
+      params.require(:review).permit(:media, :content, :recommended, :cover)
     end
 
     def valid_tag(cat, name)

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+  has_one_attached :avatar
 
   # sets the 'sent_by_id' in Friendship schema
   # inverse of 'sent_by' in Friendship model
