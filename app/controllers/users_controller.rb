@@ -50,6 +50,12 @@ class UsersController < ApplicationController
     @tag = Tag.new
   end
 
+  def avatar
+    @user = current_user
+    @user.avatar.attach(params[:avatar])
+    render 'profile'
+  end
+
   def friend_profile
     @user = User.all.find_by(id: params[:user_id])
     @reviews = Review.all

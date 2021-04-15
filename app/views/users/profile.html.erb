@@ -1,8 +1,15 @@
 <% provide(:title, "Your Profile") %>
-
 <div class="friend-list">
 <%user = current_user%>
+  <% if user.avatar.attached? %>
+    <%= image_tag (url_for user.avatar.variant(resize_to_limit: [300,300]).processed) %>
+  <% end %> <!-- add clause for default image, JS the upload -->
 
+  <%= form_with(url: "/upload_avatar", method: :post) do |f| %>
+    <%= f.file_field :avatar %>
+    
+    <%= f.submit "Change avatar", class: "btn btn-primary" %>
+  <% end %>
   <h2>Friends</h2>
     <ol>
     <%current_user.friends.each do |friend| %>
@@ -10,6 +17,8 @@
     <%end %>
     </ol>     
 </div>
+
+
 
 <div class="reveiw-container">
   <div class="container">
@@ -21,7 +30,7 @@
       <% if @reviews %>
         <% @reviews.each do |review|%>
           <% if review.cover.attached? %>
-            <%= image_tag (url_for review.cover.variant(resize_to_limit: [150, 100]).processed) %>
+            <%= image_tag (url_for review.cover.variant(resize_to_limit: [150, 150]).processed) %>
           <% end %> <!-- add clause for default image, add place to upload pfps -->
           <ol> 
             <li>
