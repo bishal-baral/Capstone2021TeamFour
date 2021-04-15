@@ -1,0 +1,14 @@
+<main>
+  <div class="landing">
+    <h1>Welcome to the <%= @host_username %>'s Event</h1>
+    <p>Enter the details</p>
+    <%= form_with(url: "/name", method: "post") do %>
+      <%= text_field_tag 'name', nil, :placeholder => "Enter Name"%>
+      <%= password_field_tag 'password', nil, :placeholder => "Enter Event Password" %>
+      <%= submit_tag "Let's We-View!"%>
+      <% flash.each do |type, msg| %>
+        <p class="error"><%= msg %></p>
+      <% end %>
+    <% end %>
+  </div> 
+</main>

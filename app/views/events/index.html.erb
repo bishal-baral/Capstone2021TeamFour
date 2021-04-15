@@ -1,0 +1,47 @@
+<script type ="text/javascript">
+  var token = '<%= @token %>';
+  var name = '<%= @name %>';
+  var moderator_env_name = '<%= @moderator_name %>';
+  // reload page to render with variables
+  (function() {
+    if(window.localStorage) {
+      if(!localStorage.getItem('firstLoad')) { 
+        localStorage['firstLoad'] = true;
+        window.location.reload();
+    } else
+      localStorage.removeItem('firstLoad');
+    }
+  })();
+</script>
+
+<div class= "event-header"> 
+  <%= render partial: 'header' %>
+</div>
+
+<main class="app">
+  <div class="videos">
+    <div class="publisher" id="publisher"></div>
+    <div class="subscriber" id="subscribers"></div> 
+  </div>
+
+  <aside class="chat">
+    <%= render partial: 'chat' %>
+  </aside>
+
+  <%= render partial: 'button-chat' %>
+
+  <div style="padding: 2em">
+
+  <iframe id="ytplayer" type="text/html" width="1080" height="640"
+    src="http://www.youtube.com/embed/<%=@yt_id%>" frameborder="0"></iframe>
+    <% if !@regex_object.nil?%>
+      <h2><b><u><%= @event.title%></u></b></h2>
+    <%else%>
+      <h2><b><u>Invalid link</u></b></h2>
+    <%end%>
+    <h2>Live Chat</h2>
+</div>
+
+</main>
+
+
