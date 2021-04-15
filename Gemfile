@@ -26,6 +26,7 @@ gem 'bootstrap-sass', '3.4.1'
 gem 'faker'
 gem 'pg'
 gem 'bcrypt',         '3.1.13'
+gem 'nokogiri', '>= 1.11.3'
 
 gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
@@ -58,7 +59,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
