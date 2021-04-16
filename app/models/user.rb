@@ -28,6 +28,13 @@ class User < ApplicationRecord
   has_many :invitees
   
   before_save { self.email = email.downcase }
+  before_save {
+    if !self.avatar.attached?
+      self.avatar.attach(io: File.open("app/assets/images/avatar.png"),
+                              filename: "avatar.png",
+                              content_type: "image/png")
+    end
+  }
   #Email validations
   validates :username, presence: true, length: { maximum: 20 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

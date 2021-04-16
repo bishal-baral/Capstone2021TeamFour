@@ -19,4 +19,9 @@
 
 .form-control {
   height: calc(.75em + 0.75rem + 2px) !important;
+  max-width: 90%;
+}
+
+.form-field {
+  max-width: 20%;
 }
