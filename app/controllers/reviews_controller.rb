@@ -36,9 +36,9 @@ class ReviewsController < ApplicationController
 
   def add_tag
     @review = Review.find_by(id: params[:id])
-    tag_cat = params[:category]
-    tag_name = params[:name]
-
+    tag_cat = params[:tag][:category]
+    tag_name = params[:tag][:name]
+    
     if valid_tag(tag_cat, tag_name) && tag_cat != ""
       @tag = grab_tag(tag_cat, tag_name)
       if ReviewTag.find_by(tag_id: @tag.id, review_id: @review.id).nil?
@@ -46,14 +46,14 @@ class ReviewsController < ApplicationController
       end
       redirect_to '/profile'
     else
-      render "/add_tag/#{review.id}"
+      redirect_to '/profile'
     end
   end
 
   private 
 
     def review_params
-      params.require(:review).permit(:media, :content, :recommended)
+      params.require(:review).permit(:media, :content, :recommended, :cover)
     end
 
     def valid_tag(cat, name)

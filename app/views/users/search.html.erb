@@ -1,4 +1,4 @@
-<% provide(:title, "Home") %>
+<% provide(:title, "Search Results") %>
 
 <%# to avoid duplicate reviews from the same friend_id, friend_id's are turned into a set  %>
 <div class="friend-list">
@@ -11,7 +11,7 @@
     <div class="jumbotron">
       <h1>Reviews</h1>
       <%= render 'shared/search_form' %>
-      <h2> Here is what your friends reviewed!</h2>
+      <h2> Friend reviews matching your search terms:</h2>
     </div>
     <%= render 'shared/review_list' %>
   </div>

@@ -77,7 +77,7 @@ pw_store.close
   begin
     friend_one = User.all.sample.id
     friend_two = User.all.sample.id
-    friendo = Friendship.create({
+    Friendship.create({
       sent_by_id: friend_one,
       sent_to_id: friend_two,
       status: true
