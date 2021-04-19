@@ -75,14 +75,14 @@ pw_store.close
 # Make twenty pairs of friends, and have each friend send the other a review
 20.times do
   begin
-    friend_one = User.all.sample.id
-    friend_two = User.all.sample.id
-    friendo = Friendship.create({
-      sent_by_id: friend_one,
-      sent_to_id: friend_two,
-      status: true
-    })
-
+    friend_one = User.all.sample
+    friend_two = User.all.sample
+    friendship = friend_one.friend_sent.build(sent_to_id: friend_two.id)
+    friendship.save
+    friendship.status = true
+    friendship.save
+    friendship2 = friend_two.friend_sent.build(sent_to_id: friend_one.id, status: true)
+    friendship2.save
   rescue
     retry
   end
