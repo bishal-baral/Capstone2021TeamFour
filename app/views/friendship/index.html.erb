@@ -4,7 +4,6 @@
 <h3><b> Friend's List </b> <h3>
  <ol>
   <% @friends.each do |friend| %>
- 
           <li><%= link_to friend.username, friend_profile_path( user_id:friend.id), method: :post%></li>
 
   <% end %>
