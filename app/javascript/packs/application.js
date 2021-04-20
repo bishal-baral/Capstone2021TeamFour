@@ -10,8 +10,6 @@ import "./opentok_screenshare.js";
 // import "./screenshare.js";
 // import "./party.js";
 
-import "../stylesheets/application";
-
 require("@rails/ujs").start();
 require("turbolinks").start();
 require("@rails/activestorage").start();

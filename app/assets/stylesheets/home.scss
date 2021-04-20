@@ -1,14 +1,15 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-@import "bootstrap-sprockets";
-@import "bootstrap";
+// @import "bootstrap-sprockets";
+// @import "bootstrap";
 
 //
 // font-family: 'Vollkorn', serif;
 $primary-color: #ef6400;
 $secondary-color: #02224b;
 $tertiary-color: #03afb2;
+$quaternary-color: #119586;
 
 html,
 body {
@@ -16,6 +17,7 @@ body {
   font-size: 1rem;
 }
 
+/*top section, home page*/
 .gradient-design {
   background: rgb(156, 77, 26);
   background: radial-gradient(
@@ -28,17 +30,97 @@ body {
   );
 }
 
-.page-header {
-  text-align: center;
-  margin-top: 4rem;
+.page-head {
+  // text-align: center;
+  // margin-top: 4rem;
   font-size: 1.25rem;
   color: white;
   font-family: "Montserrat", sans-serif;
+  height: 100%;
+}
+.navbar {
+  margin-bottom: 0px !important;
+}
+nav {
+  color: $secondary-color !important;
 }
 
-.goku-img {
-  width: 50%;
+.my-row {
+  // display: inline-block !important;
+  height: 80vh;
 }
+
+.inline-block {
+  display: inline-block !important;
+}
+
+.first-container {
+  position: relative;
+}
+
+.initial-svg {
+  position: absolute;
+  bottom: 0;
+}
+.navbar-custom {
+  background-color: $secondary-color;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: white;
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.5);
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #ffffff;
+}
+
+.navbar {
+  box-shadow: 0px 7px 26px -3px rgba(102, 102, 102, 0.5);
+}
+
+/* menu button styling */
+.btn-default {
+  color: $primary-color !important;
+  border: solid white !important;
+  background-color: whitesmoke !important;
+}
+// .btn-default:active {
+//   background-color: black !important;
+// }
+.btn-default:hover {
+  color: white !important;
+  background-color: black !important;
+}
+// }
+// .btn-default:focus {
+//   /*formatting goes here*/
+// }
+
+/*recommend section, home page*/
+.section-recommend {
+  height: 100vh;
+  background-color: $secondary-color;
+}
+
+.primary-content {
+  padding-top: 0;
+  background-color: gainsboro;
+}
+
+// .secondary-content {
+//   padding-top: 3rem;
+// }
+
+// .my-col {
+//   display: inline-block !important;
+//   height: 100%;
+// }
 
 // *,
 // *::after,
@@ -90,12 +172,6 @@ body {
 // //   margin-left: 10% !important;
 // //   margin-top: 0.25%;
 // // }
-
-// .main-content {
-//   background-color: $secondary-color;
-//   margin-top: 45px;
-//   color: white;
-// }
 
 .logo-box {
   width: 20%;
@@ -232,8 +308,80 @@ input {
 // }
 // .inner-logged-in-nav {
 // }
-.menu-box {
-  width: 5%;
-  border-style: solid;
-  position: fixed;
+
+/* cube */
+.goku-img {
+  width: 100%;
+}
+
+.cube {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate 10s linear infinite;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+/* Applying styles to each face */
+.box1 {
+  transform: translateZ(100px);
+}
+
+.box2 {
+  transform: rotateY(90deg) translateX(100px);
+  transform-origin: right;
+}
+
+.box3 {
+  transform: rotateY(180deg) translateZ(100px);
+}
+
+.box4 {
+  transform: rotateY(-90deg) translateX(-100px);
+  transform-origin: left;
+}
+
+.box5 {
+  transform: rotateX(-90deg) translateY(-100px);
+  transform-origin: top;
+}
+
+.box6 {
+  transform: rotateX(90deg) translateY(100px);
+  transform-origin: bottom;
+}
+
+/* Animating the elements */
+@keyframes rotate {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotateY(90deg) rotateZ(90deg);
+  }
+  40% {
+    transform: rotateY(180deg) rotateZ(-90deg);
+  }
+  60% {
+    transform: rotateY(270deg) rotateZ(90deg);
+  }
+  80% {
+    transform: rotateY(360deg) rotateZ(-90deg);
+  }
 }

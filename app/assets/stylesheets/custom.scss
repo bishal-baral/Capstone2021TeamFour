@@ -1,5 +1,5 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+// @import "bootstrap-sprockets";
+// @import "bootstrap";
 
 :root {
   --main: #343a40;
@@ -12,53 +12,53 @@
   --chat-theirs: indigo;
 }
 
-html {
-  box-sizing: border-box;
-  height: 100%;
-}
+// // html {
+// //   // box-sizing: border-box;
+// //   height: 100%;
+// // }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
-}
+// // *,
+// // *::before,
+// // *::after {
+// //   box-sizing: inherit;
+// //   margin: 0;
+// //   padding: 0;
+// // }
 
-body {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--background);
-  background-image: var(--bgImage);
-  // overflow: hidden;
-}
+// // body {
+// //   height: 100%;
+// //   // display: flex;
+// //   // flex-direction: column;
+// //   background-color: var(--background);
+// //   background-image: var(--bgImage);
+// //   // overflow: hidden;
+// // }
 
-main {
-  flex: 1;
-  display: flex;
-  position: relative;
-}
+// main {
+//   flex: 1;
+//   display: flex;
+//   position: relative;
+// }
 
-input {
-  font-size: inherit;
-  padding: 0.5em;
-  border-radius: 4px;
-  border: 1px solid currentColor;
-}
+// input {
+//   font-size: inherit;
+//   padding: 0.5em;
+//   border-radius: 4px;
+//   border: 1px solid currentColor;
+// }
 
-button,
-input[type="submit"] {
-  font-size: inherit;
-  padding: 0.5em;
-  border: 0;
-  background-color: var(--main);
-  color: var(--txt-alt);
-  border-radius: 4px;
-}
+// button,
+// input[type="submit"] {
+//   font-size: inherit;
+//   padding: 0.5em;
+//   border: 0;
+//   background-color: var(--main);
+//   color: var(--txt-alt);
+//   border-radius: 4px;
+// }
 
 .landing {
-  margin-top: 20%;
+  padding-top: 5%;
   text-align: center;
   font-size: 125%;
 }
