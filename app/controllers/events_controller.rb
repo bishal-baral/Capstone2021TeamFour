@@ -2,7 +2,6 @@
 
 require 'opentok'
 class EventsController < ApplicationController
-  
   skip_before_action :verify_authenticity_token
   before_action :set_opentok_vars
 
@@ -90,13 +89,13 @@ class EventsController < ApplicationController
     request.format.json?
   end
 
-  def landing; 
-    @event_id = params[:event_id]
-    @event = Event.find_by(id: @event_id)
-    @event_title = @event.title
-    @event_userid = @event.user_id
-    @host_username = User.find_by(id: @event_userid).username
-  end
+  # def landing; 
+  #   @event_id = params[:event_id]
+  #   @event = Event.find_by(id: @event_id)
+  #   @event_title = @event.title
+  #   @event_userid = @event.user_id
+  #   @host_username = User.find_by(id: @event_userid).username
+  # end
 
   def name
     @name = name_params[:name]
@@ -104,7 +103,12 @@ class EventsController < ApplicationController
     redirect_to party_url(event_id: @event_id  ,name: @name)
   end
 
-  def index; end
+  def index; 
+    @event_id = params[:event_id]
+    @name = name_params[:name]
+    @title = Event.find_by(id: @event_id).title
+    
+  end
 
   def chat; end
 
