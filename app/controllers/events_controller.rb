@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   
 
   def show
-    @event = Event.where(user_id: current_user.id )
+    @event = Event.where(user_id: current_user.id)
     #Map to hold event => Invitee array
     event_invitees_map = {}
     #Map to hold event => User array
@@ -36,7 +36,7 @@ class EventsController < ApplicationController
     @invited_events = []
     @invited_events_id = Invitee.where(user_id: current_user.id)
     @invited_events_id.each do |invitee|
-      @invited_events << Event.find_by(user_id: invitee.event_id)
+      @invited_events << Event.find_by(id: invitee.event_id)
     end
   end
 
