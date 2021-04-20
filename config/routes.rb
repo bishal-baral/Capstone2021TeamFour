@@ -52,8 +52,8 @@ Rails.application.routes.draw do
   # post '/chat/send', to: 'video#chat'
   # post '/event', to: 'video#webhook'
 
-  get '/landing', to: 'events#landing'
-  post '/landing', to: 'events#landing'
+  # get '/landing', to: 'events#landing'
+  # post '/landing', to: 'events#landing'
   get '/party', to: 'events#index'
   post '/party', to: 'events#index'
   get '/screenshare', to: 'events#screenshare'

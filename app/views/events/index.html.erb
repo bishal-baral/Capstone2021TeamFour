@@ -11,11 +11,15 @@
     } else
       localStorage.removeItem('firstLoad');
     }
-  })();
+  })(); 
 </script>
 
 <div class= "event-header"> 
-  <%= render partial: 'header' %>
+  <header>
+  <h1>Welcome to <%= @moderator_name %>'s Event</h1>
+  <p id="participant-count"></p>
+  <button id="watch-mode">Turn On Screen Share</button> 
+</header>
 </div>
 
 <main class="app">
@@ -29,18 +33,6 @@
   </aside>
 
   <%= render partial: 'button-chat' %>
-
-  <div style="padding: 2em">
-
-  <iframe id="ytplayer" type="text/html" width="1080" height="640"
-    src="http://www.youtube.com/embed/<%=@yt_id%>" frameborder="0"></iframe>
-    <% if !@regex_object.nil?%>
-      <h2><b><u><%= @event.title%></u></b></h2>
-    <%else%>
-      <h2><b><u>Invalid link</u></b></h2>
-    <%end%>
-    <h2>Live Chat</h2>
-</div>
 
 </main>
 

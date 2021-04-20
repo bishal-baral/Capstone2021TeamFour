@@ -3,8 +3,11 @@
 require 'opentok'
 class EventsController < ApplicationController
   
+  skip_before_action :verify_authenticity_token
+  before_action :set_opentok_vars
 
   def show
+    @all_users = User.all
     @event = Event.where(user_id: current_user.id)
     #Map to hold event => Invitee array
     event_invitees_map = {}
@@ -37,7 +40,7 @@ class EventsController < ApplicationController
     @invited_events_id = Invitee.where(user_id: current_user.id)
     @invited_events_id.each do |invitee|
       @invited_events << Event.find_by(id: invitee.event_id)
-    end
+    end  
   end
 
   def new
@@ -71,28 +74,16 @@ class EventsController < ApplicationController
     flash[:success] = "Event created"
     redirect_to '/events'
   end
-
-  def event_screen
-    @event_id = params[:event_id]
-    @event = Event.find_by(id: params[:event_id])
-    
-      regex = /youtube.com.*(?:\/|v=)([^&$]+)/
-      @regex_object= @event.stream_link.match(regex)
-      if !@regex_object.nil? then
-        @yt_id = @event.stream_link.match(regex)[1]
-      end
-  end
   
-  skip_before_action :verify_authenticity_token
-  before_action :set_opentok_vars
+
 
   def set_opentok_vars()
-    @api_key = "" 
-    @api_secret = "" #we'll add them later
-    # @session_id = Session.create_or_load_session_id
+    @api_key = ENV["OPENTOK_API_KEY"]
+    @api_secret =  ENV["OPENTOK_API_SECRET"] #we'll add them later
+    @session_id = Session.create_or_load_session_id
     @moderator_name = current_user.username
     @name ||= params[:name]
-    # @token = Session.create_token(@name, @moderator_name, @session_id)
+    @token = Session.create_token(@name, @moderator_name, @session_id)
   end
 
   def json_request?
@@ -109,11 +100,8 @@ class EventsController < ApplicationController
 
   def name
     @name = name_params[:name]
-    if name_params[:password] == ENV['PARTY_PASSWORD']
-      redirect_to party_url(name: @name)
-    else
-      redirect_to('/', flash: { error: 'Incorrect password' })
-    end
+    @event_id = params[:event_id]
+    redirect_to party_url(event_id: @event_id  ,name: @name)
   end
 
   def index; end
