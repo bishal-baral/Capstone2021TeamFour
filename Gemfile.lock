@@ -68,6 +68,10 @@ GEM
     bindex (0.8.1)
     bootsnap (1.7.3)
       msgpack (~> 1.0)
+    bootstrap (4.6.0)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
     bootstrap-datepicker-rails (1.9.0.1)
       railties (>= 3.0)
     bootstrap-sass (3.4.1)
@@ -137,6 +141,7 @@ GEM
       httparty (>= 0.18.0)
       jwt (>= 1.5.6)
     pg (1.2.3)
+    popper_js (1.16.0)
     public_suffix (4.0.6)
     racc (1.5.2)
     rack (2.2.3)
@@ -239,8 +244,9 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (= 3.1.13)
   bootsnap (>= 1.4.4)
+  bootstrap
   bootstrap-datepicker-rails
-  bootstrap-sass (= 3.4.1)
+  bootstrap-sass
   byebug
   capybara (>= 3.26)
   dotenv-rails

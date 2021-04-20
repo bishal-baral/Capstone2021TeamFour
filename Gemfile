@@ -22,7 +22,8 @@ gem 'mini_magick'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'bootstrap-sass', '3.4.1'
+gem 'bootstrap'
+gem 'bootstrap-sass'
 
 gem 'faker'
 gem 'pg'
