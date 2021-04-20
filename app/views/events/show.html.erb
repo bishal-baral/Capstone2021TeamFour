@@ -18,8 +18,8 @@
           <h6><span>Date: <%= event.scheduled_time%></span></h6>
           <span>Friends Invited: <% user_array = @users[event]%>
                             <%= user_array.to_sentence%>
-          </span>
-          <%= button_to "Attend", {:controller => "events", :action => "landing", :event_id => event.id}, {:style => "width: 20%;"} %> 
+          </span> 
+          <%= button_to "Attend",  {:controller => "events", :action => "name", :event_id => event.id, :name => current_user.username, method: :post},   {:style => "width: 20%;"} %> 
         </div>
       <%end%>
     </div>
@@ -31,9 +31,10 @@
         <div class="jumbotron">
           <h3>
             <%= event.title %> 
+            <% host_name = @all_users.find_by(id: event.user_id).username %>
           </h3>
           <h6><span>Date: <%= event.scheduled_time%></span></h6>
-          <%= button_to "Attend", {:controller => "events", :action => "landing", :event_id => event.id}, {:style => "width: 20%;"} %> 
+          <%= button_to "Attend", {:controller => "events", :action => "name", :event_id => event.id, :name => host_name, method: :post}, {:style => "width: 20%;"} %> 
         </div>
       <%end%>
     </div>

@@ -8,8 +8,8 @@
   --background: white;
   --bgImage: url("~images/01.png");
   --chat-bg: rgba(255, 255, 255, 0.75);
-  --chat-mine: darkgreen;
-  --chat-theirs: indigo;
+  --chat-mine: orange;
+  --chat-theirs: green;
 }
 
 // // html {
@@ -57,53 +57,28 @@
 //   border-radius: 4px;
 // }
 
-.landing {
-  padding-top: 5%;
-  text-align: center;
-  font-size: 125%;
-}
-
-.landing form {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  position: relative;
-}
-
-.landing input,
-.landing p {
-  margin-bottom: 1em;
-}
-
-.landing .error {
-  color: maroon;
-  position: absolute;
-  bottom: -2em;
-  width: 100%;
-  text-align: center;
-}
-
 .event-header {
   background-color: var(--main);
   color: var(--txt-alt);
-  padding: 0.5em;
+  padding: 5rem;
   height: 4em;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .chat {
+  color: white;
+  margin-top: 10%;
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 80%;
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  background-color: var(--chat-bg);
-  transform: translateX(-100%);
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  background-color: #02224b;
+  transform: translateY(120%);
   transition: transform 0.5s ease;
 }
 
@@ -119,6 +94,7 @@
 }
 
 .btn-chat {
+  background-color: #02224b;
   height: 5em;
   width: 5em;
   border-radius: 50%;
@@ -145,6 +121,7 @@
 .btn-close svg {
   height: 1em;
   width: 1em;
+  background-color: black;
 }
 
 .messages {
@@ -187,6 +164,7 @@
 .chat input[type="submit"] {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
+  width: 20%;
 }
 
 .videos {
@@ -207,9 +185,8 @@
 
 .subscriber,
 .screenshare {
-  width: 100%;
-  height: 100%;
-  display: flex;
+  width: 100vh;
+  height: 100vh;
 }
 
 .publisher {
