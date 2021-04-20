@@ -23,6 +23,12 @@
 	* 'brew install yarn'
 * Since the app uses postgresql,
 	* 'brew install postgresql'
+* Installing the simple form gem
+  * 'rails generate simple_form:install --bootstrap'
+* Setup active storage migration
+  * 'rails active_storage:install'
+* Install imagemagick
+  * 'brew install imagemagick' or follow instructions below.
 * After installing all the above, run
 	* 'rake db:create && rake db:schema:load'
 	* 'rails server' and run it on the local server.
@@ -126,6 +132,9 @@
 		'byebug'
 		'dotenv-rails'
 		'opentok'
+    'image_processing'
+    'mini_magick'
 
 		We are using Vonage API through opentok gem to implement our screensharing functionality.
 
+    We are also using [https://www.imagemagick.org/script/install-source.php](ImageMaick) for profile avatars and review cover arts, as mini_magick runs off of it.

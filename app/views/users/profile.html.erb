@@ -2,7 +2,17 @@
 
 <div class="friend-list">
 <%user = current_user%>
+  <div class="img">
+    <% if user.avatar.attached? %>
+      <%= image_tag (url_for user.avatar.variant(resize_to_limit: [100, 100]).processed) %>
+    <% end %> 
+    <%= form_with(url: "/upload_avatar", method: :post) do |f| %>
+      <%= f.file_field :avatar %>
+      
+      <%= f.submit "Change avatar", class: "btn btn-primary" %>
 
+    <% end %>
+  </div>
   <h2>Friends</h2>
     <ol>
     <%current_user.friends.each do |friend| %>
@@ -11,17 +21,24 @@
     </ol>     
 </div>
 
+
+
 <div class="reveiw-container">
   <div class="container">
     <div class="jumbotron">
       <h1>Reviews</h1>
       <h2> Here is what you reviewed!</h2>
     </div>
-    <div class="jumbotron">
-      <% if @reviews %>
-        <% @reviews.each do |review|%>
-          <ol> 
-            <li>
+    <% if @reviews %>
+      <% @reviews.each do |review|%>
+        <div class="jumbotron">
+          <div class="row">
+            <div class="col-auto">
+              <% if review.cover.attached? %>
+                <%= image_tag (url_for review.cover.variant(resize_to_limit: [225, 150]).processed) %>
+              <% end %>
+            </div>
+            <div class="col">
               <p>
                 <% if review.recommended %>
                   <span style="color:green;"> Recommends </span>
@@ -30,26 +47,43 @@
                 <% end %>
                 <b><%= review.media %></b>
               </p>
-            </li>
-            <div class="row">
               <% if review.tags.length > 0 %>
-                <% review.tags.each do |tag| %>
-                  <div class="d-inline-flex flex-row">
-                    <div class="p-2 bd-highlight"><%= tag.category %> </div>
-                    <div class="p-2 bd-highlight"><%= tag.name %> </div>
-                  </div>
-                <% end %>
+                <div class="row">
+                  <% review.tags.each do |tag| %>
+                    <div class="d-inline-flex flex-row">
+                      <div class="p-2 bd-highlight"><%= tag.category %> </div>
+                      <div class="p-2 bd-highlight"><%= tag.name %> </div>
+                    </div>
+                  <% end %>
+                </div>
               <% end %>
-              <div class="d-inline-flex flex-row p-2 bd-highlight">
-                <%= link_to "add tag", "/add_tag/#{review.id}"%>
-              </div>
+              <br>
+              <%= simple_form_for @tag,
+                                  html: { class: "form-inline" },
+                                  url: "/add_tag/#{review.id}" do |form| %>
+                <div class="row">
+                  <div class="p-2 bd-highlight form-field">
+                    <%= form.input :category,
+                                  placeholder: 'category',
+                                  label: false %>
+                  </div>
+                  <div class="p-2 bd-highlight form-field">
+                    <%= form.input :name,
+                                  placeholder: 'name',
+                                  label: false %>
+                  </div>
+                  <div class="p-2 bd-highlight form-field">
+                    <%= form.button :submit %>
+                  </div>
+                </div>
+              <% end %>
+              <p>
+                <%= review.content %>
+              </p>
             </div>
-            <p>
-              <%= review.content %>
-            </p>
-          </ol>
-        <%end%>
+          </div>
+        </div>
       <%end%>
-    </div>
+    <%end%>
   </div>
 </div>
