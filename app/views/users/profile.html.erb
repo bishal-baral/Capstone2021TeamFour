@@ -2,26 +2,25 @@
 
 <div class="friend-list">
 <%user = current_user%>
-  <div class="img">
-    <% if user.avatar.attached? %>
-      <%= image_tag (url_for user.avatar.variant(resize_to_limit: [100, 100]).processed) %>
-    <% end %> 
-    <%= form_with(url: "/upload_avatar", method: :post) do |f| %>
+  <div id="selector">
+    <%= form_for "avatar", url: "/upload_avatar", method: :post, remote: true do |f| %>
       <%= f.file_field :avatar %>
-      
       <%= f.submit "Change avatar", class: "btn btn-primary" %>
-
     <% end %>
   </div>
+  
+  <div id="img">
+    <% if user.avatar.attached? %>
+      <%= image_tag (url_for user.avatar.variant(resize_to_limit: [225, 225]).processed) %>
+    <% end %> 
+  </div>
   <h2>Friends</h2>
-    <ol>
+  <ol>
     <%current_user.friends.each do |friend| %>
       <li><%= link_to friend.username, friend_profile_path( user_id:friend.id), method: :post%></li>
     <%end %>
-    </ol>     
+  </ol>     
 </div>
-
-
 
 <div class="reveiw-container">
   <div class="container">

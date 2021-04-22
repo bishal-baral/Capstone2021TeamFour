@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/event_screen', to: 'events#event_screen'
 
   get '/profile', to: 'users#profile'
-  post '/upload_avatar', to: 'users#avatar'
+  post '/upload_avatar', to: 'users#avatar', :defaults => { :format => 'js' }
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   get '/home', to: 'users#show'

@@ -52,8 +52,10 @@ class UsersController < ApplicationController
 
   def avatar
     @user = current_user
-    @user.avatar.attach(params[:avatar])
-    render 'profile'
+    @user.avatar.attach(params[:avatar][:avatar])
+    respond_to do |format|
+      format.js
+    end
   end
 
   def friend_profile
@@ -103,4 +105,13 @@ class UsersController < ApplicationController
       result
     end
 
+    def selector_html
+      "<form enctype=\"multipart/form-data\" action=\"/upload_avatar\" accept-charset=\"UTF-8\" method=\"post\">
+         <input id=\"avatar\" type=\"file\" name=\"avatar\">
+         <input class=\"btn btn-primary\" type=\"submit\" name=\"commit\" value=\"Change avatar\" data-disable-with=\"Change avatar\">
+       </form>"
+    end
+
+    def image_html(user)
+    end
 end
