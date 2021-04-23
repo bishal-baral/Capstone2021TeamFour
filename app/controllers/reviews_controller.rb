@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     # add something about session's user here
     @review.user_id = current_user.id
+    @review.post_date = Time.now
     tag_cat = params[:review][:tag_category]
     tag_name = params[:review][:tag_name]
 
@@ -19,6 +20,10 @@ class ReviewsController < ApplicationController
     if !valid_tag(tag_cat, tag_name)
       render 'new'
     elsif @review.save
+      # Create notifications for the user's friends
+      current_user.friends.each do |friend|
+        Notification.create(recipient: friend, actor: current_user, action: "posted", notifiable: @review)
+      end
       if tag_name != ""
         @tag = grab_tag(tag_cat, tag_name)
         ReviewTag.create(tag_id: @tag.id, review_id: @review.id)
