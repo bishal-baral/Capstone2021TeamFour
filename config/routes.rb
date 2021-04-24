@@ -41,7 +41,9 @@ Rails.application.routes.draw do
   delete '/friendship', to: 'friendship#decline_friend'
   get '/result', to: 'friendship#result'
   
-  resources :friend_reviews, :friendship, :reviews, :users, :events
+  resources :friend_reviews, :friendship, :reviews, :users, :events, :notifications
   root :to => 'home#index'
+
+  post '/read', to: 'notifications#mark_as_read'
 
 end
