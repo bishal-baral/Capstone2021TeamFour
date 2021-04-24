@@ -1,2 +1,0 @@
-class FriendReviewsController < ApplicationController
-end
