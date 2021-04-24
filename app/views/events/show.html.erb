@@ -17,10 +17,6 @@
           </h3>
           <h6><span>Date: <%= dt_in_text(event)%></span></h6>
           <h6><span>Duration: <%= duration_in_text(event)%></span></h6>
-
-
-     
-
           <h6>Friends Invited: <% user_array = @users[event]%>
                             <%= user_array.to_sentence%>
           </h6> 

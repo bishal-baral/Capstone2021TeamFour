@@ -10,19 +10,6 @@
   }
   </script>
   <% if logged_in? %>
-  
-  <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
-    <div id="left-sidebar" class="sidenav closebtn" onmouseleave="closeNav()">
-      <%# <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> %>
-      <%= link_to "Home", home_path  %>
-      <%= link_to "Friendship", friendship_path  %>
-      <%= link_to "Events", events_path %>
-      <%= link_to "Profile", profile_path  %>
-      <%= link_to "Log-out", logout_path, method: :delete %>
-    </div>
-
-
-
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
       <button class="btn btn-default" id="menu-toggle" onmouseover="openNav()"> Menu    </button>
       <div id="left-sidebar" class="sidenav closebtn" onmouseleave="closeNav()">
@@ -33,14 +20,17 @@
         <%= link_to "Log-out", logout_path, method: :delete %>
       </div>
       <div class="container">
-        <%= link_to "#{current_user.username}'s We-View", root_path, class:"navbar-brand mx-auto"%>
+       
+        <%= image_tag("weview-logo.png", style: 'height:5%; width:5%;', alt: "Edit Entry") %>
+        <div class= "mx-auto">
+        <%= link_to "#{current_user.username}'s We-View", home_path, style: "margin-right: 60px;", class: "navbar-brand" %>
       </div>
+      
     </nav>
   <%else%>
-
-
   <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
     <div class="container">
+      <%= image_tag("weview-logo.png", style: 'height:5%; width:5%;', alt: "Edit Entry", class:"pr-1 mr-2") %>
       <%= link_to "We-View", root_path, class:"navbar-brand"%>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -57,6 +47,5 @@
       </div>
     </div>
   </nav>
-
   <%end%>
 </header>
