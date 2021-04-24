@@ -5,7 +5,7 @@ module EventsHelper
   end
 
   def dt_in_text(event)
-    return event.scheduled_time.strftime("%A, %B %d %Y  Time: %I:%M:%S %p")
+    return event.scheduled_time.strftime("%A, %B %d %Y  Time: %I:%M %p")
   end
 
   def until_time(event)
