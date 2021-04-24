@@ -35,6 +35,15 @@
       <div class="container">
         <%= link_to "#{current_user.username}'s We-View", root_path, class:"navbar-brand mx-auto"%>
       </div>
+      <div class = "dropdown">
+        
+           <a class="dropdown-toggle nav-link" type="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <i class="fa fa bell"></i>
+            </a>
+            <div class= "dropdown-menu" aria-labelledby= "navbarDropdown">
+              <a class = "dropdown-item" href="#">Action</a>
+            </div>     
+      </div>
     </nav>
   <%else%>
 

@@ -42,4 +42,6 @@ Rails.application.routes.draw do
   post '/chat/send', to: 'events#chat'
   post '/event', to: 'events#webhook'
 
+  post '/read', to: 'notifications#mark_as_read'
+
 end
