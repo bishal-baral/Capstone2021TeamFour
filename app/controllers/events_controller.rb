@@ -49,13 +49,12 @@ class EventsController < ApplicationController
 
   def create
 
-    # eventually autogenerate a stream link, or give the users one idk
     @event = Event.new(event_params)
-    # Leave this as current time + a day for now
-    # When setting it, make sure is a future time.
-    # Also need an invitee list.
-    
-    @event.scheduled_time = Time.now + 24 * 60
+    scheduled_time = Time.strptime(event_params[:scheduled_time].to_s,"%m/%d/%Y %I:%M %p ")
+    @event.scheduled_time = Time.zone.utc_to_local(scheduled_time)
+
+    @event.duration = DateTime.new(1000, 1, 1,  event_params["duration(4i)"].to_i, event_params["duration(5i)"].to_i)
+
 
     # add something about session's user here
     @event.user_id = current_user.id
@@ -63,13 +62,11 @@ class EventsController < ApplicationController
       flash[:danger] = "Event creation failed"
       render 'new'
     end
-
     # Add Invitations to the invitee table
     invitees = params[:attendees]
     invitees.each do |invited_id| 
       Invitee.create(user_id: invited_id, event_id: @event.id)
     end
-
     flash[:success] = "Event created"
     redirect_to '/events'
   end
@@ -89,14 +86,6 @@ class EventsController < ApplicationController
     request.format.json?
   end
 
-  # def landing; 
-  #   @event_id = params[:event_id]
-  #   @event = Event.find_by(id: @event_id)
-  #   @event_title = @event.title
-  #   @event_userid = @event.user_id
-  #   @host_username = User.find_by(id: @event_userid).username
-  # end
-
   def name
     @name = name_params[:name]
     @event_id = params[:event_id]
@@ -106,15 +95,19 @@ class EventsController < ApplicationController
   def index; 
     @event_id = params[:event_id]
     @name = name_params[:name]
-    @title = Event.find_by(id: @event_id).title
-    
   end
 
   def chat; end
 
   def screenshare
     @darkmode = 'dark'
+    @event_id = params[:event_id]
+    @name = name_params[:name]
   end
+
+  # def leave_event
+  #   redirect_to events_path
+  # end
 
   def webhook; end
 
@@ -126,6 +119,6 @@ class EventsController < ApplicationController
 
 
     def event_params
-      params.require(:event).permit(:title, :stream_link, :attendees)
+      params.require(:event).permit(:title, :scheduled_time, :attendees, :duration)
     end
 end

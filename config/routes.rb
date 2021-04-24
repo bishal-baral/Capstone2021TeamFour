@@ -7,6 +7,15 @@ Rails.application.routes.draw do
   post '/events', to: 'events#create'
   get '/event_screen', to: 'events#event_screen'
   post '/event_screen', to: 'events#event_screen'
+  
+  get '/party', to: 'events#index'
+  post '/party', to: 'events#index'
+  get '/screenshare', to: 'events#screenshare'
+  post '/screenshare', to: 'events#screenshare'
+  post '/name', to: 'events#name'
+  post '/chat/send', to: 'events#chat'
+  post '/event', to: 'events#webhook'
+  # get '/leave_event', to: 'events#leave_event'
 
   get '/profile', to: 'users#profile'
   post '/upload_avatar', to: 'users#avatar'
@@ -34,12 +43,5 @@ Rails.application.routes.draw do
   
   resources :friend_reviews, :friendship, :reviews, :users, :events
   root :to => 'home#index'
- 
-  get '/party', to: 'events#index'
-  post '/party', to: 'events#index'
-  get '/screenshare', to: 'events#screenshare'
-  post '/name', to: 'events#name'
-  post '/chat/send', to: 'events#chat'
-  post '/event', to: 'events#webhook'
 
 end
