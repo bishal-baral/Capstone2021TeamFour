@@ -6,10 +6,20 @@
   <div class="col-md-6">
     <%= form_with(model: @event, local: true) do |f| %>
       <%= f.label :title %>
-      <%= f.text_field :title %>
-      <%= f.label :stream_link, "Stream Link (submit a valid youtube link)" %>
-      <%= f.text_field :stream_link %>
-    
+      <%= f.text_field :title %> 
+
+      <%= f.label :scheduled_time %>
+      <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+        <%= f.text_field :scheduled_time, class: 'form-control datetimepicker-input', 'data-target': "#datetimepicker1" %>
+        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+          <div class="input-group-text"><i class='fa fa-calendar'></i></div>
+        </div>
+      </div>
+
+        <%= f.label :duration, " Duration in HH/MM" %>
+        <%=  f.time_select :duration,  {ignore_date: true, prompt: { hour: 'Choose hour', minute: 'Choose minute' }},{class: "form-control"} %>
+
+      <%= f.label :attendees %>
        <%= select_tag :attendees, 
         options_for_select(current_user.friends.map{ |friend| [friend.username, 
                                                                friend.id] }, 

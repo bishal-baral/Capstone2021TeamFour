@@ -8,6 +8,7 @@ export default class Party {
   constructor(session) {
     this.session = session;
     this.watchLink = document.getElementById("watch-mode");
+    // this.leaveLink = document.getElementById("leave-event");
     this.subscribers = document.getElementById("subscribers");
     this.participantCount = document.getElementById("participant-count");
     this.videoPublisher = this.setupVideoPublisher();
@@ -15,7 +16,12 @@ export default class Party {
     this.setupEventHandlers();
     this.connectionCount = 0;
     setButtonDisplay(this.watchLink);
+    // setButtonDisplay(this.leaveLink);
   }
+
+  // get_session(session) {
+  //   return session;
+  // }
 
   setupVideoPublisher() {
     return OT.initPublisher(
@@ -88,5 +94,16 @@ export default class Party {
         screenshareMode(self.session, "on");
       }
     });
+
+    // this.leaveLink.addEventListener("click", function (event) {
+    //   session
+    //   event.preventDefault();
+    //   console.log("clicked!");
+    //   session.disconnect(token, function (error) {
+    //     if (error) {
+    //       console.error("Failed to connect", error);
+    //     }
+    //   });
+    // });
   }
 }

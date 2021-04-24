@@ -24,6 +24,7 @@ gem 'mini_magick'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap'
 gem 'bootstrap-sass'
+gem 'sassc-rails'
 
 gem 'faker'
 gem 'pg'
@@ -31,7 +32,14 @@ gem 'bcrypt',         '3.1.13'
 gem 'nokogiri', '>= 1.11.3'
 
 gem 'simple_form'
-gem 'bootstrap-datepicker-rails'
+# gem 'bootstrap-datepicker-rails'
+
+gem 'datetime_picker_input' 
+
+gem 'bs4_datetime_picker'
+gem 'font-awesome-rails'
+
+gem 'jquery-rails'
 
 gem 'opentok'
 gem 'dotenv-rails'
