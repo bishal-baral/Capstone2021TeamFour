@@ -6,7 +6,8 @@
 //= require jquery3
 //= require jquery_ujs
 //= require_tree .
-
+//= require popper
+//= require bootstrap-sprockets
 //= require datetime_picker_input
 
 // Uncomment to copy all static images under ../images to the output folder and reference

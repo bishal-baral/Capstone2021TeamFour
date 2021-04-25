@@ -67,15 +67,17 @@ ActiveRecord::Schema.define(version: 2021_04_24_013127) do
   end
 
   create_table "invitees", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "event_id"
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_invitees_on_event_id"
+    t.index ["user_id"], name: "index_invitees_on_user_id"
   end
 
   create_table "review_tags", force: :cascade do |t|
-    t.integer "review_id"
-    t.integer "tag_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "tag_id"
+    t.bigint "review_id"
+    t.index ["review_id"], name: "index_review_tags_on_review_id"
+    t.index ["tag_id"], name: "index_review_tags_on_tag_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -96,8 +98,6 @@ ActiveRecord::Schema.define(version: 2021_04_24_013127) do
   create_table "tags", force: :cascade do |t|
     t.string "category"
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["category", "name"], name: "index_tags_on_category_and_name", unique: true
   end
 
