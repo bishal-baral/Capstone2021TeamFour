@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create]
+  before_action :require_logged_out, only: [:new, :create]
+  
   def new
   end
 
@@ -18,4 +21,11 @@ class SessionsController < ApplicationController
     log_out
     redirect_to root_path
   end
+
+  private
+    def require_logged_out
+      if logged_in?
+        redirect_to profile_path
+      end
+    end
 end
