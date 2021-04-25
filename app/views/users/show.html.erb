@@ -1,18 +1,43 @@
 <% provide(:title, "Home") %>
 
 <%# to avoid duplicate reviews from the same friend_id, friend_id's are turned into a set  %>
-<div class="friend-list">
-  <h2><%= link_to "->  Create Event", create_event_path %></h2>
-  <h2><%= link_to "|^| Post Review", create_review_path %></h2>
-</div>
+<div class="container home-content">
+  <div class="row">
+    <div class="col-xl-auto">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-md-auto">
+          Share your reviews or host an event to watch something together!
+            <h3>
+              <%= link_to create_event_path do %>
+                <button class="button-hover" title="Invite friends and WEVIEW!">
+                  <%= fa_icon "users", text: "Create Event" %> 
+                </button>
+              <% end %>
+            </h3>
+            <h3>
+              <%= link_to create_review_path do %>
+                <button class="button-hover" title="Your two cents on anything you watched recently!">
+                  <%= fa_icon "share-square", text: "Post Review" %> 
+                </button>
+              <% end %>
+            </h3>
+          </div>
+          <div class="col-sm4">
+            <%= render 'shared/search_form' %>
+          </div>
+        </div>
+        <div class="container home-content-reviews pt-3">
+          <div class="row justify-content-center">
+            <h2> Here is what your friends reviewed!</h2>
+          </div>
+        
+          <%= render 'shared/review_list' %>
+        </div>
 
-<div class="reveiw-container">
-  <div class="container">
-    <div class="jumbotron">
-      <h1>Reviews</h1>
-      <%= render 'shared/search_form' %>
-      <h2> Here is what your friends reviewed!</h2>
+
+
+      </div>
     </div>
-    <%= render 'shared/review_list' %>
   </div>
 </div>

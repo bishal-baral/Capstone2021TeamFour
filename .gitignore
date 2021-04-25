@@ -39,9 +39,6 @@
 yarn-debug.log*
 .yarn-integrity
 
-#Ignore vendor
-/vendor/*
-
 passwords.txt
 
 .DS_STORE
