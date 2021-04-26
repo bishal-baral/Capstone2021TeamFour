@@ -52,8 +52,10 @@ class UsersController < ApplicationController
 
   def avatar
     @user = current_user
-    @user.avatar.attach(params[:avatar])
-    render 'profile'
+    @user.avatar.attach(params[:avatar][:avatar])
+    respond_to do |format|
+      format.js
+    end
   end
 
   def friend_profile
@@ -102,5 +104,4 @@ class UsersController < ApplicationController
       end
       result
     end
-
 end

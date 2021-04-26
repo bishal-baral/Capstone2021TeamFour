@@ -1,0 +1,13 @@
+function replaceId(id, code) {
+  document.getElementById(id).innerHTML = code;
+}
+
+selector_js = '<%= form_with(url: "/upload_avatar", method: :post, remote: true) do |f| %>'
+selector_js += '<%= f.file_field :avatar %>'
+selector_js += '<%= f.submit "Change avatar", class: "btn btn-primary" %>'
+selector_js += '<% end %>'
+
+avatar_js = '<%= image_tag(url_for(@user.avatar.variant(resize_to_limit: [225, 225]).processed)) %>'
+
+replaceId("selector", selector_js)
+replaceId("img", avatar_js)
