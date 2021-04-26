@@ -72,9 +72,6 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
     bootstrap3-datetimepicker-rails (4.17.47)
       momentjs-rails (>= 2.8.1)
     bs4_datetime_picker (2.0.1)
@@ -262,7 +259,6 @@ DEPENDENCIES
   bcrypt (= 3.1.13)
   bootsnap (>= 1.4.4)
   bootstrap
-  bootstrap-sass
   bs4_datetime_picker
   byebug
   capybara (>= 3.26)

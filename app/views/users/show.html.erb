@@ -11,6 +11,7 @@
           Share your reviews or host an event to watch something together!
             <h3>
               <%= link_to create_event_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-light btn-lg'} do %>
+
                 <button class="button-hover" title="Invite friends and WEVIEW!">
                   <%= fa_icon "users", text: "Create Event" %> 
                 </button>
