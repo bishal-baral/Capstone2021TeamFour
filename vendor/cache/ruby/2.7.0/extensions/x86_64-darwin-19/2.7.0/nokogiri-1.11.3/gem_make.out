@@ -1,5 +1,5 @@
 current directory: /Users/bishalbaral/rubyProjects/Capstone2021TeamFour/vendor/cache/ruby/2.7.0/gems/nokogiri-1.11.3/ext/nokogiri
-/Users/bishalbaral/.rbenv/versions/2.7.2/bin/ruby -I /Users/bishalbaral/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20210419-51722-diciie.rb extconf.rb
+/Users/bishalbaral/.rbenv/versions/2.7.2/bin/ruby -I /Users/bishalbaral/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20210424-19152-1nmy33d.rb extconf.rb
 checking for whether -g is accepted as CFLAGS... yes
 checking for whether -Winline is accepted as CFLAGS... yes
 checking for whether -Wmissing-noreturn is accepted as CFLAGS... yes
@@ -152,5 +152,5 @@ rm -rf /Users/bishalbaral/rubyProjects/Capstone2021TeamFour/vendor/cache/ruby/2.
 
 current directory: /Users/bishalbaral/rubyProjects/Capstone2021TeamFour/vendor/cache/ruby/2.7.0/gems/nokogiri-1.11.3/ext/nokogiri
 make "DESTDIR=" install
-/usr/local/bin/ginstall -c -m 0755 nokogiri.bundle ./.gem.20210419-51722-h7h2g3/nokogiri
+/usr/local/bin/ginstall -c -m 0755 nokogiri.bundle ./.gem.20210424-19152-yx8obe/nokogiri
 installing nokogiri libraries

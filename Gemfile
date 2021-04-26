@@ -23,7 +23,6 @@ gem 'mini_magick'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap'
-gem 'bootstrap-sass'
 gem 'sassc-rails'
 
 gem 'faker'
@@ -32,10 +31,8 @@ gem 'bcrypt',         '3.1.13'
 gem 'nokogiri', '>= 1.11.3'
 
 gem 'simple_form'
-# gem 'bootstrap-datepicker-rails'
 
 gem 'datetime_picker_input' 
-
 gem 'bs4_datetime_picker'
 gem 'font-awesome-rails'
 

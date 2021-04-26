@@ -2,6 +2,7 @@
 
 <div class="friend-list" style= "height: 50%;">
 <h3><b> Friend's List </b> <h3>
+<span> Your Code:  <%= current_user.code %></span>
  <ol>
   <% @friends.each do |friend| %>
           <li><%= link_to friend.username, friend_profile_path( user_id:friend.id), method: :post%></li>
