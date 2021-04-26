@@ -43,6 +43,13 @@ Rails.application.routes.draw do
   get '/result', to: 'friendship#result'
   
   resources :friend_reviews, :friendship, :reviews, :users, :events
+
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
   root :to => 'home#index'
+
 
 end

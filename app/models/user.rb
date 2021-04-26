@@ -35,6 +35,8 @@ class User < ApplicationRecord
                               content_type: "image/png")
     end
   }
+
+  has_many :notifications, foreign_key: :recipient_id
   #Email validations
   validates :username, presence: true, length: { maximum: 20 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

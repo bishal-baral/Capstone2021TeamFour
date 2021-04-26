@@ -30,9 +30,13 @@ class ReviewsController < ApplicationController
       end
       iter += 1
     end
-
+    @review.post_date = Time.zone.now
     # Add who on friend list to send to
     if @review.save
+      # Create notifications for the user's friends
+      current_user.friends.each do |friend|
+        Notification.create(recipient: friend, actor: current_user, action: "posted", notifiable: @review)
+      end
       tags.each do |cat, name|
         if tag_name != ""
           tag = grab_tag(cat, name)

@@ -58,6 +58,10 @@ class FriendshipController < ApplicationController
       return
     end
 
+    current_user.friends.each do |friend|
+      Notification.create(recipient: @user, actor: current_user, action: "sent", notifiable: @friendship)
+    end
+
       flash[:success] = 'Friend Request Sent!'
       redirect_back(fallback_location: root_path)
   end
