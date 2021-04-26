@@ -1,3 +1,4 @@
+
 <% provide(:title, "Home") %>
 
 <%# to avoid duplicate reviews from the same friend_id, friend_id's are turned into a set  %>
@@ -9,19 +10,34 @@
           <div class="col-md-auto">
           Share your reviews or host an event to watch something together!
             <h3>
-              <%= link_to create_event_path do %>
+              <%= link_to create_event_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-light btn-lg'} do %>
                 <button class="button-hover" title="Invite friends and WEVIEW!">
                   <%= fa_icon "users", text: "Create Event" %> 
                 </button>
               <% end %>
             </h3>
             <h3>
-              <%= link_to create_review_path do %>
+              <%= link_to create_review_path , {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-1', class: 'btn btn-light btn-lg'} do %>
                 <button class="button-hover" title="Your two cents on anything you watched recently!">
                   <%= fa_icon "share-square", text: "Post Review" %> 
                 </button>
               <% end %>
             </h3>
+            <div id="modal-window-1" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <%=render 'reviews/new'%>
+                </div>
+              </div>
+            </div>
+
+            <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <%= render 'events/new' %>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="col-sm4">
             <%= render 'shared/search_form' %>

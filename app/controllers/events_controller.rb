@@ -6,6 +6,11 @@ class EventsController < ApplicationController
   before_action :set_opentok_vars
 
   def show
+    @new_event = Event.new
+    @friends = current_user.friends
+
+
+    
     @all_users = User.all
     @event = Event.where(user_id: current_user.id)
     #Map to hold event => Invitee array
@@ -45,10 +50,14 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @friends = current_user.friends
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
-
+    
     @event = Event.new(event_params)
     scheduled_time = Time.strptime(event_params[:scheduled_time].to_s,"%m/%d/%Y %I:%M %p ")
     @event.scheduled_time = Time.zone.utc_to_local(scheduled_time)

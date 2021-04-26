@@ -1,0 +1,68 @@
+<script>
+  function addTag() {
+    btn = document.getElementById("tag-btn");
+    num = parseInt(btn.value);
+
+    content = `
+      <div id="tags-#">
+        <label for="review_tag_category">Tag category</label>
+        <input type="text" name="review[tag_#_category]"
+          id="review_tag_#_category">
+        <label for="review_tag_name">Tag name</label>
+        <input type="text" name="review[tag_#_name]"
+          id="review_tag_#_name">
+      </div>`.replaceAll('#', num);
+    document.getElementById("tag-placeholder-div").outerHTML = content +  document.getElementById("tag-placeholder-div").outerHTML;
+    btn.value = (num + 1).toString();
+  }
+  // #TODO get this in the assest pipeline
+</script>
+
+
+<div class="modal-header">
+<h4 class="modal-title" id="myModalLabel">Post a Review</h4>
+  <button type="button" class="close" data-dismiss="modal">x</button>
+</div>
+
+<%= form_with(model: @new_review) do |f| %>
+  <div class="modal-body">
+    <div class="row">
+      <div id="rev-form" class="col-md-6 col-md-offset-3">
+      
+          <%= f.label :media %>
+          <%= f.text_field :media %>
+
+          <%= f.label :content %>
+          <%= f.text_area :content %>
+
+          <%= f.label :recommended %>
+          <%= f.check_box :recommended %>
+          
+            <%= f.label :tag_category %>
+            <%= f.text_field :tag_1_category %>
+
+            <%= f.label :tag_name %>
+            <%= f.text_field :tag_1_name %>
+          <div id="tag-placeholder-div">
+          </div>
+          <button type="button" id="tag-btn" class="btn btn-primary" value="2" onclick="addTag();">Add Tag</button>
+          <%= f.label :image %>
+          <%= f.file_field :cover%>
+        <br>
+
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit "Publish Review", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+

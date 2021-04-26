@@ -9,6 +9,12 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require datetime_picker_input
+//= require bootstrap-modal
+//= require turbolinks
+
+//= require jquery
+
+//= require bootstrap
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -20,7 +26,6 @@
 import "./app_helpers.js";
 import "./opentok_video.js";
 import "./opentok_screenshare.js";
-import "./init_flatpickr.js";
 // import "./chat.js";
 // import "./screenshare.js";
 // import "./party.js";
@@ -31,3 +36,9 @@ require("@rails/activestorage").start();
 require("channels");
 
 require("bootstrap");
+
+$("#modal-window").find(".modal-content").html("<%= j (render 'new') %>");
+$("#modal-window").modal();
+
+$("#modal-window-1").find(".modal-content").html("<%= j (render 'new') %>");
+$("#modal-window-1").modal();

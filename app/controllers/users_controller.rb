@@ -37,6 +37,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @new_event = Event.new
+    @friends = current_user.friends
+    @new_review = Review.new
     @user = current_user
     temp_revs = []
     @user.friends.each do |friend|
