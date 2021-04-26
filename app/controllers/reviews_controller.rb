@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     # add something about session's user here
     @review.user_id = current_user.id
-    @review.post_date = Time.now
+    @review.post_date = Time.zone.now
     tag_cat = params[:review][:tag_category]
     tag_name = params[:review][:tag_name]
 

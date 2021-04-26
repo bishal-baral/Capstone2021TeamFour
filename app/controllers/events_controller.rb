@@ -66,7 +66,13 @@ class EventsController < ApplicationController
     invitees = params[:attendees]
     invitees.each do |invited_id| 
       Invitee.create(user_id: invited_id, event_id: @event.id)
+      @user = User.find_by(id: invited_id)
+      Notification.create(recipient: @user, actor: current_user, action: "created", notifiable: @event)
+
     end
+
+   
+
     flash[:success] = "Event created"
     redirect_to '/events'
   end

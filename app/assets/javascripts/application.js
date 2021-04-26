@@ -1,7 +1,7 @@
 
-//= require jquery-3.2.1.slim.min
+//= require jquery
+//= require jquery_ujs
 //= require popper.min
-//= require bootstrap.min
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB.js
 

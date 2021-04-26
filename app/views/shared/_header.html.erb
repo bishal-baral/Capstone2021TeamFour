@@ -25,16 +25,18 @@
         <div class= "mx-auto">
         <%= link_to "#{current_user.username}'s We-View", home_path, style: "margin-right: 60px;", class: "navbar-brand" %>
       </div>
-      
-      <div class = "dropdown">
-        
-           <a class="dropdown-toggle nav-link" type="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true", style="color:white;">
-              <%= fa_icon "bell", style:"color:white;" %>
-            </a>
-            <div class= "dropdown-menu" aria-labelledby= "navbarDropdown">
-              <a class = "dropdown-item" href="#">Action</a>
-            </div>     
-      </div>
+      <li class="nav-item btn-group" data-behavior="notifications">
+          <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="color:white;">
+            <%= fa_icon "bell", style:"color:white;" %> <span data-behavior="unread-count" style="color:white;"></span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
+            <!--
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            -->
+          </div>
+        </li>
     </nav>
   <%else%>
   <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
