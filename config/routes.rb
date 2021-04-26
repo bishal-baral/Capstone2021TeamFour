@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get '/create_review', to: 'reviews#new'
 
+
   get '/create_event', to: 'events#new'
   get '/events', to: 'events#show'
   post '/events', to: 'events#create'

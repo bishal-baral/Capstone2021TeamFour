@@ -6,22 +6,27 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
+    # params[:media], params[:content], params[:recommended], params[:cover]
     @review = Review.new(review_params)
     @review.user_id = current_user.id
 
     iter = 1
     tags = {}
     while !params[:review]["tag_#{iter}_category"].nil?
-      debugger
+      # debugger
       tag_cat = params[:review]["tag_#{iter}_category"]
       tag_name = params[:review]["tag_#{iter}_name"]
       if valid_tag(tag_cat, tag_name)
         tags[tag_cat] = tag_name
-      else
-        render 'new'
+      # else
+      #   render 'new'
       end
       iter += 1
     end
@@ -36,7 +41,7 @@ class ReviewsController < ApplicationController
       end
       redirect_to '/profile'
     else
-      render 'new'
+      redirect_to '/home'
     end
   end
 
