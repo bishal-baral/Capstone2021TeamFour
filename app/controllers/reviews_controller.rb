@@ -6,31 +6,46 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
+    # params[:media], params[:content], params[:recommended], params[:cover]
     @review = Review.new(review_params)
-    # add something about session's user here
     @review.user_id = current_user.id
-    @review.post_date = Time.zone.now
-    tag_cat = params[:review][:tag_category]
-    tag_name = params[:review][:tag_name]
 
+    iter = 1
+    tags = {}
+    while !params[:review]["tag_#{iter}_category"].nil?
+      # debugger
+      tag_cat = params[:review]["tag_#{iter}_category"]
+      tag_name = params[:review]["tag_#{iter}_name"]
+      if valid_tag(tag_cat, tag_name)
+        tags[tag_cat] = tag_name
+      # else
+      #   render 'new'
+      end
+      iter += 1
+    end
+    @review.post_date = Time.zone.now
     # Add who on friend list to send to
-    if !valid_tag(tag_cat, tag_name)
-      render 'new'
-    elsif @review.save
+    if @review.save
       # Create notifications for the user's friends
       current_user.friends.each do |friend|
         Notification.create(recipient: friend, actor: current_user, action: "posted", notifiable: @review)
       end
-      if tag_name != ""
-        @tag = grab_tag(tag_cat, tag_name)
-        ReviewTag.create(tag_id: @tag.id, review_id: @review.id)
+      tags.each do |cat, name|
+        if tag_name != ""
+          tag = grab_tag(cat, name)
+          ReviewTag.create(tag_id: tag.id, review_id: @review.id)
+        end
       end
       redirect_to '/profile'
     else
-      render 'new'
+      redirect_to '/home'
     end
   end
 

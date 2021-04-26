@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get '/create_review', to: 'reviews#new'
 
+
   get '/create_event', to: 'events#new'
   get '/events', to: 'events#show'
   post '/events', to: 'events#create'
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   # get '/leave_event', to: 'events#leave_event'
 
   get '/profile', to: 'users#profile'
-  post '/upload_avatar', to: 'users#avatar'
+  post '/upload_avatar', to: 'users#avatar', :defaults => { :format => 'js' }
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   get '/home', to: 'users#show'

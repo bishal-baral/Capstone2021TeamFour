@@ -37,6 +37,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @new_event = Event.new
+    @friends = current_user.friends
+    @new_review = Review.new
     @user = current_user
     temp_revs = []
     @user.friends.each do |friend|
@@ -52,8 +55,10 @@ class UsersController < ApplicationController
 
   def avatar
     @user = current_user
-    @user.avatar.attach(params[:avatar])
-    render 'profile'
+    @user.avatar.attach(params[:avatar][:avatar])
+    respond_to do |format|
+      format.js
+    end
   end
 
   def friend_profile
@@ -102,5 +107,4 @@ class UsersController < ApplicationController
       end
       result
     end
-
 end

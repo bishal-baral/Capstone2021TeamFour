@@ -1,7 +1,22 @@
-<% provide(:title, "All Events") %>
 
+
+<% provide(:title, "All Events") %>
 <div class="friend-list">
-  <h2><%= link_to "->  Create Event", create_event_path %></h2>
+  <h3>
+    <%= link_to create_event_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-light btn-lg'} do %>
+      <button class="button-hover" title="Invite friends and WEVIEW!">
+        <%= fa_icon "users", text: "Create Event" %> 
+      </button>
+    <% end %>
+  </h3>
+  <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <%= render 'new' %>
+      </div>
+    </div>
+  </div>
+
 </div>
 <div class="events-container">
   <div class="container">
@@ -20,7 +35,6 @@
           <h6>Friends Invited: <% user_array = @users[event]%>
                             <%= user_array.to_sentence%>
           </h6> 
-
           <% if event_has_started(event) &&  !event_has_ended(event)%>
             <%= button_to "Attend",  {:controller => "events", :action => "name", :event_id => event.id, :name => current_user.username, method: :post},   {:style => "width: 20%;"} %> 
           <% elsif !event_has_started(event) &&  !event_has_ended(event) %>

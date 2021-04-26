@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - 2.3.3
+  - 2.4.1
+  - ruby-head
+sudo: false
+bundler_args: --retry=3 --jobs=3
+matrix:
+  allow_failures:
+    - rvm: ruby-head
+  fast_finish: true
+notifications:
+  slack:
+    secure: SH+hAIMND0/8N1jouaAKaI7dv03ousdepfvnin9eSoSSiPBkEwAdC9WpiPihulat8UDUoxxGp5VstdZc2PkrgT+w8ullMXiLBp+1ZDntH7rGUnbtAG2gIyfApx8foKWYb3Pn4zp5NJnfASOSiJ91X6zn1n/JpjAY9x3CIwQsov4=

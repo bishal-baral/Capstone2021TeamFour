@@ -39,7 +39,6 @@
 yarn-debug.log*
 .yarn-integrity
 
-
 passwords.txt
 
 .DS_STORE
