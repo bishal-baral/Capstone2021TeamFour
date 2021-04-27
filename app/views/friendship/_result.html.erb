@@ -1,7 +1,7 @@
 
 <% if !@user.nil? %>
   <%= @user.username %>
-  <%= @user.id %>
+  <%= @user.code %>
    <%= button_to 'Send a Request', {:controller => "friendship", :action => "create", :user_id => @user.id} , :method=>:post  %>
 <% else %>
   <p> Wrong combination of username/code </p>

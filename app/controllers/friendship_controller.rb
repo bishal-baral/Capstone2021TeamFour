@@ -4,6 +4,7 @@ class FriendshipController < ApplicationController
     @friends = current_user.friends
     @pending_requests = current_user.pending_requests
     @friend_requests = current_user.received_requests
+
   end
 
   def result
@@ -11,7 +12,7 @@ class FriendshipController < ApplicationController
       flash[:danger] = "Please enter a username"
       redirect_to friendship_path 
       return
-    end
+    end 
 
     if params[:code].blank?
       flash[:danger] = "Please enter user code"
@@ -20,9 +21,10 @@ class FriendshipController < ApplicationController
     end
 
     @user = User.find_by(username: params[:username], code: params[:code])
-  
+    respond_to do |format|
+      format.js {render layout: false}
+    end
   end
-
 
   def create
 
@@ -67,29 +69,29 @@ class FriendshipController < ApplicationController
   end
   
 
-    def accept_friend
-      @friendship = Friendship.find_by(sent_by_id: params[:user_id], sent_to_id: current_user.id, status: false)
-        return unless @friendship # return if no record is found
-  
-      @friendship.status = true
-      if @friendship.save
-        flash[:success] = 'Friend Request Accepted!'
-        @friendship2 = current_user.friend_sent.build(sent_to_id: params[:user_id], status: true)
-        @friendship2.save
-      else
-        flash[:danger] = 'Friend Request could not be accepted!'
-      end
-      redirect_back(fallback_location: root_path)
+  def accept_friend
+    @friendship = Friendship.find_by(sent_by_id: params[:user_id], sent_to_id: current_user.id, status: false)
+      return unless @friendship # return if no record is found
+
+    @friendship.status = true
+    if @friendship.save
+      flash[:success] = 'Friend Request Accepted!'
+      @friendship2 = current_user.friend_sent.build(sent_to_id: params[:user_id], status: true)
+      @friendship2.save
+    else
+      flash[:danger] = 'Friend Request could not be accepted!'
     end
+    redirect_back(fallback_location: root_path)
+  end
   
 
-    def decline_friend
-      @friendship = Friendship.find_by(sent_by_id: params[:user_id], sent_to_id: current_user.id, status: false)
-      return unless @friendship # return if no record is found
-  
-      @friendship.destroy
-      flash[:success] = 'Friend Request Declined!'
-      redirect_back(fallback_location: root_path)
-    end
+  def decline_friend
+    @friendship = Friendship.find_by(sent_by_id: params[:user_id], sent_to_id: current_user.id, status: false)
+    return unless @friendship # return if no record is found
+
+    @friendship.destroy
+    flash[:success] = 'Friend Request Declined!'
+    redirect_back(fallback_location: root_path)
+  end
 
 end

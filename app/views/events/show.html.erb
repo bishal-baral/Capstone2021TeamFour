@@ -1,6 +1,7 @@
 
 
 <% provide(:title, "All Events") %>
+
 <div class="friend-list">
   <h3>
     <%= link_to create_event_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-light btn-lg'} do %>
@@ -13,7 +14,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
       <%= render 'new' %>
-      </div>
+      </div> 
     </div>
   </div>
 

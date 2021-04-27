@@ -23,22 +23,18 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+//= require popper.min
+
+//= require moment
+//= require bs4-datetime-picker
+
 import "./app_helpers.js";
 import "./opentok_video.js";
 import "./opentok_screenshare.js";
-// import "./chat.js";
-// import "./screenshare.js";
-// import "./party.js";
+
+import "./ajax_helpers.js";
 
 require("@rails/ujs").start();
 require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
-
-require("bootstrap");
-
-$("#modal-window").find(".modal-content").html("<%= j (render 'new') %>");
-$("#modal-window").modal();
-
-$("#modal-window-1").find(".modal-content").html("<%= j (render 'new') %>");
-$("#modal-window-1").modal();

@@ -7,10 +7,7 @@ class EventsController < ApplicationController
 
   def show
     @new_event = Event.new
-    @friends = current_user.friends
-
-
-    
+    @friends = current_user.friends 
     @all_users = User.all
     @event = Event.where(user_id: current_user.id)
     #Map to hold event => Invitee array

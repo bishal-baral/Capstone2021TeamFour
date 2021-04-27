@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_04_24_013127) do
-=======
-ActiveRecord::Schema.define(version: 2021_04_23_182752) do
->>>>>>> notifications
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,10 +83,10 @@ ActiveRecord::Schema.define(version: 2021_04_23_182752) do
   end
 
   create_table "review_tags", force: :cascade do |t|
-    t.bigint "tag_id"
-    t.bigint "review_id"
-    t.index ["review_id"], name: "index_review_tags_on_review_id"
-    t.index ["tag_id"], name: "index_review_tags_on_tag_id"
+    t.integer "review_id"
+    t.integer "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -111,6 +107,8 @@ ActiveRecord::Schema.define(version: 2021_04_23_182752) do
   create_table "tags", force: :cascade do |t|
     t.string "category"
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["category", "name"], name: "index_tags_on_category_and_name", unique: true
   end
 
