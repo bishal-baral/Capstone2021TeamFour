@@ -2,10 +2,9 @@
 
 <div class="container basic-content">
   <div class="row">
-    <div class="col-xl-auto">
       <div class="container">
         <h1 class="text-center pd-2">Your Friendship!</h1>
-        <div class="row justify-content-between d-flex align-items-start">
+        <div class="row d-flex align-items-start">
           <div class="col-md-8 ">
             <div class="basic-content-card pl-2 ">
               <h3> <b> Friend's List </b> <h3>
@@ -51,7 +50,7 @@
             </div>
           </div>
 
-          <div class="col-md-4 basic-content-card ">
+          <div class="col-sm-3 basic-content-card ml-4 ">
             <span> Your Code:- <%= current_user.code %></span>
             <h2>Add Friends!</h2>
             <%= form_tag(result_path, :method => "get", :remote => true) do %>  
@@ -70,7 +69,7 @@
         </div>
       </div>
     </div>
-  </div>
+
 </div>
 
 

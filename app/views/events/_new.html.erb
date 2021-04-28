@@ -5,33 +5,43 @@
 
 <%= form_for @new_event do |f| %>
   <div class="modal-body">
-    <%= f.label :title %>
-    <%= f.text_field :title %> 
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %> 
+    </div>
 
-    <%= f.label :scheduled_time %>
-    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-      <%= f.text_field :scheduled_time, class: 'form-control datetimepicker-input', 'data-target': "#datetimepicker1" %>
-      <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-        <div class="input-group-text">
-          <i class='fa fa-calendar'></i>
+    <div class="form-group">
+      <%= f.label :scheduled_time %>
+      <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+        <%= f.text_field :scheduled_time, class: 'form-control datetimepicker-input', 'data-target': "#datetimepicker1" %>
+        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+          <div class="input-group-text">
+            <i class='fa fa-calendar'></i>
+          </div>
         </div>
       </div>
     </div>
 
-      <%= f.label :duration, " Duration in HH/MM" %>
-      <%=  f.time_select :duration,  {ignore_date: true, prompt: { hour: 'Choose hour', minute: 'Choose minute' }},{class: "form-control"} %>
+    <div class ="form-group" style = "width:50%">
+    <%= f.label :duration, "Event Duration in HH : MM" %>
 
-    <%= f.label :attendees %>
-    <%= select_tag :attendees, 
-      options_for_select(current_user.friends.map{ |friend| [friend.username, 
-                                                            friend.id] }, 
-                        current_user.friends.pluck(:id)), 
-      multiple: true, size: 10 %>
+        <%=  f.time_select :duration,  {prompt: { hour: 'hour/s', minute: 'minute/s' }}%>
+        
+    </div>
+
+    <div class="form-group">
+      <%= f.label :attendees %>
+      <%= select_tag :attendees, 
+        options_for_select(current_user.friends.map{ |friend| [friend.username, 
+                                                              friend.id] }, 
+                          current_user.friends.pluck(:id)), 
+        multiple: true, size: 10 %>
+    </div>
   </div>
 
   <div class="modal-footer">
-    <%= f.submit "Create Event", class: "btn" %>
+    <%= f.submit "Create Event", class: "btn btn-primary" %>
   </div>
-  <% end %>
+<% end %>
 
 
