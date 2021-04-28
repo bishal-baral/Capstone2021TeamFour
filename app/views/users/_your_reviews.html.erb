@@ -1,0 +1,59 @@
+
+<% if @reviews %>
+  <%@reviews.each do |review| %>
+    <div class="container">
+      <div class="row basic-content-card mt-3">
+        <div class="col-auto ">
+          <% if review.cover.attached? %>
+            <%= image_tag (url_for review.cover.variant(resize_to_limit: [225, 150]).processed) %>
+          <% end %>
+        </div>
+        <div class="col">
+          <p>
+            <% if review.recommended %>
+              <span style="color:green;"> Recommends </span>
+            <% else %>
+              <span style="color:red;"> Doesn't recommend </span>
+            <% end %>
+            <b><%= review.media %></b>
+          </p>
+          <% if review.tags.length > 0 %>
+            <div class="row">
+              <% review.tags.each do |tag| %>
+                <div class="d-inline-flex flex-row">
+                  <div class="p-2 bd-highlight"><%= tag.category %> </div>
+                  <div class="p-2 bd-highlight"><%= tag.name %> </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+          <br>
+          <%= simple_form_for @tag,
+                              html: { class: "form-inline" },
+                              url: "/add_tag/#{review.id}" do |form| %>
+            <div class="row">
+              <div class="p-2 bd-highlight form-field">
+                <%= form.input :category,
+                              placeholder: 'category',
+                              label: false %>
+              </div>
+              <div class="p-2 bd-highlight form-field">
+                <%= form.input :name,
+                              placeholder: 'name',
+                              label: false %>
+              </div>
+              <div class="p-2 bd-highlight form-field">
+                <%= form.button :submit %>
+              </div>
+            </div>
+          <% end %>
+          <p>
+            <%= review.content %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<%end%>
+
+

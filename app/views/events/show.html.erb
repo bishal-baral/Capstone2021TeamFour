@@ -1,67 +1,40 @@
-
-
 <% provide(:title, "All Events") %>
+      <div class="container basic-content ">
+      <div class="container">
+          <h1 class="text-center ">Events!</h1>
+          <div class="row">
+          <div class="col">
+          
+              <h3>
+                <%= link_to create_event_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-light btn-lg'} do %>
+                  <button class="button-hover" title="Invite friends and WEVIEW!">
+                    <%= fa_icon "users", text: "Create Event" %> 
+                  </button>
+                <% end %>
+              </h3>
+              <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                  <%= render 'new' %>
+                  </div> 
+                </div>
+              </div>
+              </div></div></div>
+      
+          <div class="row ">
+            <div class="col-6">
+              <div class="container pt-3">
+                  <h2> Your events</h2>
+                  <%= render 'your_event_list' %>
+              </div>
+            </div>
+            <div class="col-6 friend-event-col"  >
+              <div class="container pt-3">
+                  <h2> Friends events</h2>
+                  <%= render 'friend_event_list' %>
+              </div>
+            </div>
+          </div>
 
-<div class="friend-list">
-  <h3>
-    <%= link_to create_event_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-light btn-lg'} do %>
-      <button class="button-hover" title="Invite friends and WEVIEW!">
-        <%= fa_icon "users", text: "Create Event" %> 
-      </button>
-    <% end %>
-  </h3>
-  <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-      <%= render 'new' %>
-      </div> 
     </div>
-  </div>
 
-</div>
-<div class="events-container">
-  <div class="container">
-    <div class="jumbotron">
-      <h1>Events</h1>
-      <h2> Your Events!</h2>
-    </div>
-    <div>
-      <%@event.each do |event| %>
-        <div class="jumbotron">
-          <h3>
-            <%= event.title %> 
-          </h3>
-          <h6><span>Date: <%= dt_in_text(event)%></span></h6>
-          <h6><span>Duration: <%= duration_in_text(event)%></span></h6>
-          <h6>Friends Invited: <% user_array = @users[event]%>
-                            <%= user_array.to_sentence%>
-          </h6> 
-          <% if event_has_started(event) &&  !event_has_ended(event)%>
-            <%= button_to "Attend",  {:controller => "events", :action => "name", :event_id => event.id, :name => current_user.username, method: :post},   {:style => "width: 20%;"} %> 
-          <% elsif !event_has_started(event) &&  !event_has_ended(event) %>
-            <button> Event has not started yet  </button>
-            <small>Come back in time</small>
-          <% elsif event_has_started(event) &&  event_has_ended(event) %>
-            <button> Event has ended  </button>
-            <small>Please look out for more events in the future</small>
-          <% end %>
-        </div>
-      <%end%>
-    </div>
-    <div class="jumbotron">
-      <h2> Invited Events!</h2>
-    </div>
-    <div>
-      <%@invited_events.each do |event| %>
-        <div class="jumbotron">
-          <h3>
-            <%= event.title %> 
-            <% host_name = @all_users.find_by(id: event.user_id).username %>
-          </h3>
-          <h6><span>Date: <%= event.scheduled_time%></span></h6>
-          <%= button_to "Attend", {:controller => "events", :action => "name", :event_id => event.id, :name => host_name, method: :post}, {:style => "width: 20%;"} %> 
-        </div>
-      <%end%>
-    </div>
-  </div>
-</div>

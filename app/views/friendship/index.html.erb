@@ -1,27 +1,26 @@
 <% provide(:title, "Friendship") %>
-<script>
-$("#search-result").html("<%= j render 'result'%>");
-</script>
 
-
-<div class="container home-content">
+<div class="container basic-content">
   <div class="row">
     <div class="col-xl-auto">
       <div class="container">
-        <div class="row justify-content-between">
-          <div class="col-md-8">
-
+        <h1 class="text-center pd-2">Your Friendship!</h1>
+        <div class="row justify-content-between d-flex align-items-start">
+          <div class="col-md-8 ">
+            <div class="basic-content-card pl-2 ">
               <h3> <b> Friend's List </b> <h3>
               <% if@friends.first.nil? %>
                 <h4>No friends at this moment! </h4>
               <% else %>
                 <ol>
                   <% @friends.each do |friend| %>
-                      <li><%= link_to friend.username, friend_profile_path( user_id:friend.id), method: :post%></li>
+                      <li><%= link_to friend.username + " -" + friend.code.to_s, friend_profile_path( user_id:friend.id), method: :post%></li>
                     <% end %>
                 </ol>
               <% end %>
-                
+            </div>
+            
+            <div class="basic-content-card pl-2 mt-3">
               <h3><b> Friend Requests </b> <h3>
               <% if @friend_requests.first.nil? %>
                 <h4>No friend requests and this moment! </h4>
@@ -35,7 +34,9 @@ $("#search-result").html("<%= j render 'result'%>");
                     <% end %>
                 </ol>
                <% end %>
+            </div>
 
+            <div class="basic-content-card pl-2 mt-3">
               <h3> <b> Pending Requests </b> </h3>
                 <% if@pending_requests.first.nil? %>
                   <h4>No pending requests at this moment! </h4>
@@ -47,10 +48,11 @@ $("#search-result").html("<%= j render 'result'%>");
                   <% end %>
                 <% end %>
               </ol>
+            </div>
           </div>
 
-          <div class="col-md-4">
-            <span> Your Code:  <%= current_user.code %></span>
+          <div class="col-md-4 basic-content-card ">
+            <span> Your Code:- <%= current_user.code %></span>
             <h2>Add Friends!</h2>
             <%= form_tag(result_path, :method => "get", :remote => true) do %>  
               <div class="input-group">  

@@ -129,7 +129,7 @@ nav {
   background-color: $tertiary-color;
 }
 
-.home-content {
+.basic-content {
   background-color: rgba(255, 255, 255, 0.7);
   border: solid $secondary-color;
   border-radius: 20px;
@@ -141,11 +141,16 @@ nav {
   border-color: $secondary-color;
 }
 
-.review-container {
+.basic-content-card {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 40px 0;
   border: ridge;
   border-radius: 10px;
+}
+
+.friend-event-col {
+  border-left: dotted;
+  border-color: $secondary-color;
 }
 
 .button-hover {

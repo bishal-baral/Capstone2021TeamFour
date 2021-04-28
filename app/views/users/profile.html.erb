@@ -1,88 +1,44 @@
 <% provide(:title, "Your Profile") %>
-
-<div class="friend-list">
-<%user = current_user%>
-  <div id="selector">
-    <%= form_for "avatar", url: "/upload_avatar", method: :post, remote: true do |f| %>
-      <%= f.file_field :avatar %>
-      <%= f.submit "Change avatar", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-  
-  <div id="img">
-    <% if user.avatar.attached? %>
-      <%= image_tag (url_for user.avatar.variant(resize_to_limit: [225, 225]).processed) %>
-    <% end %> 
-  </div>
-  <h2>Friends</h2>
-  <ol>
-    <%current_user.friends.each do |friend| %>
-      <li><%= link_to friend.username, friend_profile_path( user_id:friend.id), method: :post%></li>
-    <%end %>
-  </ol>     
-</div>
-
-<div class="reveiw-container">
-  <div class="container">
-    <div class="jumbotron">
-      <h1>Reviews</h1>
-      <h2> Here is what you reviewed!</h2>
-    </div>
-    <% if @reviews %>
-      <% @reviews.each do |review|%>
-        <div class="jumbotron">
-          <div class="row">
-            <div class="col-auto">
-              <% if review.cover.attached? %>
-                <%= image_tag (url_for review.cover.variant(resize_to_limit: [225, 150]).processed) %>
-              <% end %>
+<div class="container basic-content">
+  <div class="row">
+    <div class="col-xl-auto">
+      <div class="container">
+        <h1 class="text-center ">Your Profile!</h1>
+        <div class="row justify-content-between">
+          <div class="col-md-auto ">
+          <div id="img">
+              <% if current_user.avatar.attached? %>
+                <%= image_tag (url_for current_user.avatar.variant(resize_to_limit: [225, 225]).processed) %>
+              <% end %> 
             </div>
-            <div class="col">
-              <p>
-                <% if review.recommended %>
-                  <span style="color:green;"> Recommends </span>
-                <% else %>
-                  <span style="color:red;"> Doesn't recommend </span>
-                <% end %>
-                <b><%= review.media %></b>
-              </p>
-              <% if review.tags.length > 0 %>
-                <div class="row">
-                  <% review.tags.each do |tag| %>
-                    <div class="d-inline-flex flex-row">
-                      <div class="p-2 bd-highlight"><%= tag.category %> </div>
-                      <div class="p-2 bd-highlight"><%= tag.name %> </div>
-                    </div>
-                  <% end %>
-                </div>
+            <div id="selector">
+              <%= form_for "avatar", url: "/upload_avatar", method: :post, remote: true do |f| %>
+                <%= f.file_field :avatar %>
+                <%= f.submit "Change avatar", class: "btn btn-primary" %>
               <% end %>
-              <br>
-              <%= simple_form_for @tag,
-                                  html: { class: "form-inline" },
-                                  url: "/add_tag/#{review.id}" do |form| %>
-                <div class="row">
-                  <div class="p-2 bd-highlight form-field">
-                    <%= form.input :category,
-                                  placeholder: 'category',
-                                  label: false %>
-                  </div>
-                  <div class="p-2 bd-highlight form-field">
-                    <%= form.input :name,
-                                  placeholder: 'name',
-                                  label: false %>
-                  </div>
-                  <div class="p-2 bd-highlight form-field">
-                    <%= form.button :submit %>
-                  </div>
-                </div>
-              <% end %>
-              <p>
-                <%= review.content %>
-              </p>
             </div>
           </div>
+          <div class="col-md-4 basic-content-card">
+              <h2>Friends</h2>
+              <ol>
+                <%current_user.friends.each do |friend| %>
+                  <li><%= link_to friend.username, friend_profile_path( user_id:friend.id), method: :post%></li>
+                <%end %>
+              </ol>    
+          </div>
         </div>
-      <%end%>
-    <%end%>
+        <div class="container home-content-reviews mt-3">
+          <div class="row justify-content-center ">
+            <h2> Here is what you reviewed!</h2>
+          </div>
+
+          <%= render 'your_reviews' %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+
+
+
