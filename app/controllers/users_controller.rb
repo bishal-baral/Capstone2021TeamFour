@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  skip_before_action :require_login, only: [:new, :create]
+  before_action :require_logged_out, only: [:new, :create]
   def new
     @user = User.new
   end
@@ -63,6 +65,9 @@ class UsersController < ApplicationController
 
   def friend_profile
     @user = User.all.find_by(id: params[:user_id])
+    if @user.friends.where(id: current_user.id).length == 0
+      redirect_to profile_path
+    end
     @reviews = Review.all
   end
   
@@ -106,5 +111,11 @@ class UsersController < ApplicationController
         end
       end
       result
+    end
+
+    def require_logged_out
+      if logged_in?
+        redirect_to profile_path
+      end
     end
 end

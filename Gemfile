@@ -25,26 +25,23 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap'
 gem 'sassc-rails'
 
+gem 'bcrypt', '3.1.13'
+gem 'bs4_datetime_picker'
+gem 'datetime_picker_input'
 gem 'faker'
-gem 'pg'
-gem 'bcrypt',         '3.1.13'
 gem 'nokogiri', '>= 1.11.3'
-
+gem 'pg'
 gem 'simple_form'
 
-gem 'datetime_picker_input' 
-gem 'bs4_datetime_picker'
-gem 'font-awesome-rails'
-
-gem 'jquery-rails'
-
-gem 'opentok'
-gem 'dotenv-rails'
 gem 'coffee-rails', '~> 5.0.0'
+gem 'dotenv-rails'
+gem 'font-awesome-rails'
+gem 'jquery-rails'
+gem 'opentok'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -52,8 +49,8 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
-  gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
+  gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
@@ -70,4 +67,4 @@ group :production do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
