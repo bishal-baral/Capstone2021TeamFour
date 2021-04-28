@@ -341,3 +341,10 @@ img {
     transform: rotateY(360deg) rotateZ(-90deg);
   }
 }
+
+.modal-content {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.698) !important;
+  border-style: 10px dashed !important;
+  border-color: rgba(239, 100, 0, 0.555) !important;
+}
