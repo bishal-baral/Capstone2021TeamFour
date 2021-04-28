@@ -83,8 +83,6 @@ class EventsController < ApplicationController
     redirect_to '/events'
   end
   
-
-
   def set_opentok_vars()
     @api_key = ENV["OPENTOK_API_KEY"]
     @api_secret =  ENV["OPENTOK_API_SECRET"] #we'll add them later
