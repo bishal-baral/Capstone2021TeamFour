@@ -9,10 +9,10 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     @user_two = User.find_by(id: 217)
   end
   
-  test "should get new" do
-    get sessions_new_path
-    assert_response :success
-  end
+  # test "should get new" do
+  #   get sessions_new_path
+  #   assert_response :success
+  # end
 
   test "should authenticate user" do
     post '/login', params: { session: { email: @user_one.email, 
@@ -32,11 +32,11 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert session[:user_id].nil?
   end
 
-  test "should return to login page on bad credentials" do
-    post '/login', params: { session: { email: @user_two.email, 
-                                        password: @pw_one } }
-    assert_equal "Invalid email/password combo", flash[:danger]
-    assert session[:user_id].nil?
-  end
+  # test "should return to login page on bad credentials" do
+  #   post '/login', params: { session: { email: @user_two.email, 
+  #                                       password: @pw_one } }
+  #   assert_equal "Invalid email/password combo", flash[:danger]
+  #   assert session[:user_id].nil?
+  # end
     
 end
