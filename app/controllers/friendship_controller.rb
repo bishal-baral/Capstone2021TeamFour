@@ -22,6 +22,7 @@ class FriendshipController < ApplicationController
 
     @user = User.find_by(username: params[:username], code: params[:code])
     respond_to do |format|
+      format.html 
       format.js {render layout: false}
     end
   end

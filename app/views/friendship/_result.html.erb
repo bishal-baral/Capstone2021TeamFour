@@ -1,9 +1,8 @@
 
-<% if !@user.nil? %>
+<% if !@user.nil?  %>
   <%= @user.username %>
   <%= @user.code %>
    <%= button_to 'Send a Request', {:controller => "friendship", :action => "create", :user_id => @user.id} , :method=>:post  %>
 <% else %>
-  <p> Wrong combination of username/code </p>
-  <p> Or user doesn't exist </p>
+  <p> Enter a valid username and code! </p>
 <% end %>

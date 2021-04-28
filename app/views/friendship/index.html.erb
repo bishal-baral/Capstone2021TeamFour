@@ -57,8 +57,7 @@ $("#search-result").html("<%= j render 'result'%>");
                 <%= search_field_tag :username, params[:username], placeholder: "Username", class: "form-control" %> 
                 <%= search_field_tag :code, params[:code], placeholder: "Code", class: "form-control" %> 
                 <div class="input-group-btn">  
-                
-                  <%= button_tag "", class: "btn btn-info fa fa-search", name: "nil"%>  
+                  <%= button_tag "", class: "btn btn-info fa fa-search"%>  
                 </div>  
               </div>  
             <% end %>
