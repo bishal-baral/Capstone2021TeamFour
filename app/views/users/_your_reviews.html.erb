@@ -5,7 +5,6 @@
       <div class="row basic-content-card mt-3">
         <div class="col-auto ">
           <% if review.cover.attached? %>
-            <%= image_tag (url_for review.cover.variant(resize_to_limit: [225, 150]).processed) %>
           <% end %>
         </div>
         <div class="col">
