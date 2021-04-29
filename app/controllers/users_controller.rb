@@ -1,37 +1,40 @@
-class UsersController < ApplicationController
+# frozen_string_literal: true
 
+# The users controller is purely responsible for logging users in and out
+class UsersController < ApplicationController
+  include UsersHelper
+  skip_before_action :require_login, only: %i[new create]
+  before_action :require_logged_out, only: %i[new create]
+
+  # GET signup action. set up an empty user for signup
   def new
     @user = User.new
   end
 
+  # POST signup action. Create user from params if valid
   def create
     @user = User.new(user_params)
-
-    # Generate a code that's unique when combined with username
-    friend_code = rand(1000...9999)
-    while User.where(username: @user.username, code: friend_code).count > 0
-      friend_code = rand(1000.9999)
-    end
-    @user.code = friend_code
+    gen_code(@user)
 
     if @user.save
       reset_session
       log_in @user
-      flash[:success] = "Caught you on the flippity flip"
+      flash[:success] = 'Caught you on the flippity flip'
       render 'profile'
     else
       render 'new'
     end
   end
 
-  def search
+  def show
+    @new_event = Event.new
+    @friends = current_user.friends
+    @new_review = Review.new
     @user = current_user
     temp_revs = []
     @user.friends.each do |friend|
       temp_revs += friend.reviews
     end
-    tags = tags_from_string(params[:search_terms])
-    temp_revs = filter_reviews(temp_revs, tags)
     @reviews = temp_revs.sort_by{ |r| r.post_date }.reverse
 
     respond_to do |format|
@@ -41,10 +44,8 @@ class UsersController < ApplicationController
 
   end
 
-  def show
-    @new_event = Event.new
-    @friends = current_user.friends
-    @new_review = Review.new
+  # POST search action. Same thing as show but filters the reviews
+  def search
     @user = current_user
     temp_revs = []
     if !params[:search_terms].nil?
@@ -54,14 +55,18 @@ class UsersController < ApplicationController
     @user.friends.each do |friend|
       temp_revs += friend.reviews
     end
-    @reviews = temp_revs.sort_by{ |r| r.post_date }.reverse
+    tags = tags_from_string(params[:search_terms])
+    temp_revs = filter_reviews(temp_revs, tags)
+    @reviews = temp_revs.sort_by(&:post_date).reverse
   end
 
+  # GET profile action. Gets the users own reviews and sets up tag creation
   def profile
     @reviews = current_user.reviews
     @tag = Tag.new
   end
 
+  # POST avatar action. Allows the user to upload a (new) avatar
   def avatar
     @user = current_user
     @user.avatar.attach(params[:avatar][:avatar])
@@ -70,50 +75,25 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET friend_profile action. Shows user a requested friend's profile
   def friend_profile
     @user = User.all.find_by(id: params[:user_id])
+
+    redirect_to profile_path if @user.friends.where(id: current_user.id).empty?
+
     @reviews = Review.all
   end
-  
 
   private
 
-    def user_params
-      params.require(:user).permit(:email, :username, :password,
-                                               :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:email, :username, :password,
+                                 :password_confirmation)
+  end
 
-    def tags_from_string(input_string)
-      tags = {}
-      input_string.split(" ").each do |pair| 
-        pair = pair.gsub("-", " ")
-        category, name = pair.split(":")
-        tags[category] = name
-      end
-      tags
-    end
+  def require_logged_out
+    return unless logged_in?
 
-    def filter_reviews(reviews, tags)
-      result = []
-      reviews.each do |review|
-        keep = true
-        review_tags = review.tags
-        tags.each do |category, name|
-          if category == "title"
-            if name.downcase != review.media.downcase
-              keep = false
-            end
-          else
-            if review_tags.find_by(category: category.capitalize,
-                                   name: name.capitalize).nil?
-              keep = false
-            end
-          end
-        end
-        if keep
-          result.append(review)
-        end
-      end
-      result
-    end
+    redirect_to profile_path
+  end
 end
