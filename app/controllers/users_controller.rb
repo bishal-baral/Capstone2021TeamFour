@@ -36,12 +36,22 @@ class UsersController < ApplicationController
       temp_revs += friend.reviews
     end
     @reviews = temp_revs.sort_by{ |r| r.post_date }.reverse
+
+    respond_to do |format|
+      format.html 
+      format.js {render layout: false}
+    end
+
   end
 
   # POST search action. Same thing as show but filters the reviews
   def search
     @user = current_user
     temp_revs = []
+    if !params[:search_terms].nil?
+      tags = tags_from_string(params[:search_terms])
+      temp_revs = filter_reviews(temp_revs, tags)
+    end
     @user.friends.each do |friend|
       temp_revs += friend.reviews
     end
