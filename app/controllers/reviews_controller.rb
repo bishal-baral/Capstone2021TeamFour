@@ -1,9 +1,6 @@
 class ReviewsController < ApplicationController
-
-  def show
-    @review = Review.find
-  end
-
+  include ReviewsHelper
+  # GET New action.
   def new
     @review = Review.new
     respond_to do |format|
@@ -12,84 +9,50 @@ class ReviewsController < ApplicationController
     end
   end
 
+  # POST Reviews action. Creates a review from valid params
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-
-    iter = 1
-    tags = {}
-    while !params[:review]["tag_#{iter}_category"].nil?
-      # debugger
-      tag_cat = params[:review]["tag_#{iter}_category"]
-      tag_name = params[:review]["tag_#{iter}_name"]
-      if valid_tag(tag_cat, tag_name)
-        tags[tag_cat] = tag_name
-      # else
-      #   render 'new'
-      end
-      iter += 1
-    end
     @review.post_date = Time.zone.now
-    # Add who on friend list to send to
+
     if @review.save
       # Create notifications for the user's friends
       current_user.friends.each do |friend|
-        Notification.create(recipient: friend, actor: current_user, action: "posted", notifiable: @review)
+        Notification.create(recipient: friend, actor: current_user, action: 'posted', notifiable: @review)
       end
-      tags.each do |cat, name|
-        if tag_name != ""
-          tag = grab_tag(cat, name)
-          ReviewTag.create(tag_id: tag.id, review_id: @review.id)
-        end
-      end
+
+      # Create and attach the tags
+      create_tags collect_tags(params[:review]), @review.id
       redirect_to '/profile'
     else
       redirect_to '/home'
     end
   end
 
+  # GET Add tag :id action. Set up for the next action
   def tag
     @review = Review.find_by(id: params[:id])
     @tag = Tag.new
   end
 
+  # POST Add tag :id action. Allows review tag association after review creation
   def add_tag
     @review = Review.find_by(id: params[:id])
     tag_cat = params[:tag][:category]
     tag_name = params[:tag][:name]
-    
-    if valid_tag(tag_cat, tag_name) && tag_cat != ""
+
+    if valid_tag(tag_cat, tag_name)
       @tag = grab_tag(tag_cat, tag_name)
       if ReviewTag.find_by(tag_id: @tag.id, review_id: @review.id).nil?
         ReviewTag.create(tag_id: @tag.id, review_id: @review.id)
       end
-      redirect_to '/profile'
-    else
-      redirect_to '/profile'
     end
+    redirect_to '/profile'
   end
 
-  private 
+  private
 
-    def review_params
-      params.require(:review).permit(:media, :content, :recommended, :cover)
-    end
-
-    def valid_tag(cat, name)
-      if cat == "" && name == ""
-        return true
-      elsif (cat == "" && name != "") || (name == "" && cat != "")
-        return false
-      else
-        return cat.length < 20 && name.length < 30
-      end
-    end
-
-    def grab_tag(cat, name)
-      tag = Tag.find_by(category: cat.capitalize, name: name.capitalize)
-      if tag.nil?
-        tag = Tag.create(category: cat, name: name)
-      end
-      return tag
-    end
+  def review_params
+    params.require(:review).permit(:media, :content, :recommended, :cover)
+  end
 end

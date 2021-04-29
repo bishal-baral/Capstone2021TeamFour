@@ -3,12 +3,14 @@ class HomeController < ApplicationController
   skip_before_action :require_login
   before_action :require_logged_out
 
-  def index
-  end
+  # Welcome page action. Nothing to do but redirect if they're logged in
+  def index() end
+
   private
+
   def require_logged_out
-    if logged_in?
-      redirect_to profile_path
-    end
+    return unless logged_in?
+
+    redirect_to profile_path
   end
 end
