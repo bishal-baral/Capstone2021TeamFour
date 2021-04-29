@@ -22,7 +22,6 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
-
   end
 
   def search
@@ -34,6 +33,12 @@ class UsersController < ApplicationController
     tags = tags_from_string(params[:search_terms])
     temp_revs = filter_reviews(temp_revs, tags)
     @reviews = temp_revs.sort_by{ |r| r.post_date }.reverse
+
+    respond_to do |format|
+      format.html 
+      format.js {render layout: false}
+    end
+
   end
 
   def show
@@ -42,6 +47,10 @@ class UsersController < ApplicationController
     @new_review = Review.new
     @user = current_user
     temp_revs = []
+    if !params[:search_terms].nil?
+      tags = tags_from_string(params[:search_terms])
+      temp_revs = filter_reviews(temp_revs, tags)
+    end
     @user.friends.each do |friend|
       temp_revs += friend.reviews
     end

@@ -170,14 +170,6 @@ nav {
   margin-top: 1em;
 }
 
-.friend-list {
-  margin-left: 9%;
-  padding: 2em;
-  width: 20%;
-  background-color: rgb(238, 238, 238);
-  border-style: solid;
-}
-
 .friend-name {
   display: inline-block;
   background-color: black;
@@ -344,7 +336,18 @@ img {
 
 .modal-content {
   color: white;
-  background-color: rgba(0, 0, 0, 0.698) !important;
+  background-color: rgba(0, 16, 37, 0.863) !important;
   border-style: 10px dashed !important;
   border-color: rgba(239, 100, 0, 0.555) !important;
+}
+
+footer {
+  padding: 3% 0;
+  border-top: dashed white;
+  color: white;
+  background-color: black;
+}
+
+footer a {
+  color: white;
 }
