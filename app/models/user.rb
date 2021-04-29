@@ -14,32 +14,31 @@ class User < ApplicationRecord
                             dependent: :destroy
 
   has_many :friends, -> { merge(Friendship.friends) },
-                      through: :friend_sent, source: :sent_to
+           through: :friend_sent, source: :sent_to
 
   has_many :pending_requests, -> { merge(Friendship.not_friends) },
-                              through: :friend_sent, source: :sent_to
+           through: :friend_sent, source: :sent_to
 
   has_many :received_requests, -> { merge(Friendship.not_friends) },
-                      through: :friend_request, source: :sent_by
-                    
+           through: :friend_request, source: :sent_by
 
-  has_many :friend_reviews
   has_many :reviews
   has_many :invitees
-  
+
   before_save { self.email = email.downcase }
-  before_save {
-    if !self.avatar.attached?
-      self.avatar.attach(io: File.open("app/assets/images/avatar.png"),
-                              filename: "avatar.png",
-                              content_type: "image/png")
+  before_save do
+    unless avatar.attached?
+      avatar.attach(io: File.open('app/assets/images/avatar.png'),
+                    filename: 'avatar.png',
+                    content_type: 'image/png')
     end
-  }
+  end
 
   has_many :notifications, foreign_key: :recipient_id
-  #Email validations
+
+  # Email validations
   validates :username, presence: true, length: { maximum: 20 }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
