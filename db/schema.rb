@@ -62,8 +62,10 @@ ActiveRecord::Schema.define(version: 2021_04_29_014833) do
   end
 
   create_table "invitees", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "event_id"
+    t.bigint “user_id”
+    t.bigint “event_id”
+    t.index [“event_id”], name: “index_invitees_on_event_id”
+    t.index [“user_id”], name: “index_invitees_on_user_id”
   end
 
   create_table "notifications", force: :cascade do |t|
