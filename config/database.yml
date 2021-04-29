@@ -19,6 +19,8 @@ development:
 test:
   <<: *default
   database: project_test
+  username: postgres
+  password: postgres
 
 production:
   adapter: postgresql

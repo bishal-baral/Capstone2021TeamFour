@@ -7,31 +7,33 @@
   
 ## To run this app, you would need to install the following:
 * Install homebrew
-	* '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+	* /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 * Install rbenv
- 	* 'brew install rbenv'
+ 	* brew install rbenv
 * Install Ruby
-	* 'rbenv install 2.7.2'
-	* 'rbenv global 2.7.2 (set this version to global)'
+	* rbenv install 2.7.2
+	* rbenv global 2.7.2 (set this version to global)
 * Install Rails
-     	* gem install rails
+  * gem install rails
 * Install Bundler
-	* 'gem install bundler -v 2.1.4'
+	* gem install bundler -v 2.1.4
 * Go into the app directory and run,
-	* 'bundle install'
+	* bundle install
 * Install yarn
-	* 'brew install yarn'
+	* brew install yarn
+* Add jquery
+  * yarn add jquery
 * Since the app uses postgresql,
-	* 'brew install postgresql'
+	* brew install postgresql
 * Installing the simple form gem
-  * 'rails generate simple_form:install --bootstrap'
+  * rails generate simple_form:install --bootstrap
 * Setup active storage migration
-  * 'rails active_storage:install'
-* Install imagemagick
-  * 'brew install imagemagick' or follow instructions below.
+  * rails active_storage:install
+* Install imagemagick (or follow instructions below if unsucessful)
+  * brew install imagemagick 
 * After installing all the above, run
-	* 'rake db:create && rake db:schema:load'
-	* 'rails server' and run it on the local server.
+	* rake db:create && rake db:schema:load
+	* rails server
 
 ## Functionalities:
 		•	Post your review for medias like Movies, Youtube, Games etc. 
@@ -135,6 +137,7 @@
     'image_processing'
     'mini_magick'
 
-		We are using Vonage API through opentok gem to implement our screensharing functionality.
 
-    We are also using [https://www.imagemagick.org/script/install-source.php](ImageMaick) for profile avatars and review cover arts, as mini_magick runs off of it.
+We are using Vonage API through opentok gem to implement our screensharing functionality.
+
+We are also using [ImageMaick](https://www.imagemagick.org/script/install-source.php) for profile avatars and review cover arts, as mini_magick runs off of it.

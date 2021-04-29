@@ -12,8 +12,6 @@
 //= require bootstrap-modal
 //= require turbolinks
 
-//= require jquery
-
 //= require bootstrap
 //= require notifications.js
 
