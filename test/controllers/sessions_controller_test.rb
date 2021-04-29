@@ -36,7 +36,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   test 'should return to login page on bad credentials' do
     post login_path, params: { session: { email: @user_two.email,
                                           password: @pw_one } }
-    assert_equal 'Invalid email/password combo', flash[:danger]
+    assert_equal 'Invalid email password combo', flash[:danger]
     assert session[:user_id].nil?
   end
 
