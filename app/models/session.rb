@@ -1,10 +1,6 @@
-
-  # frozen_string_literal: true
-
 require 'opentok'
 class Session < ApplicationRecord
   @opentok = OpenTok::OpenTok.new ENV['OPENTOK_API_KEY'], ENV['OPENTOK_API_SECRET']
-
 
   def self.create_or_load_session_id
     if Session.any?
@@ -35,4 +31,3 @@ class Session < ApplicationRecord
     @token = user_name == moderator_name ? @opentok.generate_token(session_id, { role: :moderator }) : @opentok.generate_token(session_id)
   end
 end
-
