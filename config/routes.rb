@@ -44,8 +44,7 @@ Rails.application.routes.draw do
   delete '/friendship', to: 'friendship#decline_friend'
   get '/result', to: 'friendship#result'
 
-  # delete this
-  resources :friend_reviews, :friendship, :reviews, :users, :events
+  resources :friendship, :reviews, :users, :events
 
   # Notifications controller's routes
   resources :notifications do

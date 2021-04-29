@@ -48,8 +48,8 @@
 
   </head>
   <body>
-    <%= render 'shared/header'%>
-    <div class = "primary-content">
+  <%= render 'shared/header'%>
+    <div class = "primary-content pb-3">
       <% flash.each do |message_type, message| %>
           <div class="alert alert-<%= message_type %>"><%= message %></div>
         <% end %>

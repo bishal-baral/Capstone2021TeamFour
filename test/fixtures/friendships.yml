@@ -2,6 +2,12 @@
 
 one:
   id: 1
-  sent_to: 216
-  sent_by: 217
+  sent_to_id: 216
+  sent_by_id: 217
+  status: true
+
+two:
+  id: 2
+  sent_to_id: 217
+  sent_by_id: 216
   status: true

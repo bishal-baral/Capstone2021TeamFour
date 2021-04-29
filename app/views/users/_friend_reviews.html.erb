@@ -1,12 +1,10 @@
-<div>
-<% if @reviews.empty? %>
-  <h3 style="color: red;">None. Try something else!</h3>
-<% else %>
-  <%@reviews.each do |review| %>
-    <div class="container pb-2">
+
+  <%@reviews.where(user_id: @user.id).each do |review| %>
+    <div class="container">
       <div class="row basic-content-card mt-3">
         <div class="col-auto ">
           <% if review.cover.attached? %>
+             <%= image_tag (url_for review.cover.variant(resize_to_limit: [225, 150]).processed) %>
           <% end %>
         </div>
         <div class="col">
@@ -16,7 +14,7 @@
             <% else %>
               <span style="color:red;"> doesn't recommend </span>
             <% end %>
-          <%= review.media %> 
+          <%= review.media %>
           <% if review.tags.length > 0 %>
             <div class="row">
               <% review.tags.each do |tag| %>
@@ -35,5 +33,3 @@
       </div>
     </div>
   <%end%>
-  <% end %>
-</div>

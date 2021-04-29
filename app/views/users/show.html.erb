@@ -8,7 +8,7 @@
       <div class="container">
         <div class="row justify-content-between">
           <div class="col-md-auto ">
-          Share your reviews or host an event to watch something together!
+            Share your reviews or host an event to watch something together!
             <h3>
               <%= link_to create_event_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-light btn-lg'} do %>
 
@@ -44,14 +44,20 @@
             <%= render 'shared/search_form' %>
           </div>
         </div>
-        <div class="container home-content-reviews  pt-3">
-          <div class="row justify-content-center ">
+        <div class="container pt-3">
+          <div class="row  home-content-reviews ">  
+          <div class="col">
+            <div id="review-search">
+          </div>
+            </div>
+          </div>
+          <div class="row justify-content-center home-content-reviews   pt-3">
             <h2> Here is what your friends reviewed!</h2>
           </div>
-
           <%= render 'shared/review_list' %>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>

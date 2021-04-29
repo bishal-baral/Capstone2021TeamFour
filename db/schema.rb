@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_24_013127) do
+ActiveRecord::Schema.define(version: 2021_04_29_014833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,11 +48,6 @@ ActiveRecord::Schema.define(version: 2021_04_24_013127) do
     t.datetime "scheduled_time"
     t.string "title"
     t.time "duration"
-  end
-
-  create_table "friend_reviews", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "review_id"
   end
 
   create_table "friendships", force: :cascade do |t|
