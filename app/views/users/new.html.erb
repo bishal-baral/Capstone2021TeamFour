@@ -18,8 +18,11 @@
 
       <%= f.label :password_confirmation, "Confirm Password" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <br>
+      <%= f.submit "Catch You On The Flippity Flip", class: "btn btn-md btn-warning " %>
+          <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
+       <p>Already a user? <%= link_to "Log In now!", login_path %></p>
 
-      <%= f.submit "Catch You On The Flippity Flip", class: "btn btn-lg btn-primary btn-block" %>
     <% end %>
   </div>
 </div>

@@ -10,6 +10,7 @@
 // font-family: 'Mate', serif;
 // font-family: 'Metal Mania', cursive;
 // font-family: 'Questrial', sans-serif;
+//font-family: 'Special Elite', cursive;
 
 $primary-color: #ef6400;
 $secondary-color: #02224b;
@@ -17,6 +18,7 @@ $tertiary-color: #b54300;
 $quaternary-color: #eeeeee;
 
 $nav-font: "Euphoria Script", cursive;
+$special-font: "Special Elite", cursive;
 $sidebar-font: "Metal Mania", cursive;
 $primary-sans-serif: "Questrial", sans-serif;
 $primary-serif: "Mate", serif;
@@ -24,8 +26,10 @@ $primary-serif: "Mate", serif;
 html,
 body {
   height: 100%;
+  width: 100%;
   font-size: 1rem;
   font-family: $primary-serif !important;
+  overflow-x: hidden;
 }
 
 /*top section, home page*/
@@ -41,14 +45,30 @@ body {
   );
 }
 
-.page-head {
+.home-head {
   // text-align: center;
   // margin-top: 4rem;
   font-size: 1.25rem;
   color: white;
-  font-family: "Montserrat", sans-serif;
+  font-family: $primary-sans-serif;
   height: 100%;
+
+  h1 {
+    font-family: $special-font;
+  }
 }
+.home-body {
+  width: 100%;
+  h1 {
+    font-size: 60px;
+    font-family: $nav-font;
+  }
+
+  p {
+    font-size: 20px;
+  }
+}
+
 .navbar {
   height: 80px;
   margin-bottom: 0px !important;
@@ -59,23 +79,67 @@ nav {
   border-color: white;
 }
 
-.my-row {
-  // display: inline-block !important;
-  height: 80vh;
-}
-
 .inline-block {
   display: inline-block !important;
 }
 
-.first-container {
-  position: relative;
+.section-container {
+  height: 50vh;
 }
 
-.initial-svg {
-  position: absolute;
+.landing-svg-0 {
   bottom: 0;
 }
+.personal-opinions {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 30px;
+  border-radius: 5px;
+}
+
+/*recommend section, home page*/
+.section-recommend-1 {
+  position: relative;
+  background-color: $secondary-color;
+  color: white;
+  height: 85vh;
+}
+
+.section-recommend-2 {
+  position: relative;
+  background-color: white;
+  color: $secondary-color;
+  height: 90vh;
+}
+
+.section-recommend-3 {
+  position: relative;
+  background-color: #273036;
+  color: white;
+  height: 90vh;
+}
+
+.section-recommend-4 {
+  position: relative;
+  background-color: white;
+  color: black;
+  height: 85vh;
+}
+
+.landing-svg-1 {
+  bottom: 0;
+  position: absolute;
+}
+
+.landing-svg-2 {
+  bottom: 0;
+  position: absolute;
+}
+
+.landing-svg-3 {
+  bottom: 0;
+  position: absolute;
+}
+
 .navbar-custom {
   background-color: $secondary-color;
 }
@@ -106,22 +170,10 @@ nav {
   border: solid white !important;
   background-color: whitesmoke !important;
 }
-// .btn-default:active {
-//   background-color: black !important;
-// }
+
 .btn-default:hover {
   color: white !important;
   background-color: black !important;
-}
-// }
-// .btn-default:focus {
-//   /*formatting goes here*/
-// }
-
-/*recommend section, home page*/
-.section-recommend {
-  height: 100vh;
-  background-color: $secondary-color;
 }
 
 .primary-content {
@@ -257,6 +309,11 @@ input {
 
 .my-nav-text {
   display: none;
+}
+
+.my-col {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .block {
