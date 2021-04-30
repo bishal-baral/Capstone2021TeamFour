@@ -25,11 +25,11 @@ export function setButtonDisplay(element) {
 export function formatChatMsg(message) {
   var message_arr;
   message_arr = message.split(" ").map(function (word) {
-    if (word.match(/(?:\:)\b(\w*)\b(?=\:)/g)) {
-      return;
-    } else {
-      return word;
-    }
+    // if (word.match(/(?:\:)\b(\w*)\b(?=\:)/g)) {
+    //   return;
+    // } else {
+    return word;
+    // }
   });
   message = message_arr.join(" ");
   return `${name}: ${message}`;

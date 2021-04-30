@@ -78,7 +78,7 @@ class EventsController < ApplicationController
     @api_secret =  ENV["OPENTOK_API_SECRET"] #we'll add them later
     @session_id = Session.create_or_load_session_id
     @moderator_name = current_user.username
-    @name ||= params[:name]
+    @name ||=  current_user.username
     @token = Session.create_token(@name, @moderator_name, @session_id)
   end
 
@@ -87,14 +87,14 @@ class EventsController < ApplicationController
   end
 
   def name
-    @name = name_params[:name]
+    @name =  current_user.username
     @event_id = params[:event_id]
     redirect_to party_url(event_id: @event_id  ,name: @name)
   end
 
   def index; 
     @event_id = params[:event_id]
-    @name = name_params[:name]
+    @name =  current_user.username
   end
 
   def chat; end
@@ -102,7 +102,7 @@ class EventsController < ApplicationController
   def screenshare
     @darkmode = 'dark'
     @event_id = params[:event_id]
-    @name = name_params[:name]
+    @name = current_user.username
   end
 
   def webhook; end
@@ -110,11 +110,11 @@ class EventsController < ApplicationController
   private
 
   def name_params
-    params.permit(:name, :password, :authenticity_token, :commit)
+    params.permit(:authenticity_token, :commit)
   end
 
 
-    def event_params
-      params.require(:event).permit(:title, :scheduled_time, :attendees, :duration)
-    end
+  def event_params
+    params.require(:event).permit(:title, :scheduled_time, :attendees, :duration)
+  end
 end
