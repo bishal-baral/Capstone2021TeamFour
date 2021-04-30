@@ -1,5 +1,3 @@
-// const emoji = require("node-emoji");
-
 export function screenshareMode(session, mode) {
   if (mode == "on") {
     window.location = "/screenshare?name=" + name;
@@ -28,7 +26,6 @@ export function formatChatMsg(message) {
   var message_arr;
   message_arr = message.split(" ").map(function (word) {
     if (word.match(/(?:\:)\b(\w*)\b(?=\:)/g)) {
-      // return (word = emoji.get(word));
       return;
     } else {
       return word;

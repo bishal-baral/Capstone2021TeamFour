@@ -8,7 +8,6 @@
 //= require popper.min
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB.js
-
 //= require moment
 //= require bs4-datetime-picker
 

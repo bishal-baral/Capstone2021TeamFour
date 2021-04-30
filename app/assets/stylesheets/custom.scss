@@ -1,6 +1,3 @@
-// @import "bootstrap-sprockets";
-// @import "bootstrap";
-
 :root {
   --main: #343a40;
   --txt-alt: white;
@@ -11,51 +8,6 @@
   --chat-mine: orange;
   --chat-theirs: green;
 }
-
-// // html {
-// //   // box-sizing: border-box;
-// //   height: 100%;
-// // }
-
-// // *,
-// // *::before,
-// // *::after {
-// //   box-sizing: inherit;
-// //   margin: 0;
-// //   padding: 0;
-// // }
-
-// // body {
-// //   height: 100%;
-// //   // display: flex;
-// //   // flex-direction: column;
-// //   background-color: var(--background);
-// //   background-image: var(--bgImage);
-// //   // overflow: hidden;
-// // }
-
-// main {
-//   flex: 1;
-//   display: flex;
-//   position: relative;
-// }
-
-// input {
-//   font-size: inherit;
-//   padding: 0.5em;
-//   border-radius: 4px;
-//   border: 1px solid currentColor;
-// }
-
-// button,
-// input[type="submit"] {
-//   font-size: inherit;
-//   padding: 0.5em;
-//   border: 0;
-//   background-color: var(--main);
-//   color: var(--txt-alt);
-//   border-radius: 4px;
-// }
 
 .event-header {
   background-color: var(--main);
@@ -222,7 +174,7 @@
 }
 
 .friend-list {
-  max-width: 300px
+  max-width: 300px;
 }
 
 #selector {
