@@ -37,9 +37,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should be able to sign up' do
     post signup_path, params: { user: { username: @username,
-                                      email: @email,
-                                      password: @pw,
-                                      password_confirmation: @pw } }
+                                        email: @email,
+                                        password: @pw,
+                                        password_confirmation: @pw } }
     @user = User.find_by(username: @username)
     assert_not_nil @user
     assert_equal session[:user_id], @user.id
@@ -47,26 +47,26 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'don\'t sign up if passwords missmatch' do
     post signup_path, params: { user: { username: @username,
-                                      email: @email,
-                                      password: 'foobarbaz',
-                                      password_confirmation: @pw } }
+                                        email: @email,
+                                        password: 'foobarbaz',
+                                        password_confirmation: @pw } }
     assert_nil User.find_by(username: @username)
   end
 
   test 'don\'t sign up if email already exists' do
     post signup_path, params: { user: { username: @username,
-                                      email: @other_user.email,
-                                      password: @pw,
-                                      password_confirmation: @pw } }
+                                        email: @other_user.email,
+                                        password: @pw,
+                                        password_confirmation: @pw } }
     assert_nil User.find_by(username: @username)
   end
 
   # Profile tests
   test 'should show user profile' do
     post signup_path, params: { user: { username: @username,
-                                      email: @email,
-                                      password: @pw,
-                                      password_confirmation: @pw } }
+                                        email: @email,
+                                        password: @pw,
+                                        password_confirmation: @pw } }
     @user = User.find_by(username: @username)
     get profile_path
     assert_response :success
