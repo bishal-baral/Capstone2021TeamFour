@@ -4,6 +4,6 @@ class CreateTags < ActiveRecord::Migration[6.1]
       t.string :category
       t.string :name
     end
-    add_index :tags, [:category, :name], unique: true
+    add_index :tags, %i[category name], unique: true
   end
 end
