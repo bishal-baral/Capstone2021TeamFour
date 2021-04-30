@@ -14,7 +14,6 @@ class EventsController < ApplicationController
     event_invitees_map = {}
     #Map to hold event => User array
     @users = {}
-
     ## The following part could probably be improved by making the database better
     #Iterate through the events
     @event.each do |event|
@@ -23,7 +22,6 @@ class EventsController < ApplicationController
       # Add the invitees aray to the Map
       event_invitees_map[event] = invitees
     end
-
     # Iterate through the events_invitees_map to get the Individual invitees
     event_invitees_map.each do |event, invitees|
       # Array to hold users for the specific events.
@@ -36,7 +34,6 @@ class EventsController < ApplicationController
       # Add all the users of the event as User to the @users array
       @users[event] = users_array
     end
-
     @invited_events = []
     @invited_events_id = Invitee.where(user_id: current_user.id)
     @invited_events_id.each do |invitee|
@@ -58,10 +55,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     scheduled_time = Time.strptime(event_params[:scheduled_time].to_s,"%m/%d/%Y %I:%M %p ")
     @event.scheduled_time = Time.zone.utc_to_local(scheduled_time)
-
     @event.duration = DateTime.new(1000, 1, 1,  event_params["duration(4i)"].to_i, event_params["duration(5i)"].to_i)
-
-
     # add something about session's user here
     @event.user_id = current_user.id
     if !@event.save
@@ -74,11 +68,7 @@ class EventsController < ApplicationController
       Invitee.create(user_id: invited_id, event_id: @event.id)
       @user = User.find_by(id: invited_id)
       Notification.create(recipient: @user, actor: current_user, action: "created", notifiable: @event)
-
     end
-
-   
-
     flash[:success] = "Event created"
     redirect_to '/events'
   end
@@ -88,7 +78,7 @@ class EventsController < ApplicationController
     @api_secret =  ENV["OPENTOK_API_SECRET"] #we'll add them later
     @session_id = Session.create_or_load_session_id
     @moderator_name = current_user.username
-    @name ||= params[:name]
+    @name ||=  current_user.username
     @token = Session.create_token(@name, @moderator_name, @session_id)
   end
 
@@ -97,14 +87,14 @@ class EventsController < ApplicationController
   end
 
   def name
-    @name = name_params[:name]
+    @name =  current_user.username
     @event_id = params[:event_id]
     redirect_to party_url(event_id: @event_id  ,name: @name)
   end
 
   def index; 
     @event_id = params[:event_id]
-    @name = name_params[:name]
+    @name =  current_user.username
   end
 
   def chat; end
@@ -112,23 +102,19 @@ class EventsController < ApplicationController
   def screenshare
     @darkmode = 'dark'
     @event_id = params[:event_id]
-    @name = name_params[:name]
+    @name = current_user.username
   end
-
-  # def leave_event
-  #   redirect_to events_path
-  # end
 
   def webhook; end
 
   private
 
   def name_params
-    params.permit(:name, :password, :authenticity_token, :commit)
+    params.permit(:authenticity_token, :commit)
   end
 
 
-    def event_params
-      params.require(:event).permit(:title, :scheduled_time, :attendees, :duration)
-    end
+  def event_params
+    params.require(:event).permit(:title, :scheduled_time, :attendees, :duration)
+  end
 end

@@ -29,8 +29,6 @@ if (window.location.pathname == "/party") {
           window.location = "/screenshare?name=" + name;
         }
       });
-
-      // Party.get_session(session);
     }
   });
 }
