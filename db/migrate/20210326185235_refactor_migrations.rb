@@ -37,6 +37,5 @@ class RefactorMigrations < ActiveRecord::Migration[6.1]
 
     add_foreign_key 'friendships', 'users', column: 'sent_by_id'
     add_foreign_key 'friendships', 'users', column: 'sent_to_id'
-    add_index :friendships, %i[sent_by_id sent_to_id], unique: true
   end
 end
