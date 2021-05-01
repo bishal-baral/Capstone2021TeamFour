@@ -13,7 +13,7 @@
               <% else %>
                 <ol>
                   <% @friends.each do |friend| %>
-                      <li><%= link_to friend.username + " -" + friend.code.to_s, friend_profile_path( user_id:friend.id), method: :post%></li>
+                      <li><%= link_to friend.username + " #" + friend.code.to_s, friend_profile_path( user_id:friend.id), method: :post%></li>
                     <% end %>
                 </ol>
               <% end %>

@@ -15,3 +15,7 @@ end
 def log_in(email, password)
   post login_path, params: { session: { email: email, password: password } }
 end
+
+def log_out
+  get logout_path
+end
