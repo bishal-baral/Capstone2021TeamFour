@@ -7,15 +7,15 @@ class EventsController < ApplicationController
 
   def show
     @new_event = Event.new
-    @friends = current_user.friends 
+    @friends = current_user.friends
     @all_users = User.all
     @event = Event.where(user_id: current_user.id)
-    #Map to hold event => Invitee array
+    # Map to hold event => Invitee array
     event_invitees_map = {}
-    #Map to hold event => User array
+    # Map to hold event => User array
     @users = {}
     ## The following part could probably be improved by making the database better
-    #Iterate through the events
+    # Iterate through the events
     @event.each do |event|
       # Find all the invites of the particular event
       invitees = Invitee.where(event_id: event.id)
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
     @invited_events_id = Invitee.where(user_id: current_user.id)
     @invited_events_id.each do |invitee|
       @invited_events << Event.find_by(id: invitee.event_id)
-    end  
+    end
   end
 
   def new
@@ -51,15 +51,14 @@ class EventsController < ApplicationController
   end
 
   def create
-    
     @event = Event.new(event_params)
-    scheduled_time = Time.strptime(event_params[:scheduled_time].to_s,"%m/%d/%Y %I:%M %p ")
+    scheduled_time = Time.strptime(event_params[:scheduled_time].to_s,'%m/%d/%Y %I:%M %p ')
     @event.scheduled_time = Time.zone.utc_to_local(scheduled_time)
-    @event.duration = DateTime.new(1000, 1, 1,  event_params["duration(4i)"].to_i, event_params["duration(5i)"].to_i)
+    @event.duration = DateTime.new(1000, 1, 1,  event_params['duration(4i)'].to_i, event_params['duration(5i)'].to_i)
     # add something about session's user here
     @event.user_id = current_user.id
-    if !@event.save
-      flash[:danger] = "Event creation failed"
+    unless @event.save
+      flash[:danger] = 'Event creation failed'
       render 'new'
     end
     # Add Invitations to the invitee table
@@ -67,15 +66,15 @@ class EventsController < ApplicationController
     invitees.each do |invited_id| 
       Invitee.create(user_id: invited_id, event_id: @event.id)
       @user = User.find_by(id: invited_id)
-      Notification.create(recipient: @user, actor: current_user, action: "created", notifiable: @event)
+      Notification.create(recipient: @user, actor: current_user, action: 'created', notifiable: @event)
     end
-    flash[:success] = "Event created"
+    flash[:success] = 'Event created'
     redirect_to '/events'
   end
   
   def set_opentok_vars()
-    @api_key = ENV["OPENTOK_API_KEY"]
-    @api_secret =  ENV["OPENTOK_API_SECRET"] #we'll add them later
+    @api_key = ENV['OPENTOK_API_KEY']
+    @api_secret =  ENV['OPENTOK_API_SECRET'] # we'll add them later
     @session_id = Session.create_or_load_session_id
     @moderator_name = current_user.username
     @name ||=  current_user.username
@@ -112,7 +111,6 @@ class EventsController < ApplicationController
   def name_params
     params.permit(:authenticity_token, :commit)
   end
-
 
   def event_params
     params.require(:event).permit(:title, :scheduled_time, :attendees, :duration)

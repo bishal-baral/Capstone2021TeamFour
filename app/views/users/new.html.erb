@@ -1,11 +1,10 @@
-<% provide(:title, "Sign Up") %>
-
+<% provide(:title, 'Sign Up') %>
 
 <div class="row sign-in">
   <div class="col-md col-md-offset-3">
-    <%= form_with(model: @user, local: true, class: "form-signin") do |f| %>
-    <%= render 'shared/error_messages'%>
-    <h1 class="h3 mb-3 font-weight-normal">Please Sign Up!</h1>
+    <%= form_with(model: @user, local: true, class: 'form-signin') do |f| %>
+      <%= render 'shared/error_messages'%>
+      <h1 class="h3 mb-3 font-weight-normal">Please Sign Up!</h1>
 
       <%= f.label :username %>
       <%= f.text_field :username, class: 'form-control' %>
@@ -16,13 +15,12 @@
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "Confirm Password" %>
+      <%= f.label :password_confirmation, 'Confirm Password' %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
       <br>
       <%= f.submit "Catch You On The Flippity Flip", class: "btn btn-md btn-warning " %>
-          <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
-       <p>Already a user? <%= link_to "Log In now!", login_path %></p>
-
+      <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
+      <p>Already a user? <%= link_to 'Log In now!', login_path %></p>
     <% end %>
   </div>
 </div>

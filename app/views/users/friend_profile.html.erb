@@ -1,33 +1,30 @@
-
-
-<% provide(:title, "Friend Profile") %>
+<% provide(:title, 'Friend Profile') %>
 <div class="container basic-content">
   <div class="row">
-      <div class="container">
-        <h1 class="text-center "><%=@user.username%>'s Profile</h1>
-        <div class="row justify-content-between">
-          <div class="col-md-auto ">
+    <div class="container">
+      <h1 class="text-center "><%=@user.username%>'s Profile</h1>
+      <div class="row justify-content-between">
+        <div class="col-md-auto ">
           <div id="img">
-              <% if @user.avatar.attached? %>
-                <%= image_tag (url_for @user.avatar.variant(resize_to_limit: [225, 225]).processed) %>
-              <% end %> 
-            </div>
-          </div>
-          <div class="col-md-3 mr-4 basic-content-card">
-              <h2>Friends</h2>
-              <ol>
-                <%@user.friends.each do |friend| %>
-                  <li><%= friend.username%></li>
-                <%end %>
-              </ol>    
+            <% if @user.avatar.attached? %>
+              <%= image_tag (url_for @user.avatar.variant(resize_to_limit: [225, 225]).processed) %>
+            <% end %> 
           </div>
         </div>
-        <div class="container home-content-reviews mt-3">
-          <div class="row justify-content-center ">
-            <h2> Here is what you reviewed!</h2>
-          </div>
-            <%= render 'friend_reviews' %>
+        <div class="col-md-3 mr-4 basic-content-card">
+          <h2>Friends</h2>
+          <ol>
+            <% @user.friends.each do |friend| %>
+              <li><%= friend.username%></li>
+            <% end %>
+          </ol>    
         </div>
+      </div>
+      <div class="container home-content-reviews mt-3">
+        <div class="row justify-content-center ">
+          <h2> Here is what you reviewed!</h2>
+        </div>
+        <%= render 'friend_reviews' %>
       </div>
     </div>
   </div>
