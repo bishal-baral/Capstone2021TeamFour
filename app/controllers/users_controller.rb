@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET home action. Home page for a user, 
   def show
     @new_event = Event.new
     @friends = current_user.friends
