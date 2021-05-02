@@ -2,74 +2,77 @@
 
 <div class="container basic-content">
   <div class="row">
-      <div class="container">
-        <h1 class="text-center pd-2">Your Friendship!</h1>
-        <div class="row d-flex align-items-start">
-          <div class="col-md-8 ">
-            <div class="basic-content-card pl-2 ">
-              <h3> <b> Friend's List </b> <h3>
-              <% if@friends.first.nil? %>
-                <h4>No friends at this moment! </h4>
-              <% else %>
-                <ol>
-                  <% @friends.each do |friend| %>
-                      <li><%= link_to friend.username + " -" + friend.code.to_s, friend_profile_path( user_id:friend.id), method: :post%></li>
-                    <% end %>
-                </ol>
-              <% end %>
-            </div>
-            
-            <div class="basic-content-card pl-2 mt-3">
-              <h3><b> Friend Requests </b> <h3>
-              <% if @friend_requests.first.nil? %>
-                <h4>No friend requests and this moment! </h4>
-              <% else %>
-                <ol>
-                  <% @friend_requests.each do |friend_request| %>
-                    <li> <%= friend_request.username %>
-                      <%= friend_request.code %>
-                      <%= button_to "Accept", {:controller => "friendship", :action => "accept_friend", :user_id => friend_request.id} ,:method=>:put %> 
-                      <%= button_to "Decline", {:controller => "friendship", :action => "decline_friend", :user_id => friend_request.id} ,:method=>:delete %> </li>
-                    <% end %>
-                </ol>
-               <% end %>
-            </div>
-
-            <div class="basic-content-card pl-2 mt-3">
-              <h3> <b> Pending Requests </b> </h3>
-                <% if@pending_requests.first.nil? %>
-                  <h4>No pending requests at this moment! </h4>
-                <% else %>
-                <ol>
-                  <% @pending_requests.each do |pending_request| %>
-                    <li><%= pending_request.username %>
-                    <%= pending_request.code %> </li>
-                  <% end %>
+    <div class="container">
+      <h1 class="text-center pd-2">Your Friendship!</h1>
+      <div class="row d-flex align-items-start">
+        <div class="col-md-8 ">
+          <div class="basic-content-card pl-2 ">
+            <h3> <b> Friend's List </b> <h3>
+            <% if@friends.first.nil? %>
+              <h4>No friends at this moment! </h4>
+            <% else %>
+              <ol>
+                <% @friends.each do |friend| %>
+                  <li>
+                    <%= link_to friend.username + " #" + friend.code.to_s, friend_profile_path(user_id:friend.id), method: :post%>
+                  </li>
                 <% end %>
               </ol>
-            </div>
+          <% end %>
           </div>
-
-          <div class="col-sm-3 basic-content-card ml-4 ">
-            <span> Your Code:- <%= current_user.code %></span>
-            <h2>Add Friends!</h2>
-            <%= form_tag(result_path, :method => "get", :remote => true) do %>  
-              <div class="input-group">  
-                <%= search_field_tag :username, params[:username], placeholder: "Username", class: "form-control" %> 
-                <%= search_field_tag :code, params[:code], placeholder: "Code", class: "form-control" %> 
-                <div class="input-group-btn">  
-                  <%= button_tag "", class: "btn btn-info fa fa-search"%>  
-                </div>  
-              </div>  
+            
+          <div class="basic-content-card pl-2 mt-3">
+            <h3><b> Friend Requests </b> <h3>
+            <% if @friend_requests.first.nil? %>
+              <h4>No friend requests and this moment! </h4>
+            <% else %>
+              <ol>
+                <% @friend_requests.each do |friend_request| %>
+                  <li> 
+                    <%= friend_request.username %>
+                    <%= friend_request.code %>
+                    <%= button_to "Accept", { controller: 'friendship', action: 'accept_friend', user_id: friend_request.id }, method: :put %> 
+                    <%= button_to "Decline", { controller: 'friendship', action: 'decline_friend', user_id: friend_request.id }, method: :delete %> 
+                  </li>
+                <% end %>
+              </ol>
             <% end %>
-            <div id="search-result"> 
+          </div>
+          <div class="basic-content-card pl-2 mt-3">
+            <h3> <b> Pending Requests </b> </h3>
+            <% if@pending_requests.first.nil? %>
+              <h4>No pending requests at this moment! </h4>
+            <% else %>
+              <ol>
+                <% @pending_requests.each do |pending_request| %>
+                  <li>
+                    <%= pending_request.username %>
+                    <%= pending_request.code %>
+                  </li>
+                <% end %>
+              </ol>
+            <% end %>
+          </div>
+        </div>
 
-            </div>
+        <div class="col-sm-3 basic-content-card ml-4 ">
+          <span> Your Code:# <%= current_user.code %></span>
+          <h2>Add Friends!</h2>
+          <%= form_tag(result_path, method: 'get', remote: true) do %>  
+            <div class="input-group">  
+              <%= search_field_tag :username, params[:username], placeholder: 'Username', class: 'form-control' %> 
+              <%= search_field_tag :code, params[:code], placeholder: 'Code', class: 'form-control' %> 
+              <div class="input-group-btn">  
+                <%= button_tag '', class: 'btn btn-info fa fa-search' %>  
+              </div>  
+            </div>  
+          <% end %>
+          <div id="search-result"> 
           </div>
         </div>
       </div>
     </div>
-
+  </div>
 </div>
 
 

@@ -24,7 +24,7 @@
 
 <%= form_with(model: @new_review) do |f| %>
   <div class="modal-body">
-    <%= f.label :media%>
+    <%= f.label :media %>
     <%= f.text_field :media, class: "form-control" %>
 
     <%= f.label :content %>
@@ -32,8 +32,8 @@
 
     <div class="form-group">
       <div class="form-check">
-        <%= f.label :recommended , class: "form-check-label"%>
-        <%= f.check_box :recommended, class: "form-check-input" %>
+        <%= f.label :recommended , class: 'form-check-label'%>
+        <%= f.check_box :recommended, class: 'form-check-input' %>
       </div>
     </div>
 
@@ -44,8 +44,7 @@
       <%= f.label :tag_name %>
       <%= f.text_field :tag_1_name %>
 
-      <div id="tag-placeholder-div">
-      </div>
+      <div id="tag-placeholder-div"></div>
       
       <button type="button" id="tag-btn" class="btn btn-primary" value="2" onclick="addTag();">Add Tag</button>
     </div>
@@ -55,7 +54,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <%= f.submit "Publish Review", class: "btn btn-primary" %>
+    <%= f.submit 'Publish Review', class: 'btn btn-primary' %>
   </div>
 <% end %>
 

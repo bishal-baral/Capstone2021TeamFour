@@ -1,40 +1,39 @@
 <% provide(:title, "All Events") %>
-      <div class="container basic-content ">
-      <div class="container">
-          <h1 class="text-center ">Events!</h1>
-          <div class="row">
-          <div class="col">
-          
-              <h3>
-                <%= link_to create_event_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-light btn-lg'} do %>
-                  <button class="button-hover" title="Invite friends and WEVIEW!">
-                    <%= fa_icon "users", text: "Create Event" %> 
-                  </button>
-                <% end %>
-              </h3>
-              <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                  <%= render 'new' %>
-                  </div> 
-                </div>
-              </div>
-              </div></div></div>
-      
-          <div class="row ">
-            <div class="col-6">
-              <div class="container pt-3">
-                  <h2> Your events</h2>
-                  <%= render 'your_event_list' %>
-              </div>
-            </div>
-            <div class="col-6 friend-event-col"  >
-              <div class="container pt-3">
-                  <h2> Friends events</h2>
-                  <%= render 'friend_event_list' %>
-              </div>
-            </div>
+<div class="container basic-content ">
+  <div class="container">
+    <h1 class="text-center ">Events!</h1>
+    <div class="row">
+      <div class="col">
+        <h3>
+          <%= link_to create_event_path, {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-light btn-lg' } do %>
+            <button class="button-hover" title="Invite friends and WEVIEW!">
+              <%= fa_icon "users", text: "Create Event" %> 
+            </button>
+          <% end %>
+        </h3>
+        <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <%= render 'new' %>
+            </div> 
           </div>
-
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="row ">
+    <div class="col-6">
+      <div class="container pt-3">
+        <h2> Your events</h2>
+        <%= render 'your_event_list' %>
+      </div>
+    </div>
+    <div class="col-6 friend-event-col">
+      <div class="container pt-3">
+        <h2> Friends events</h2>
+        <%= render 'friend_event_list' %>
+      </div>
+    </div>
+  </div>
+</div>
 

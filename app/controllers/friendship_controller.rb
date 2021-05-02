@@ -1,92 +1,67 @@
-class FriendshipController < ApplicationController
+# frozen_string_literal: true
 
+# The friendship controller manages users' friend page and friend requests
+class FriendshipController < ApplicationController
+  # GET Friendship action. The main page for friendship
   def index
     @friends = current_user.friends
     @pending_requests = current_user.pending_requests
     @friend_requests = current_user.received_requests
   end
 
+  # GET Result action. Renders search result for potential friends
   def result
-    if params[:username].blank?
-      flash[:danger] = "Please enter a username"
-      redirect_to friendship_path 
-      return
-    end 
-
-    if params[:code].blank?
-      flash[:danger] = "Please enter user code"
-      redirect_to friendship_path 
-      return
-    end
-
     @user = User.find_by(username: params[:username], code: params[:code])
     respond_to do |format|
-      # format.html
       format.js { render layout: false }
     end
   end
 
+  # POST Friendship action. Allows users to send valid friend requests
   def create
-    # Disallow the ability to send yourself a friend request
-    # For some reason the ids are not the same tpye so it doesn't work if we don't convert both of them "s"
-    if current_user.id.to_s == params[:user_id].to_s
-      flash[:danger] = "You can't send a request to yourself"
-      redirect_to friendship_path
-      return
-
-    elsif friend_request_sent?(User.find(params[:user_id]))
-    # Disallow the ability to send friend request more than once to same person
-      flash[:warning] = "You can't send a request twice"
-      redirect_to friendship_path
-      return
-
-    # Disallow the ability to send friend request to someone who already sent you one
-    elsif friend_request_recieved?(User.find(params[:user_id]))
-      flash[:warning] = "You already have a request from this person"
+    message = can_friend_check current_user.id, params[:user_id].to_i
+    unless message.nil?
+      flash[:warning] = message
       redirect_to friendship_path
       return
     end
 
-    @user = User.find(params[:user_id])
     @friendship = current_user.friend_sent.build(sent_to_id: params[:user_id])
 
-    begin
-      @friendship.save
-    rescue => exception
-      flash[:danger] = 'Friend Request Failed!'
-      redirect_to friendship_path
-      return
-    end
+    Notification.create(recipient: User.find(params[:user_id]),
+                        actor: current_user,
+                        action: 'sent',
+                        notifiable: @friendship)
 
-    current_user.friends.each do |friend|
-      Notification.create(recipient: @user, actor: current_user, action: "sent", notifiable: @friendship)
-    end
-
-    flash[:success] = 'Friend Request Sent!'
-    redirect_back(fallback_location: root_path)
+    flash[:success] = 'Friend request sent!'
+    redirect_to friendship_path
   end
 
+  # PUT Friendship action. Allows users accept friend requests
   def accept_friend
     @friendship = Friendship.find_by(sent_by_id: params[:user_id], sent_to_id: current_user.id, status: false)
-      return unless @friendship # return if no record is found
-
-    @friendship.status = true
-    if @friendship.save
-      flash[:success] = 'Friend Request Accepted!'
-      @friendship2 = current_user.friend_sent.build(sent_to_id: params[:user_id], status: true)
-      @friendship2.save
+    if !@friendship.nil?
+      @friendship.status = true
+      if @friendship.save
+        flash[:success] = 'Friend request accepted!'
+        @friendship2 = current_user.friend_sent.build(sent_to_id: params[:user_id], status: true)
+        @friendship2.save
+      end
     else
-      flash[:danger] = 'Friend Request could not be accepted!'
+      flash[:warning] = 'Friend request does not exist'
     end
-    redirect_back(fallback_location: root_path)
+    redirect_to friendship_path
   end
 
+  # DESTROY Friendship action. Allows users decline friend requests
   def decline_friend
     @friendship = Friendship.find_by(sent_by_id: params[:user_id], sent_to_id: current_user.id, status: false)
-    return unless @friendship # return if no record is found
-
-    @friendship.destroy
-    flash[:success] = 'Friend Request Declined!'
-    redirect_back(fallback_location: root_path)
+    if !@friendship.nil?
+      @friendship.destroy
+      flash[:success] = 'Friend request declined!'
+    else
+      flash[:warning] = 'Friend request does not exist'
+    end
+    redirect_to friendship_path
   end
 end
