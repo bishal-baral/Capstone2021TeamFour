@@ -1,44 +1,41 @@
 <% provide(:title, "Your Profile") %>
 <div class="container basic-content">
   <div class="row">
-
-      <div class="container">
-        <h1 class="text-center ">Your Profile!</h1>
-        <div class="row justify-content-between">
-          <div class="col-md-auto ">
+    <div class="container">
+      <h1 class="text-center ">Your Profile</h1>
+      <div class="row justify-content-between">
+        <div class="col-md-auto ">
           <div id="img">
-              <% if current_user.avatar.attached? %>
-                <%= image_tag (url_for current_user.avatar.variant(resize_to_limit: [225, 225]).processed) %>
-              <% end %> 
-            </div>
-            <div id="selector">
-              <%= form_for "avatar", url: "/upload_avatar", method: :post, remote: true do |f| %>
-                <%= f.file_field :avatar %>
-                <%= f.submit "Change avatar", class: "btn btn-primary" %>
-              <% end %>
-            </div>
+            <% if current_user.avatar.attached? %>
+              <%= image_tag (url_for current_user.avatar.variant(resize_to_limit: [225, 225]).processed) %>
+            <% end %> 
           </div>
-          <div class="col-md-3 mr-4 basic-content-card">
-              <h2>Friends</h2>
-              <ol>
-                <%current_user.friends.each do |friend| %>
-                  <li><%= link_to friend.username, friend_profile_path( user_id:friend.id), method: :post%></li>
-                <%end %>
-              </ol>    
+          <div id="selector">
+            <%= form_for "avatar", url: "/upload_avatar", method: :post, remote: true do |f| %>
+              <%= f.file_field :avatar %>
+              <%= f.submit "Change avatar", class: "btn btn-primary" %>
+            <% end %>
           </div>
         </div>
-        <div class="container home-content-reviews mt-3">
-          <div class="row justify-content-center ">
-            <h2> Here is what you reviewed!</h2>
-          </div>
-
-          <%= render 'your_reviews' %>
+        <div class="col-md-3 mr-4 basic-content-card">
+          <h2>Friends</h2>
+          <% if @current_user.friends.empty? %>
+            <h3 style="color: red;">No friends!</h3>
+            <% else %>
+          <ol>
+            <% current_user.friends.each do |friend| %>
+              <li><%= link_to friend.username, friend_profile_path( user_id:friend.id), method: :post%></li>
+            <%end %>
+          </ol>    
+          <% end %>
         </div>
       </div>
+      <div class="container home-content-reviews mt-3">
+        <div class="row justify-content-center ">
+          <h2> Here is what you reviewed!</h2>
+        </div>
+        <%= render 'your_reviews' %>
+      </div>
     </div>
-
+  </div>
 </div>
-
-
-
-

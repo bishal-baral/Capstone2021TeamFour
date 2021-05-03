@@ -3,91 +3,86 @@
   function openNav() {
     document.getElementById("left-sidebar").style.width = "160px";
     var iterate_class = document.getElementsByClassName("my-nav-text"); 
-    for(var i = 0; i <  iterate_class.length; i++){
-         iterate_class[i].style.visibility = "visible"; 
-         iterate_class[i].style.display = "inline"; 
-
-
+    for(var i = 0; i <  iterate_class.length; i++) {
+      iterate_class[i].style.visibility = "visible"; 
+      iterate_class[i].style.display = "inline"; 
     }
   }
-
   /* Set the width of the side navigation to 0 */
   function closeNav() {
     document.getElementById("left-sidebar").style.width = "60px";
     var iterate_class = document.getElementsByClassName("my-nav-text"); 
     for(var i = 0; i <  iterate_class.length; i++){
-         iterate_class[i].style.visibility = "hidden"; 
-         iterate_class[i].style.display = "none"; 
+      iterate_class[i].style.visibility = "hidden"; 
+      iterate_class[i].style.display = "none"; 
     }
-
   }
   </script>
   <% if logged_in? %>
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
       <div id="left-sidebar" class="sidenav closebtn" onmouseover="openNav()" onmouseleave="closeNav()">
-          <div class="menu">
-            <%= fa_icon "bars" %> 
-            <div class="my-nav-text"> Menu</div>
-          </div>
-          
-        <%= link_to home_path  do %>
-          <%= fa_icon "home" %> 
+        <div class="menu">
+          <%= fa_icon 'bars' %> 
+          <div class="my-nav-text"> Menu</div>
+        </div>
+        <%= link_to home_path do %>
+          <%= fa_icon 'home' %> 
           <div class="my-nav-text"> Home</div>
         <% end %>
-
         <%= link_to friendship_path  do %>
-          <%= fa_icon "fort-awesome " %> 
+          <%= fa_icon 'fort-awesome ' %> 
           <div class="my-nav-text"> Friendship</div>
         <% end %>
 
-        <%= link_to events_path  do %>
-          <%= fa_icon "play-circle" %> 
+        <%= link_to events_path do %>
+          <%= fa_icon 'play-circle' %> 
           <div class="my-nav-text"> Events</div>
         <% end %>
 
         <%= link_to profile_path  do %>
-          <%= fa_icon "id-card-o " %> 
+          <%= fa_icon 'id-card-o ' %> 
           <div class="my-nav-text"> Profile</div>
         <% end %>
 
         <%= link_to logout_path, {method: :delete} do %>
-          <%= fa_icon "sign-out" %> 
+          <%= fa_icon 'sign-out' %> 
           <div class="my-nav-text"> Log-out</div>
         <% end %>
       </div>
       <div class="container">
-       
-        <%= image_tag("weview-logo.png", style: 'height:5%; width:5%;', alt: "We-View Logo") %>
+        <%= image_tag('weview-logo.png', style: 'height:5%; width:5%;', alt: 'We-View Logo') %>
         <div class= "mx-auto">
-        <%= link_to "#{current_user.username}'s We-View", home_path, style: "margin-right: 60px;", class: "navbar-brand" %>
-      </div>
-      <li class="nav-item btn-group" data-behavior="notifications">
+          <%= link_to "#{current_user.username}'s We-View", home_path, style: "margin-right: 60px;", class: "navbar-brand" %>
+        </div>
+        <li class="nav-item btn-group" data-behavior="notifications">
           <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="color:white;">
-            <%= fa_icon "bell", style:"color:white;" %> <span data-behavior="unread-count" style="color:white;"></span>
+            <%= fa_icon 'bell', style:'color:white;' %>
+            <span data-behavior="unread-count" style="color:white;"></span>
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
           </div>
         </li>
+      </div>
     </nav>
   <%else%>
-  <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-    <div class="container">
-      <%= image_tag("weview-logo.png", style: 'height:5%; width:5%;', alt: "We-View Logo", class:"pr-1 mr-2") %>
-      <%= link_to "We-View", root_path, class:"navbar-brand"%>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse d-flex justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <%= link_to "Sign-up",  signup_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Log-in",  login_path, class: "nav-link"  %>
-          </li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+      <div class="container">
+        <%= image_tag('weview-logo.png', style: 'height:5%; width:5%;', alt: 'We-View Logo', class:'pr-1 mr-2') %>
+        <%= link_to 'We-View', root_path, class:'navbar-brand'%>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse d-flex justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <%= link_to 'Sign-up',  signup_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Log-in',  login_path, class: 'nav-link' %>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
   <%end%>
 </header>

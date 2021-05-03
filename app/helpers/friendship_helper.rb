@@ -1,19 +1,14 @@
 module FriendshipHelper
-
-  def friend_request_sent?(user)
-    current_user.friend_sent.exists?(sent_to_id: user.id, status: false)
-  end
-    
-  def friend_request_recieved?(user)
-    current_user.friend_request.exists?(sent_by_id: user.id, status: false)
-   end
-
-  def possible_friend?(user)
-    request_sent = current_user.friend_sent.exists?(sent_to_id: user.id)
-    request_received = current_user.friend_request.exists?(sent_by_id: user.id)
-      
-    return true if request_sent != request_received    
-    return true if request_sent == request_received && request_sent == true    
-    return false if request_sent == request_received && request_sent == false
+  def can_friend_check(user_one, user_two)
+    if user_one == user_two
+      message = 'You can\'t send a request to yourself'
+    elsif Friendship.find_by(sent_by_id: user_one, sent_to_id: user_two)&.status
+      message = 'You are already friends with this user'
+    elsif Friendship.exists?(sent_by_id: user_one, sent_to_id: user_two)
+      message = 'You can\'t send a request twice'
+    elsif Friendship.exists?(sent_to_id: user_one, sent_by_id: user_two)
+      message = 'You already have a request from this user'
+    end
+    message
   end
 end

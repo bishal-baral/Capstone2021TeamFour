@@ -1,41 +1,38 @@
-
-<% provide(:title, "Home") %>
+<% provide(:title, 'Home') %>
 
 <%# to avoid duplicate reviews from the same friend_id, friend_id's are turned into a set  %>
 <div class="container basic-content">
   <div class="row">
-    <div class="col-xl-auto">
+    <div class="col-12">
       <div class="container">
         <div class="row justify-content-between">
           <div class="col-md-auto ">
-            Share your reviews or host an event to watch something together!
+            Share your reviews or host an event to watch something together.
             <h3>
-              <%= link_to create_event_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-light btn-lg'} do %>
-
+              <%= link_to create_event_path, { remote: true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-light btn-lg' } do %>
                 <button class="button-hover" title="Invite friends and WEVIEW!">
-                  <%= fa_icon "users", text: "Create Event" %> 
+                  <%= fa_icon 'users', text: 'Create Event' %> 
                 </button>
               <% end %>
             </h3>
             <h3>
-              <%= link_to create_review_path , {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-1', class: 'btn btn-light btn-lg'} do %>
+              <%= link_to create_review_path, { remote: true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-1', class: 'btn btn-light btn-lg' } do %>
                 <button class="button-hover" title="Your two cents on anything you watched recently!">
-                  <%= fa_icon "share-square", text: "Post Review" %> 
+                  <%= fa_icon 'share-square', text: 'Post Review' %> 
                 </button>
               <% end %>
             </h3>
             <div id="modal-window-1" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                <%=render 'reviews/new'%>
+                  <%=render 'reviews/new'%>
                 </div>
               </div>
             </div>
-
             <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                <%= render 'events/new' %>
+                  <%= render 'events/new' %>
                 </div>
               </div>
             </div>
@@ -46,18 +43,17 @@
         </div>
         <div class="container pt-3">
           <div class="row  home-content-reviews ">  
-          <div class="col">
-            <div id="review-search">
-          </div>
+            <div class="col">
+              <div id="review-search">
+              </div>
             </div>
           </div>
           <div class="row justify-content-center home-content-reviews   pt-3">
-            <h2> Here is what your friends reviewed!</h2>
+            <h2> Here is what your friends reviewed.</h2>
           </div>
           <%= render 'shared/review_list' %>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>

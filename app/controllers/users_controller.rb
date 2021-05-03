@@ -20,12 +20,13 @@ class UsersController < ApplicationController
       reset_session
       log_in @user
       flash[:success] = 'Caught you on the flippity flip'
-      render 'profile'
+      redirect_to @user
     else
       render 'new'
     end
   end
 
+  # GET home action. Home page for a user, 
   def show
     @new_event = Event.new
     @friends = current_user.friends
@@ -35,20 +36,19 @@ class UsersController < ApplicationController
     @user.friends.each do |friend|
       temp_revs += friend.reviews
     end
-    @reviews = temp_revs.sort_by{ |r| r.post_date }.reverse
+    @reviews = temp_revs.sort_by(&:post_date).reverse
 
     respond_to do |format|
-      format.html 
-      format.js {render layout: false}
+      format.html
+      format.js { render layout: false }
     end
-
   end
 
   # POST search action. Same thing as show but filters the reviews
   def search
     @user = current_user
     temp_revs = []
-    if !params[:search_terms].nil?
+    unless params[:search_terms].nil?
       tags = tags_from_string(params[:search_terms])
       temp_revs = filter_reviews(temp_revs, tags)
     end

@@ -16,7 +16,6 @@ export default class Chat {
     let self = this;
     this.form.addEventListener("submit", function (event) {
       event.preventDefault();
-
       self.session.signal(
         {
           type: "msg",

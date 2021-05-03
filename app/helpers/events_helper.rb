@@ -23,7 +23,4 @@ module EventsHelper
     until_time =  Time.zone.utc_to_local(until_time(event))
     return now > until_time
   end
-
-
-
 end
