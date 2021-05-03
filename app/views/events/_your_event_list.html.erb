@@ -1,6 +1,6 @@
 <div class="container">
-  <% if @event.nil? %>
-    <h4>No Events Created!</h4>
+  <% if @event.empty? %>
+    <h4 style="color:red;">No Events Created!</h4>
   <% else %>
     <% @event.each do |event| %>
       <div class="row basic-content-card mt-3">
@@ -19,10 +19,10 @@
                                       name: current_user.username, method: :post}, 
                                     { style: "width: 20%;" } %> 
           <% elsif !event_has_started(event) &&  !event_has_ended(event) %>
-            <button> Event has not started yet  </button>
+            <h6 style= "color:purple;">Event has not started yet </h6> 
             <small>Come back in time</small>
           <% elsif event_has_started(event) &&  event_has_ended(event) %>
-            <button> Event has ended  </button>
+            <h6 style= "color:red;">Event has not started yet </h6> 
             <small>Please look out for more events in the future</small>
           <% end %>
         </div>

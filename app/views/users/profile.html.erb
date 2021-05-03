@@ -2,7 +2,7 @@
 <div class="container basic-content">
   <div class="row">
     <div class="container">
-      <h1 class="text-center ">Your Profile!</h1>
+      <h1 class="text-center ">Your Profile</h1>
       <div class="row justify-content-between">
         <div class="col-md-auto ">
           <div id="img">
@@ -19,11 +19,15 @@
         </div>
         <div class="col-md-3 mr-4 basic-content-card">
           <h2>Friends</h2>
+          <% if @current_user.friends.empty? %>
+            <h3 style="color: red;">No friends!</h3>
+            <% else %>
           <ol>
             <% current_user.friends.each do |friend| %>
               <li><%= link_to friend.username, friend_profile_path( user_id:friend.id), method: :post%></li>
             <%end %>
           </ol>    
+          <% end %>
         </div>
       </div>
       <div class="container home-content-reviews mt-3">

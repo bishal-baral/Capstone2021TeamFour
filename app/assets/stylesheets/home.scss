@@ -24,6 +24,7 @@ body {
   font-size: 1rem;
   font-family: $primary-serif !important;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 /*top section, home page*/
@@ -86,6 +87,18 @@ nav {
   background-color: rgba(255, 255, 255, 0.5);
   padding: 30px;
   border-radius: 5px;
+}
+
+#explore-button {
+  border-radius: 50px;
+  padding: 20px 20px;
+  font-family: $special-font;
+  box-shadow: 4px 0px 10px 5px rgba(0, 0, 0, 0.2);
+}
+#explore-button:hover {
+  background-color: $secondary-color;
+  color: $quaternary-color;
+  box-shadow: 4px 0px 30px 10px rgba(0, 0, 0, 0.44);
 }
 
 /*recommend section, home page*/
@@ -173,6 +186,7 @@ nav {
 }
 
 .basic-content {
+  height: 90vh;
   background-color: rgba(255, 255, 255, 0.7);
   border: solid $secondary-color;
   border-radius: 20px;
@@ -373,16 +387,16 @@ img {
     transform: rotate(0deg);
   }
   20% {
-    transform: rotateY(90deg) rotateZ(90deg);
+    transform: rotateY(90deg);
   }
   40% {
-    transform: rotateY(180deg) rotateZ(-90deg);
+    transform: rotateY(180deg);
   }
   60% {
-    transform: rotateY(270deg) rotateZ(90deg);
+    transform: rotateY(270deg);
   }
   80% {
-    transform: rotateY(360deg) rotateZ(-90deg);
+    transform: rotateY(360deg);
   }
 }
 

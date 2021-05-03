@@ -1,4 +1,6 @@
-<% if @reviews %>
+<% if @reviews.empty? %>
+    <h3 class= "text-center" style="color: red;">No reviews from you!</h3>
+  <% else %>
   <%@reviews.each do |review| %>
     <div class="container">
       <div class="row basic-content-card mt-3">
