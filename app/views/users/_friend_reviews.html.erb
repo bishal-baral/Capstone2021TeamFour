@@ -1,34 +1,43 @@
-<%@reviews.where(user_id: @user.id).each do |review| %>
-  <div class="container">
-    <div class="row basic-content-card mt-3">
-      <div class="col-auto ">
-        <% if review.cover.attached? %>
-          <%= image_tag (url_for review.cover.variant(resize_to_limit: [225, 150]).processed) %>
-        <% end %>
-      </div>
-      <div class="col">
-        <%= link_to review.user.username, friend_profile_path(user_id:review.user.id), method: :post%>
-        <% if review.recommended %>
-          <span style="color:green;"> recommends </span>
-        <% else %>
-          <span style="color:red;"> doesn't recommend </span>
-        <% end %>
-        <%= review.media %>
-        <% if review.tags.length > 0 %>
-          <div class="row">
-            <% review.tags.each do |tag| %>
-              <div class="d-inline-flex flex-row">
-                <div class="p-2"><%= tag.category %>: </div>
-                <div class="p-2 bd-highlight"><%= tag.name %> </div>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-        <p>
-          <%= review.content %>
-        </p>
-        <span style = "background-color:white;"> <%= review.post_date.to_date %> </span>
+<% if  @reviews.where(user_id: @user.id).empty?%>
+  <h2 class="text-center" style= "color:red;">No reviews yet!</h2>
+<% else %>
+  <%@reviews.where(user_id: @user.id).each do |review| %>
+    <div class="container">
+      <div class="row basic-content-card mt-3">
+        <div class="col-auto ">
+          <% if review.cover.attached? %>
+            <%= image_tag (url_for review.cover.variant(resize_to_limit: [225, 150]).processed) %>
+          <% end %>
+        </div>
+        <div class="col-10">
+          <p>
+            <b>
+              <%= link_to review.user.username, friend_profile_path(user_id:review.user.id), method: :post%>
+              <% if review.recommended %>
+                <span style="color:green;"> recommends </span>
+              <% else %>
+                <span style="color:red;"> doesn't recommend </span>
+              <% end %>
+              <%= review.media %>
+            </b>
+          </p>
+          <% if review.tags.length > 0 %>
+            <div class="row">
+             <span class= "d-inline-flex flex-row p-2"><b> Tags:</b></span>
+              <% review.tags.each do |tag| %>
+                <div class="d-inline-flex flex-row">
+                  <div class="p-2"><%= tag.category %>: </div>
+                  <div class="p-2 bd-highlight"><%= tag.name %> </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+          <p class= "review-content">
+            <%= review.content %>
+          </p>
+            <span style = "text-decoration: underline"> <%= time_ago_in_words(review.post_date) %> ago </span>
+        </div>
       </div>
     </div>
-  </div>
-<%end%>
+  <%end%>
+<% end %>

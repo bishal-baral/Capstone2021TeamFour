@@ -1,26 +1,39 @@
 <% provide(:title, "Home") %>
+<script>
+    function scrolldiv(div_id) {
+        var elem = document.getElementById(div_id);
+        elem.scrollIntoView(false);
+    }
+</script>
+
 <div class="home-head gradient-design pt-5">
   <div class="container section-container pt-5">
     <div class="row justify-content-md-center pt-5 my-col">
       <div class="col-md-8 my-col">
-        <h1 class= "inline-block">Welcome to We-View</h1>
-        <p>Share what you and your friends love watching, host a watch party </p>
-        <%= button_to "Login", login_path, type:"button", class: "btn btn-outline-success ", style: "width: 50%", method: :get  %>
-        <%= button_to "Sign Up", signup_path, type:"button", class: "btn btn-outline-warning mt-2",style: "width: 50%",  method: :get  %>
+        <h1 class= "inline-block">Welcome to We-View!</h1>
+        <p> Your platform to share what you and your friends love watching.</p>
+        <%= button_to "Log in", login_path, type:"button", class: "btn btn-success ", style: "width: 35%", method: :get  %>
+        <%= button_to "Sign up", signup_path, type:"button", class: "btn btn-warning mt-2",style: "width: 35%",  method: :get  %>
       </div>
       <div class="col-md-auto my-col">
         <%= render partial: 'cube' %>
       </div>
     </div>
+  <div class="row mt-5">
+  <div class="col-12 text-center">
+      <button  class="mt-5 explore-button" onclick="scrolldiv('first-explore')"> <i class="fa fa-play-circle-o" aria-hidden="true"></i> &nbsp; EXPLORE</button>
   </div>
+  </div>
+  </div >
+
   <svg class="landing-svg-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#02224b" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
 </div>
 <div class="home-body">
-  <div class="section-recommend-1 section-container ">
-    <div class="row justify-content-around ">
+  <div id= "first-explore"   class="section-recommend-1 section-container ">
+    <div  class="row justify-content-around"  >
       <div class="col-md-6 my-col mt-5 pt-5">
-        <h1 class= "inline-block">Share your reveiws on anything!</h1>
-        <p>A movie you recently watched? A sport event that your friends shouldn't miss? A YouTube channel you subscribe to? Anything at all! </p>
+        <h1 class= "inline-block">Share your reveiws!</h1>
+        <p>A movie you recently watched? A sport event that your friends shouldn't miss? A YouTube channel you subscribe to? Anything at all?</p>
       </div>
       <div class="col-md-4 my-col  mt-5 pt-5">
         <%= show_svg('personal-opinions.svg') %>
@@ -29,14 +42,14 @@
     <svg class="landing-svg-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 260"><path fill="#ffffff" fill-opacity="1" d="M0,96L0,256L160,256L160,288L320,288L320,192L480,192L480,96L640,96L640,256L800,256L800,192L960,192L960,128L1120,128L1120,256L1280,256L1280,192L1440,192L1440,320L1280,320L1280,320L1120,320L1120,320L960,320L960,320L800,320L800,320L640,320L640,320L480,320L480,320L320,320L320,320L160,320L160,320L0,320L0,320Z"></path></svg>
   </div>
 
-  <div class="section-recommend-2 section-container">
+  <div  class="section-recommend-2 section-container">
     <div class="row justify-content-md-around  ">
       <div class="col-md-4 my-col mt-5 pt-5">
         <%= show_svg('accept-request.svg') %>
       </div>
       <div class="col-md-4 my-col mt-5 pt-5">
         <h1 class= "inline-block">Add your friends!</h1>
-        <p> Enjoy a private space to share with friends  </p>
+        <p> Enjoy a private space to share with friends. Keep your group updated with something interesting they definitely should check out. </p>
       </div>
     </div>
     <svg class="landing-svg-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250"><path fill="#273036" fill-opacity="1" d="M0,288L0,224L120,224L120,32L240,32L240,256L360,256L360,192L480,192L480,32L600,32L600,128L720,128L720,288L840,288L840,224L960,224L960,32L1080,32L1080,256L1200,256L1200,224L1320,224L1320,64L1440,64L1440,320L1320,320L1320,320L1200,320L1200,320L1080,320L1080,320L960,320L960,320L840,320L840,320L720,320L720,320L600,320L600,320L480,320L480,320L360,320L360,320L240,320L240,320L120,320L120,320L0,320L0,320Z"></path></svg>
@@ -47,12 +60,12 @@
     <div class="row justify-content-md-around ">
       <div class="col-md-4 my-col mt-5 pt-5">
         <h1 class= "inline-block">Schedule events!</h1>
-        <p>Host events or attend a friends event </p>
+        <p> Invite friends to watch. Pick a time, select the duration, choose friends that you'd like to summon and in no time, host your event.   </p>
       </div>
       <div class="col-md-4 my-col mt-5 pt-5">
           <%= show_svg('schedule-events.svg') %>
       </div>
-      </div>
+    </div>
     <svg class="landing-svg-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 260"><path fill="#ffffff" fill-opacity="1" d="M0,96L0,256L160,256L160,288L320,288L320,192L480,192L480,96L640,96L640,256L800,256L800,192L960,192L960,128L1120,128L1120,256L1280,256L1280,192L1440,192L1440,320L1280,320L1280,320L1120,320L1120,320L960,320L960,320L800,320L800,320L640,320L640,320L480,320L480,320L320,320L320,320L160,320L160,320L0,320L0,320Z"></path></svg>
   </div>
 

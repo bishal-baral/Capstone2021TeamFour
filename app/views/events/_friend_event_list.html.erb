@@ -1,8 +1,7 @@
 <div class="container " >
-  <% if @invited_events.nil? %>
-    <h4>No Invitations at the moment!</h4>
+  <% if @invited_events.empty? %>
+    <h4 style="color:red;">No Invitations at the moment!</h4>
   <% else %>
-    <%@event.each do |event| %>
       <%@invited_events.each do |event| %>
         <div class="row mt-3 basic-content-card ">
           <div class="col">
@@ -10,13 +9,22 @@
               <%= event.title %> 
               <% host_name = @all_users.find_by(id: event.user_id).username %>
             </h3>
-            <h6><span>Date: <%= event.scheduled_time%></span></h6>
-            <%= button_to 'Attend', { controller: 'events', action: 'name', 
-                                      event_id: event.id, name: host_name, 
-                                      method: :post }, { style: 'width: 20%;' } %> 
+            <h5>Hosted by: <%= host_name %></h5>
+            <h6><span>Date: <%= dt_in_text(event)%></span></h6>
+            <h6><span>Duration: <%= duration_in_text(event)%></span></h6>
+            <% if event_has_started(event) &&  !event_has_ended(event)%>
+              <%= button_to "Attend", { controller: "events", action: "name", event_id: event.id,
+                                        name: host_name, method: :post}, 
+                                      { style: "width: 20%;", class: "btn btn-success"} %> 
+            <% elsif !event_has_started(event) &&  !event_has_ended(event) %>
+              <h6 style= "color:purple;">Event has not started yet. </h6> 
+              <small>Come back in time</small>
+            <% elsif event_has_started(event) &&  event_has_ended(event) %>
+              <h6 class="red-text">Event has already ended :( </h6> 
+              <small>Please look out for more events in the future.</small>
+            <% end %>
           </div>
         </div>
-      <% end %>
     <% end %>
   <% end %>
 </div>

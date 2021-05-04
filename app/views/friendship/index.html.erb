@@ -3,7 +3,9 @@
 <div class="container basic-content">
   <div class="row">
     <div class="container">
-      <h1 class="text-center pd-2">Your Friendship!</h1>
+    <div class="text-center">
+      <h1 class=" pd-2 custom-title">Your Friendship</h1>
+    </div>
       <div class="row d-flex align-items-start">
         <div class="col-md-8 ">
           <div class="basic-content-card pl-2 ">
@@ -24,7 +26,7 @@
           <div class="basic-content-card pl-2 mt-3">
             <h3><b> Friend Requests </b> <h3>
             <% if @friend_requests.first.nil? %>
-              <h4>No friend requests and this moment! </h4>
+              <h4>No friend requests at this moment! </h4>
             <% else %>
               <ol>
                 <% @friend_requests.each do |friend_request| %>

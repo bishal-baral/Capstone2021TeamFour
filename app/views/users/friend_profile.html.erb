@@ -2,7 +2,9 @@
 <div class="container basic-content">
   <div class="row">
     <div class="container">
-      <h1 class="text-center "><%=@user.username%>'s Profile</h1>
+      <div class="text-center">
+        <h1 class=" pd-2 custom-title"><%=@user.username%>'s Profile</h1>
+      </div>
       <div class="row justify-content-between">
         <div class="col-md-auto ">
           <div id="img">
@@ -21,8 +23,8 @@
         </div>
       </div>
       <div class="container home-content-reviews mt-3">
-        <div class="row justify-content-center ">
-          <h2> Here is what you reviewed!</h2>
+        <div class="row justify-content-center pt-2`">
+          <h2> Here is what <b><%= @user.username %></b> has reviewed</h2>
         </div>
         <%= render 'friend_reviews' %>
       </div>

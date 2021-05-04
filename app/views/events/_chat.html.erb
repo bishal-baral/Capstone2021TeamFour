@@ -5,5 +5,5 @@
 <div id="history" class="messages"></div>
 <%= form_with(url: "/chat/send") do %>
   <%= text_field_tag :message, nil, placeholder: "Send" %>
-  <%= submit_tag("Submit", :data => {:disable_with => false})%>
+  <%= submit_tag("Send", :data => {:disable_with => false})%>
 <% end %> 

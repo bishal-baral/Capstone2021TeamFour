@@ -2,6 +2,7 @@
   var token = '<%= @token %>';
   var name = '<%= @name %>';
   var moderator_env_name = '<%= @moderator_name %>';
+  var chat_name = '<%= @chat_name %>';
 
   // reload page to render with variables
   (function() {
@@ -14,27 +15,40 @@
     }
   })(); 
 </script>
-
-<div class= "event-header"> 
-  <header>
-    <h1>Welcome to <%= @name %>'s Event</h1>
-    <p id="participant-count"></p>
-    <button id="watch-mode">Turn On Screen Share</button> 
-  </header>
+<div class="container event-header pt-4 ">
+  <div class="row justify-content-center">
+    <div class="col-12 text-center"> 
+          <h1>Welcome to <%= @name %>'s Event</h1>
+          <p id="participant-count"></p>
+          <button class="margin-auto explore-button" id="watch-mode" >Turn On Screen Share</button> 
+    </div>
+  </div>
+  <div class="row pt-4">
+    <div class="col-12 "> 
+      <div class="container">
+        <main class="app">
+          <div class="videos">
+            <div class="row justify-content-around">
+              <div class="col-auto">
+                <div class="publisher" id="publisher"></div>
+              </div>
+              <div class="col-auto">
+                <div class="subscriber" id="subscribers"></div> 
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+      <aside class="chat">
+        <%= render partial: 'chat' %>
+      </aside>
+      <%= render partial: 'button-chat' %>
+    </div>
+  </div>
 </div>
 
-<main class="app">
-  <div class="videos">
-    <div class="publisher" id="publisher"></div>
-    <div class="subscriber" id="subscribers"></div> 
-  </div>
 
-  <aside class="chat">
-    <%= render partial: 'chat' %>
-  </aside>
+ 
 
-  <%= render partial: 'button-chat' %>
-
-</main>
 
 

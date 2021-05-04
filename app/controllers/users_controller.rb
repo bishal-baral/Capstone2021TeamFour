@@ -64,6 +64,14 @@ class UsersController < ApplicationController
   def profile
     @reviews = current_user.reviews
     @tag = Tag.new
+    @new_event = Event.new
+    @friends = current_user.friends
+    @new_review = Review.new
+    @user = current_user
+    respond_to do |format|
+      format.html
+      format.js { render layout: false }
+    end
   end
 
   # POST avatar action. Allows the user to upload a (new) avatar
