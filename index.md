@@ -5,6 +5,9 @@
 <p>We, as the creators of We-View, felt that most of the time people look to their friends for recommendations on what to watch. This is true because rating websites usually contain ratings of millions of users or criticisms of people who watch movies for a living and that might not necessarily resonate with everyone. Furthermore, these sites often prioritize aggregate ratings as a measurement of how ‘good’ a piece of media is, but often the views of many unknown faces mean far less to us than people we personally know.</p> 
 <p>Therefore, we felt a need for a platform that provided users a way to review any media and share that review with their friends, and only their friends. We also added the functionality of screen-sharing to We-View so that people can host watch party events, enabling them to share the media that they recommended with their friends.</p>
 
+![Architecture](weview-architecture.png)
+
+
     
 <h3> How To Use It</h3>
 
@@ -30,6 +33,8 @@
 <p>Integrating with the Vonage API was pretty difficult and brought a lot of challenges. Screen-sharing is regarded as particularly hard to implement. Nevertheless, we found this API and figured out how to integrate it into our project.</p>
 <p>ImageMagick was also difficult to wrangle, as it’s a full application and not a gem (MiniMagick adds its functionality into Ruby). The installation process was different for each of us, and we decided to keep it out of the source code for the time being. This resulted in us having to manually install it on the Heroku container.</p>
 <p>To make our app responsive, we added a significant amount of javascript, vanilla, or in the form of jQuery or AJAX. There were a few issues with this, mostly regarding the organization of it within the repo, as Rails 6 appears to have changed its built-in Javascript integration in its assets pipeline and caused many old guides to become defunct. The most prevalent issue was that one old place to import packages had been deprecated, but still worked...on the development side, but it broke the Heroku installation, which was a tricky bug to find and solve.</p>
+
+![Home](home-page.png)
 
 <h3>Development, Deployment, Testing</h3>
 
