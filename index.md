@@ -1,4 +1,4 @@
-<h1>We-View</h1>
+## We-View
 
 <h3> What Is We-View and Who Is It For</h3>
 <p>We-View is a platform where friends can come together to share their recommendations on any sort of media and create watch-party events where they can come together and watch the media they want by tuning into the host’s screen-sharing.</p>
