@@ -1,5 +1,6 @@
 # README
 **heroku link**: https://we-view.herokuapp.com/
+**GitHub Pages**: https://adrave.github.io/Capstone2021TeamFour/
 
 	•	Ruby version: 2.7.2
 	•	Rails version: 6.1.3
