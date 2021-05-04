@@ -1,10 +1,12 @@
 # README
-**heroku link**: https://we-view.herokuapp.com/
-**GitHub Pages**: https://adrave.github.io/Capstone2021TeamFour/
+* **heroku link**: https://we-view.herokuapp.com/
+* **GitHub Pages**: https://adrave.github.io/Capstone2021TeamFour/
+* **BrandeisProject File**: https://github.com/Adrave/Capstone2021TeamFour/blob/main/BrandeisProject.txt
+* **Final Presentation**: https://github.com/Adrave/Capstone2021TeamFour/blob/main/Final%20Presentation-%20COSI166B.pdf
 
-	•	Ruby version: 2.7.2
-	•	Rails version: 6.1.3
-	•	Bundler version: 2.1.4
+•	Ruby version: 2.7.2
+•	Rails version: 6.1.3
+•	Bundler version: 2.1.4
   
 ## To run this app, you would need to install the following:
 * Install homebrew
