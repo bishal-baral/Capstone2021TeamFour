@@ -41,8 +41,7 @@
 <p>ImageMagick was also difficult to wrangle, as it’s a full application and not a gem (MiniMagick adds its functionality into Ruby). The installation process was different for each of us, and we decided to keep it out of the source code for the time being. This resulted in us having to manually install it on the Heroku container.</p>
 <p>To make our app responsive, we added a significant amount of javascript, vanilla, or in the form of jQuery or AJAX. There were a few issues with this, mostly regarding the organization of it within the repo, as Rails 6 appears to have changed its built-in Javascript integration in its assets pipeline and caused many old guides to become defunct. The most prevalent issue was that one old place to import packages had been deprecated, but still worked...on the development side, but it broke the Heroku installation, which was a tricky bug to find and solve.</p>
 
-![Home-Page](home-page.PNG)
-
+<img src="home-page.png" alt="Home Page"/>
 
 
 <h3>Development, Deployment, Testing</h3>
