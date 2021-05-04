@@ -41,10 +41,6 @@
 		•	Create events and invite friends to watch-parties where you could screen share, chat and video-chat.
 		•	Search for friend reviews on medias(like Movies, Sports), titles(like Spiderman, Football) and tags like (Action, Comedy).
 
-## PAPER PROTOTYPE:
-	https://drive.google.com/file/d/1kAMbcARXaXgGn0ZymGUXxLOKftl4Kged/view?usp=sharing
-
-
 ## The URL Patterns are as follows:
 
 	Home page: /
