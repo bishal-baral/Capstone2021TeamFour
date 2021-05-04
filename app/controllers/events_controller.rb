@@ -79,6 +79,7 @@ class EventsController < ApplicationController
     @moderator_name = current_user.username
     @name ||=  current_user.username
     @token = Session.create_token(@name, @moderator_name, @session_id)
+    @chat_name = current_user.username
   end
 
   def json_request?
@@ -86,22 +87,26 @@ class EventsController < ApplicationController
   end
 
   def name
-    @name = current_user.username
+    @name =  name_params[:name]
     @event_id = params[:event_id]
     redirect_to party_url(event_id: @event_id, name: @name)
+    @chat_name =current_user.username
   end
 
   def index;
     @event_id = params[:event_id]
-    @name = current_user.username
+    @name =  name_params[:name]
+    @chat_name =current_user.username
   end
 
-  def chat; end
+  def chat; 
+  
+  end
 
   def screenshare
-    @darkmode = 'dark'
     @event_id = params[:event_id]
-    @name = current_user.username
+    @name =  name_params[:name]
+    @chat_name =current_user.username
   end
 
   def webhook; end
@@ -109,7 +114,7 @@ class EventsController < ApplicationController
   private
 
   def name_params
-    params.permit(:authenticity_token, :commit)
+    params.permit(:name, :authenticity_token, :commit)
   end
 
   def event_params

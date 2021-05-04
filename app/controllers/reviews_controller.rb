@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    @review.post_date = Time.zone.now
+    @review.post_date = Time.now
 
     if @review.save
       # Create notifications for the user's friends

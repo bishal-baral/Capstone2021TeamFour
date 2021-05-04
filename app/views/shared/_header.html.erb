@@ -2,20 +2,9 @@
   <script>
   function openNav() {
     document.getElementById("left-sidebar").style.width = "160px";
-    var iterate_class = document.getElementsByClassName("my-nav-text"); 
-    for(var i = 0; i <  iterate_class.length; i++) {
-      iterate_class[i].style.visibility = "visible"; 
-      iterate_class[i].style.display = "inline"; 
-    }
   }
-  /* Set the width of the side navigation to 0 */
   function closeNav() {
     document.getElementById("left-sidebar").style.width = "60px";
-    var iterate_class = document.getElementsByClassName("my-nav-text"); 
-    for(var i = 0; i <  iterate_class.length; i++){
-      iterate_class[i].style.visibility = "hidden"; 
-      iterate_class[i].style.display = "none"; 
-    }
   }
   </script>
   <% if logged_in? %>
@@ -56,8 +45,8 @@
         </div>
         <li class="nav-item btn-group" data-behavior="notifications">
           <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="color:white;">
-            <%= fa_icon 'bell', style:'color:white;' %>
-            <span data-behavior="unread-count" style="color:white;"></span>
+            <%= fa_icon 'bell', class:'white-text' %>
+            <span data-behavior="unread-count"  class='white-text'></span>
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
           </div>
@@ -75,10 +64,10 @@
         <div class="navbar-collapse d-flex justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <%= link_to 'Sign-up',  signup_path, class: 'nav-link' %>
+              <%= link_to 'Log in',  login_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Log-in',  login_path, class: 'nav-link' %>
+              <%= link_to 'Sign up',  signup_path, class: 'nav-link' %>
             </li>
           </ul>
         </div>

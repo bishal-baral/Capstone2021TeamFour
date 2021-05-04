@@ -24,3 +24,8 @@ module EventsHelper
     return now > until_time
   end
 end
+
+
+def dt_to_text(datetime)
+  return datetime.strftime("%A, %B %d %Y  Time: %I:%M %p")
+end

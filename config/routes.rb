@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   # Users controller's routes
   get '/profile', to: 'users#profile'
+  post '/profile', to: 'users#profile'
   post '/upload_avatar', to: 'users#avatar', defaults: { format: 'js' }
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'

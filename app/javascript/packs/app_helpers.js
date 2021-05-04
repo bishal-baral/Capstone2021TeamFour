@@ -32,7 +32,7 @@ export function formatChatMsg(message) {
     // }
   });
   message = message_arr.join(" ");
-  return `${name}: ${message}`;
+  return `${chat_name}: ${message}`;
 }
 
 export function streamLayout(element, count) {

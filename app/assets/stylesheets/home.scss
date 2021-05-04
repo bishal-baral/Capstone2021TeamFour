@@ -89,13 +89,14 @@ nav {
   border-radius: 5px;
 }
 
-#explore-button {
+.explore-button {
   border-radius: 50px;
-  padding: 20px 20px;
+  padding: 10px 10px;
   font-family: $special-font;
+  font-size: 20px;
   box-shadow: 4px 0px 10px 5px rgba(0, 0, 0, 0.2);
 }
-#explore-button:hover {
+.explore-button:hover {
   background-color: $secondary-color;
   color: $quaternary-color;
   box-shadow: 4px 0px 30px 10px rgba(0, 0, 0, 0.44);
@@ -186,7 +187,6 @@ nav {
 }
 
 .basic-content {
-  height: 90vh;
   background-color: rgba(255, 255, 255, 0.7);
   border: solid $secondary-color;
   border-radius: 20px;
@@ -196,6 +196,33 @@ nav {
 .home-content-reviews {
   border-top-style: solid;
   border-color: $secondary-color;
+}
+
+.review-content {
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: white;
+  border: solid;
+  border-color: rgb(218, 216, 216);
+  min-height: 7vh;
+  overflow: hidden;
+}
+
+.red-text {
+  color: red;
+}
+
+.white-text {
+  color: white;
+}
+
+.custom-title {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 2px 0px 10px 5px rgba(0, 0, 0, 0.301);
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
 }
 
 .basic-content-card {
@@ -312,6 +339,19 @@ input {
 
 .my-nav-text {
   display: none;
+}
+
+.my-nav-text {
+  padding-left: 5px;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 2s opacity 2s linear;
+}
+#left-sidebar:hover .my-nav-text {
+  display: inline-block;
+  visibility: visible;
+  opacity: 1;
 }
 
 .my-col {
