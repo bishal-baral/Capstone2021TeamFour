@@ -1,0 +1,10 @@
+name: We-View
+blurb: We-View is a platform where friends can come together to share their recommendations on any sort of media and create watch-party events where they can come together and watch the media they want by tuning into the host’s screen-sharing.
+course: CS166B
+semester: 2021 (Spring)
+github: https://github.com/Adrave/Capstone2021TeamFour
+application: https://we-view.herokuapp.com/
+presentation: https://docs.google.com/presentation/d/1XGdW-2lHwOiddmIvwZIRBqxxBAJbQBhci42COX7bXeg/edit#slide=id.gd72911b348_0_369
+image: https://drive.google.com/file/d/1aJ7BIm98TC019G8RLFZ9nPPOAYB2LM15/view
+team: Bishal Baral, Andre Evard, Ali Yuksekkaya
+ 
