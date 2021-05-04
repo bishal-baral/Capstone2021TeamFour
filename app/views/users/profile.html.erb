@@ -2,7 +2,9 @@
 <div class="container basic-content">
   <div class="row">
     <div class="container">
-      <h1 class="text-center ">Your Profile</h1>
+      <div class="text-center">
+        <h1 class=" pd-2 custom-title">Your Profile</h1>
+      </div>
       <div class="row justify-content-between">
         <div class="col-md-auto ">
           <div id="img">
@@ -29,10 +31,24 @@
           </ol>    
           <% end %>
         </div>
+        <div class="container mt-4">
+          <h3>
+            <%= link_to create_review_path, { remote: true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window-1' } do %>
+              <%= render 'shared/post-review-button' %>
+            <% end %>
+          </h3>
+          <div id="modal-window-1" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <%=render 'reviews/new'%>
+              </div>
+            </div>
+          </div>    
+        </div>    
       </div>
       <div class="container home-content-reviews mt-3">
-        <div class="row justify-content-center ">
-          <h2> Here is what you reviewed!</h2>
+        <div class="row justify-content-center pt-2 ">
+          <h2> Here is what you reviewed.</h2>
         </div>
         <%= render 'your_reviews' %>
       </div>

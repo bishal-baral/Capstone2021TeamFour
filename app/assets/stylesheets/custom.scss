@@ -1,23 +1,20 @@
 :root {
-  --main: #343a40;
   --txt-alt: white;
   --txt: black;
   --background: white;
   --bgImage: url("~images/01.png");
   --chat-bg: rgba(255, 255, 255, 0.75);
-  --chat-mine: orange;
-  --chat-theirs: green;
+  --chat-mine: white;
+  --chat-theirs: orange;
 }
 
 .event-header {
-  background-color: var(--main);
-  color: var(--txt-alt);
-  padding: 5rem;
-  height: 4em;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  background-color: black;
+  color: white;
+  height: 100vh;
+  width: 100vh;
 }
+
 .chat {
   color: white;
   margin-top: 10%;
@@ -108,7 +105,7 @@
   flex: 1;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  background-color: var(--background);
+  background-color: white;
   color: var(--txt);
   min-width: 0;
 }
@@ -119,26 +116,28 @@
   width: 20%;
 }
 
-.videos {
-  flex: 1;
-  display: flex;
-  position: relative;
+// .subscriber.grid4 {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
+// }
+
+// .subscriber.grid9 {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
+// }
+
+.subscriber {
+  width: 25vh;
+  height: 25vh;
 }
 
-.subscriber.grid4 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
+.margin-auto {
+  margin: 0 auto;
 }
 
-.subscriber.grid9 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
-}
-
-.subscriber,
 .screenshare {
   width: 100vh;
-  height: 100vh;
+  height: 90vh;
 }
 
 .publisher {
@@ -146,7 +145,6 @@
   height: 25vmin;
   min-width: 8em;
   min-height: 8em;
-  margin-bottom: -2em;
 }
 
 .audio {
@@ -157,13 +155,6 @@
 
 .audio {
   display: none;
-}
-
-.dark {
-  --background: black;
-  --chat-mine: lime;
-  --chat-theirs: violet;
-  --txt: white;
 }
 
 @media screen and (min-aspect-ratio: 1 / 1) {
@@ -178,9 +169,5 @@
 }
 
 #selector {
-  max-width: 225px;
-}
-
-#img {
   max-width: 225px;
 }

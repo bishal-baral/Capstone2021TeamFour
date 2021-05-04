@@ -12,8 +12,8 @@
       <div class="col-md-8 my-col">
         <h1 class= "inline-block">Welcome to We-View!</h1>
         <p> Your platform to share what you and your friends love watching.</p>
-        <%= button_to "Login", login_path, type:"button", class: "btn btn-outline-success ", style: "width: 35%", method: :get  %>
-        <%= button_to "Sign Up", signup_path, type:"button", class: "btn btn-outline-warning mt-2",style: "width: 35%",  method: :get  %>
+        <%= button_to "Log in", login_path, type:"button", class: "btn btn-success ", style: "width: 35%", method: :get  %>
+        <%= button_to "Sign up", signup_path, type:"button", class: "btn btn-warning mt-2",style: "width: 35%",  method: :get  %>
       </div>
       <div class="col-md-auto my-col">
         <%= render partial: 'cube' %>
@@ -21,7 +21,7 @@
     </div>
   <div class="row mt-5">
   <div class="col-12 text-center">
-      <button  id="explore-button" class="mt-5" onclick="scrolldiv('first-explore')"> <i class="fa fa-play-circle-o" aria-hidden="true"></i> &nbsp; EXPLORE</button>
+      <button  class="mt-5 explore-button" onclick="scrolldiv('first-explore')"> <i class="fa fa-play-circle-o" aria-hidden="true"></i> &nbsp; EXPLORE</button>
   </div>
   </div>
   </div >
@@ -49,7 +49,7 @@
       </div>
       <div class="col-md-4 my-col mt-5 pt-5">
         <h1 class= "inline-block">Add your friends!</h1>
-        <p> Enjoy a private space to share with friends. Keep your group updated with something interesting they definitely shouldn't miss. </p>
+        <p> Enjoy a private space to share with friends. Keep your group updated with something interesting they definitely should check out. </p>
       </div>
     </div>
     <svg class="landing-svg-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250"><path fill="#273036" fill-opacity="1" d="M0,288L0,224L120,224L120,32L240,32L240,256L360,256L360,192L480,192L480,32L600,32L600,128L720,128L720,288L840,288L840,224L960,224L960,32L1080,32L1080,256L1200,256L1200,224L1320,224L1320,64L1440,64L1440,320L1320,320L1320,320L1200,320L1200,320L1080,320L1080,320L960,320L960,320L840,320L840,320L720,320L720,320L600,320L600,320L480,320L480,320L360,320L360,320L240,320L240,320L120,320L120,320L0,320L0,320Z"></path></svg>

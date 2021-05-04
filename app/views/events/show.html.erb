@@ -1,14 +1,14 @@
 <% provide(:title, "All Events") %>
 <div class="container basic-content ">
   <div class="container">
-    <h1 class="text-center ">Events</h1>
+    <div class="text-center">
+      <h1 class=" pd-2 custom-title">Events</h1>
+    </div>
     <div class="row">
       <div class="col">
         <h3>
-          <%= link_to create_event_path, {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-light btn-lg' } do %>
-            <button class="button-hover" title="Invite friends and WEVIEW!">
-              <%= fa_icon "users", text: "Create Event" %> 
-            </button>
+          <%= link_to create_event_path, {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window' } do %>
+                <%= render 'shared/create-event-button' %>
           <% end %>
         </h3>
         <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

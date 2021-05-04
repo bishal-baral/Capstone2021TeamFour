@@ -2,6 +2,7 @@
   var token = '<%= @token %>';
   var name = '<%= @name %>';
   var moderator_env_name = '<%= @moderator_name %>';
+  var chat_name = '<%= @chat_name %>';
   // reload page to render with variables
   (function() {
     if(window.localStorage) {
@@ -14,26 +15,29 @@
   })();
 </script>
 
-<div class= "event-header"> 
-  <header>
-    <p id="participant-count"></p>
-    <button id="watch-mode">Turn Off Screen Share</button> 
-  </header>
-</div>
-
-<main class="app">
-  <div class="videos">
-    <div class="screenshare" id="screenshare"></div>
-    <div class="audio" id="audio"></div> 
+<div class="container event-header ">
+  <div class="row justify-content-center">
+    <div class="col-auto text-center"> 
+        <header>
+          <p id="participant-count"></p>
+          <button class="explore-button " id="watch-mode">Turn Off Screen Share</button> 
+        </header>
+    </div>
   </div>
-
-  <aside class="chat">
-    <%= render partial: 'chat' %>
-  </aside>
-
-  <%= render partial: 'button-chat' %>
-</main>
-
-
-
+  <div class="row  ">
+    <div class="col-12  "> 
+      <main class="app ">
+        <div class="videos ">
+          <div class="screenshare margin-auto" id="screenshare"></div>
+          <div class="audio" id="audio"></div> 
+        </div>
+        <aside class="chat">
+          <%= render partial: 'chat' %>
+        </aside>
+        <%= render partial: 'button-chat' %>
+      </main>
+    </div>
+  </div>
+</div>
+ 
 
