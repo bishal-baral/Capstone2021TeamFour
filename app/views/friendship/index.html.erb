@@ -1,12 +1,12 @@
 <% provide(:title, "Friendship") %>
 
-<div class="container basic-content">
-  <div class="row">
-    <div class="container">
-    <div class="text-center">
+<div class="container basic-content mobile-padding-adjusted">
+  <div class="row mobile-padding-adjusted">
+    <div class="container ">
+    <div class="text-center ">
       <h1 class=" pd-2 custom-title">Your Friendship</h1>
     </div>
-      <div class="row d-flex align-items-start">
+      <div class="row d-flex align-items-start mobile-padding-adjusted">
         <div class="col-md-8 ">
           <div class="basic-content-card pl-2 ">
             <h3> <b> Friend's List </b> <h3>
@@ -57,7 +57,7 @@
           </div>
         </div>
 
-        <div class="col-sm-3 basic-content-card ml-4 ">
+        <div class="col-sm-3 basic-content-card ml-4 mt-4 ">
           <span> Your Code:# <%= current_user.code %></span>
           <h2>Add Friends!</h2>
           <%= form_tag(result_path, method: 'get', remote: true) do %>  

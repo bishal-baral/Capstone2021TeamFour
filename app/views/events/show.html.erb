@@ -1,11 +1,11 @@
 <% provide(:title, "All Events") %>
-<div class="container basic-content ">
-  <div class="container">
+<div class="container basic-content mobile-padding-adjusted">
+  <div class="container mobile-padding-adjusted">
     <div class="text-center">
       <h1 class=" pd-2 custom-title">Events</h1>
     </div>
-    <div class="row">
-      <div class="col">
+    <div class="row  mobile-padding-adjusted">
+      <div class="col-md-6 ">
         <h3>
           <%= link_to create_event_path, {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window' } do %>
                 <%= render 'shared/create-event-button' %>
@@ -21,14 +21,14 @@
       </div>
     </div>
   </div>
-  <div class="row ">
-    <div class="col-6">
-      <div class="container pt-3">
+  <div class="row mobile-padding-adjusted">
+    <div class="col-md-6 ">
+      <div class="container pt-3 mobile-padding-adjusted">
         <h2> Your events</h2>
         <%= render 'your_event_list' %>
       </div>
     </div>
-    <div class="col-6 friend-event-col">
+    <div class="col-md-6 friend-event-col mobile-padding-adjusted">
       <div class="container pt-3">
         <h2> Friends events</h2>
         <%= render 'friend_event_list' %>

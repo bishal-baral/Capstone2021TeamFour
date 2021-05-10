@@ -32,8 +32,6 @@ gem 'faker'
 gem 'nokogiri', '>= 1.11.3'
 gem 'pg'
 gem 'simple_form'
-
-gem 'coffee-rails', '~> 5.0.0'
 gem 'dotenv-rails'
 gem 'font-awesome-rails'
 gem 'jquery-rails'

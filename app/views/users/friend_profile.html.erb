@@ -1,19 +1,19 @@
 <% provide(:title, 'Friend Profile') %>
-<div class="container basic-content">
-  <div class="row">
-    <div class="container">
+<div class="container basic-content mobile-padding-adjusted">
+  <div class="row mobile-padding-adjusted">
+    <div class="container ">
       <div class="text-center">
         <h1 class=" pd-2 custom-title"><%=@user.username%>'s Profile</h1>
       </div>
-      <div class="row justify-content-between">
-        <div class="col-md-auto ">
+      <div class="row justify-content-between  ">
+        <div class="col-md-auto  ">
           <div id="img">
             <% if @user.avatar.attached? %>
               <%= image_tag (url_for @user.avatar.variant(resize_to_limit: [225, 225]).processed) %>
             <% end %> 
           </div>
         </div>
-        <div class="col-md-3 mr-4 basic-content-card">
+        <div class="col-md-3 mr-4 basic-content-card ">
           <h2>Friends</h2>
           <ol>
             <% @user.friends.each do |friend| %>
@@ -22,7 +22,7 @@
           </ol>    
         </div>
       </div>
-      <div class="container home-content-reviews mt-3">
+      <div class="container home-content-reviews mt-3 mobile-padding-adjusted">
         <div class="row justify-content-center pt-2`">
           <h2> Here is what <b><%= @user.username %></b> has reviewed</h2>
         </div>

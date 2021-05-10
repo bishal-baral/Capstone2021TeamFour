@@ -40,6 +40,11 @@ body {
   );
 }
 
+.weview-logo {
+  height: 5%;
+  width: 5%;
+}
+
 .home-head {
   font-size: 1.25rem;
   color: white;
@@ -338,10 +343,6 @@ input {
 }
 
 .my-nav-text {
-  display: none;
-}
-
-.my-nav-text {
   padding-left: 5px;
   position: absolute;
   visibility: hidden;
@@ -456,4 +457,200 @@ footer {
 
 footer a {
   color: white;
+}
+
+//a general iphone size
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+  html,
+  body {
+    font-size: 0.85rem;
+  }
+
+  .weview-logo {
+    height: 10%;
+    width: 10%;
+  }
+
+  .home-head {
+    height: 90vh;
+    position: relative;
+  }
+
+  .landing-svg-0 {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .cube {
+    display: none;
+  }
+
+  .section-recommend-1 {
+    height: 85vh;
+    padding-top: 20px;
+
+    svg {
+      height: 80;
+    }
+
+    h1 {
+      font-size: 50px;
+    }
+  }
+
+  .section-recommend-2 {
+    padding-top: 40px;
+
+    h1 {
+      font-size: 50px;
+    }
+  }
+
+  .section-recommend-3 {
+    h1 {
+      font-size: 50px;
+    }
+  }
+
+  .section-recommend-4 {
+    h1 {
+      font-size: 50px;
+    }
+
+    height: 90vh;
+  }
+
+  .personal-opinions {
+    background-color: rgba(255, 255, 255, 0);
+    padding: 30px;
+    border-radius: 5px;
+  }
+
+  //after logging in
+  .navbar-custom .navbar-brand,
+  .navbar-custom .navbar-text {
+    font-family: "Euphoria Script", cursive;
+    font-size: 23px;
+    color: white;
+  }
+
+  .nav-container {
+    margin-left: 44px !important;
+  }
+
+  .sidenav {
+    width: 0;
+    overflow: visible;
+  }
+
+  .menu {
+    margin-left: 5px;
+  }
+
+  #nav-links {
+    display: none;
+  }
+
+  .dropdown-menu {
+    left: -110px !important;
+  }
+
+  .container .mobile-padding-adjusted {
+    padding-right: 0px !important ;
+    padding-left: 0px !important ;
+  }
+
+  .explore-button {
+    font-size: 15px;
+  }
+
+  .mobile-inline {
+    display: inline-block;
+  }
+
+  .mobile-text-center {
+    text-align: center !important;
+  }
+
+  .mobile-display-none {
+    display: none !important;
+  }
+}
+
+//a general ipad size
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  html,
+  body {
+    font-size: 0.95rem;
+  }
+
+  .weview-logo {
+    height: 10%;
+    width: 10%;
+  }
+
+  .home-head {
+    height: 80vh;
+    position: relative;
+  }
+
+  .landing-svg-0 {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .section-recommend-1 {
+    height: 70vh;
+    padding-top: 20px;
+
+    svg {
+      height: 80;
+    }
+
+    h1 {
+      font-size: 50px;
+    }
+  }
+
+  .section-recommend-2 {
+    height: 70vh;
+    padding-top: 40px;
+
+    h1 {
+      font-size: 50px;
+    }
+  }
+
+  .section-recommend-3 {
+    height: 70vh;
+    h1 {
+      font-size: 50px;
+    }
+  }
+
+  .section-recommend-4 {
+    height: 70vh;
+    h1 {
+      font-size: 50px;
+    }
+  }
+
+  .personal-opinions {
+    background-color: rgba(255, 255, 255, 0);
+    padding: 30px;
+    border-radius: 5px;
+  }
+
+  .dropdown-menu {
+    left: -90px !important;
+  }
+
+  .weview-logo {
+    height: 8%;
+    width: 8%;
+  }
+
+  .nav-container {
+    margin-left: 55px !important;
+  }
 }

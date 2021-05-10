@@ -15,7 +15,7 @@
         <%= button_to "Log in", login_path, type:"button", class: "btn btn-success ", style: "width: 35%", method: :get  %>
         <%= button_to "Sign up", signup_path, type:"button", class: "btn btn-warning mt-2",style: "width: 35%",  method: :get  %>
       </div>
-      <div class="col-md-auto my-col">
+      <div class="col-md-auto my-col text-center">
         <%= render partial: 'cube' %>
       </div>
     </div>
@@ -31,11 +31,11 @@
 <div class="home-body">
   <div id= "first-explore"   class="section-recommend-1 section-container ">
     <div  class="row justify-content-around"  >
-      <div class="col-md-6 my-col mt-5 pt-5">
+      <div class="col-md-6 my-col mt-md-5 pt-md-5">
         <h1 class= "inline-block">Share your reveiws!</h1>
         <p>A movie you recently watched? A sport event that your friends shouldn't miss? A YouTube channel you subscribe to? Anything at all?</p>
       </div>
-      <div class="col-md-4 my-col  mt-5 pt-5">
+      <div class="col-md-4 my-col  mt-md-5 pt-md-5">
         <%= show_svg('personal-opinions.svg') %>
       </div>
     </div>
@@ -44,10 +44,10 @@
 
   <div  class="section-recommend-2 section-container">
     <div class="row justify-content-md-around  ">
-      <div class="col-md-4 my-col mt-5 pt-5">
+      <div class="col-md-4 my-col mt-md-5 pt-md-5">
         <%= show_svg('accept-request.svg') %>
       </div>
-      <div class="col-md-4 my-col mt-5 pt-5">
+      <div class="col-md-4 my-col mt-md-5 pt-md-5">
         <h1 class= "inline-block">Add your friends!</h1>
         <p> Enjoy a private space to share with friends. Keep your group updated with something interesting they definitely should check out. </p>
       </div>
@@ -62,7 +62,7 @@
         <h1 class= "inline-block">Schedule events!</h1>
         <p> Invite friends to watch. Pick a time, select the duration, choose friends that you'd like to summon and in no time, host your event.   </p>
       </div>
-      <div class="col-md-4 my-col mt-5 pt-5">
+      <div class="col-md-4 my-col mt-md-5 pt-md-5">
           <%= show_svg('schedule-events.svg') %>
       </div>
     </div>
@@ -75,7 +75,7 @@
       <div class="col-md-4 my-col mt-5 pt-5">
         <%= show_svg('press-play.svg') %>
       </div>
-      <div class="col-md-4 my-col mt-5 pt-5">
+      <div class="col-md-4 my-col mt-md-5 pt-md-5">
         <h1 class= "inline-block">Finally, We-View with friends!</h1>
         <p>Screenshare, video-chat or text friends during the event</p>
       </div>
