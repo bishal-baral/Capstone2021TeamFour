@@ -1,0 +1,144 @@
+current directory: /Users/bishalbaral/rubyProjects/Capstone2021TeamFour/vendor/cache/ruby/2.7.0/gems/yajl-ruby-1.1.0/ext/yajl
+/Users/bishalbaral/.rbenv/versions/2.7.2/bin/ruby -I /Users/bishalbaral/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20210504-25128-ubu2rc.rb extconf.rb
+creating Makefile
+
+current directory: /Users/bishalbaral/rubyProjects/Capstone2021TeamFour/vendor/cache/ruby/2.7.0/gems/yajl-ruby-1.1.0/ext/yajl
+make "DESTDIR=" clean
+
+current directory: /Users/bishalbaral/rubyProjects/Capstone2021TeamFour/vendor/cache/ruby/2.7.0/gems/yajl-ruby-1.1.0/ext/yajl
+make "DESTDIR="
+compiling yajl.c
+compiling yajl_alloc.c
+compiling yajl_buf.c
+compiling yajl_encode.c
+compiling yajl_ext.c
+yajl_ext.c:42:19: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
+        int len = RARRAY_LEN(wrapper->builderStack);
+            ~~~   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1070:23: note: expanded from macro 'RARRAY_LEN'
+#define RARRAY_LEN(a) rb_array_len(a)
+                      ^~~~~~~~~~~~~~~
+yajl_ext.c:47:19: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
+        int len = RARRAY_LEN(wrapper->builderStack);
+            ~~~   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1070:23: note: expanded from macro 'RARRAY_LEN'
+#define RARRAY_LEN(a) rb_array_len(a)
+                      ^~~~~~~~~~~~~~~
+yajl_ext.c:64:11: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
+    len = RARRAY_LEN(wrapper->builderStack);
+        ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1070:23: note: expanded from macro 'RARRAY_LEN'
+#define RARRAY_LEN(a) rb_array_len(a)
+                      ^~~~~~~~~~~~~~~
+yajl_ext.c:176:19: warning: implicit conversion loses integer precision: 'long' to 'unsigned int' [-Wshorten-64-to-32]
+            len = RSTRING_LEN(str);
+                ~ ^~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1007:6: note: expanded from macro 'RSTRING_LEN'
+     RSTRING_EMBED_LEN(str) : \
+     ^~~~~~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1003:6: note: expanded from macro 'RSTRING_EMBED_LEN'
+     (long)((RBASIC(str)->flags >> RSTRING_EMBED_LEN_SHIFT) & \
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+yajl_ext.c:176:19: warning: implicit conversion loses integer precision: 'long' to 'unsigned int' [-Wshorten-64-to-32]
+            len = RSTRING_LEN(str);
+                ~ ^~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1008:28: note: expanded from macro 'RSTRING_LEN'
+     RSTRING(str)->as.heap.len)
+     ~~~~~~~~~~~~~~~~~~~~~~^~~
+yajl_ext.c:184:19: warning: implicit conversion loses integer precision: 'long' to 'unsigned int' [-Wshorten-64-to-32]
+            len = RSTRING_LEN(obj);
+                ~ ^~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1007:6: note: expanded from macro 'RSTRING_LEN'
+     RSTRING_EMBED_LEN(str) : \
+     ^~~~~~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1003:6: note: expanded from macro 'RSTRING_EMBED_LEN'
+     (long)((RBASIC(str)->flags >> RSTRING_EMBED_LEN_SHIFT) & \
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+yajl_ext.c:184:19: warning: implicit conversion loses integer precision: 'long' to 'unsigned int' [-Wshorten-64-to-32]
+            len = RSTRING_LEN(obj);
+                ~ ^~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1008:28: note: expanded from macro 'RSTRING_LEN'
+     RSTRING(str)->as.heap.len)
+     ~~~~~~~~~~~~~~~~~~~~~~^~~
+yajl_ext.c:192:23: warning: implicit conversion loses integer precision: 'long' to 'unsigned int' [-Wshorten-64-to-32]
+                len = RSTRING_LEN(str);
+                    ~ ^~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1007:6: note: expanded from macro 'RSTRING_LEN'
+     RSTRING_EMBED_LEN(str) : \
+     ^~~~~~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1003:6: note: expanded from macro 'RSTRING_EMBED_LEN'
+     (long)((RBASIC(str)->flags >> RSTRING_EMBED_LEN_SHIFT) & \
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+yajl_ext.c:192:23: warning: implicit conversion loses integer precision: 'long' to 'unsigned int' [-Wshorten-64-to-32]
+                len = RSTRING_LEN(str);
+                    ~ ^~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1008:28: note: expanded from macro 'RSTRING_LEN'
+     RSTRING(str)->as.heap.len)
+     ~~~~~~~~~~~~~~~~~~~~~~^~~
+yajl_ext.c:198:23: warning: implicit conversion loses integer precision: 'long' to 'unsigned int' [-Wshorten-64-to-32]
+                len = RSTRING_LEN(str);
+                    ~ ^~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1007:6: note: expanded from macro 'RSTRING_LEN'
+     RSTRING_EMBED_LEN(str) : \
+     ^~~~~~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1003:6: note: expanded from macro 'RSTRING_EMBED_LEN'
+     (long)((RBASIC(str)->flags >> RSTRING_EMBED_LEN_SHIFT) & \
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+yajl_ext.c:198:23: warning: implicit conversion loses integer precision: 'long' to 'unsigned int' [-Wshorten-64-to-32]
+                len = RSTRING_LEN(str);
+                    ~ ^~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1008:28: note: expanded from macro 'RSTRING_LEN'
+     RSTRING(str)->as.heap.len)
+     ~~~~~~~~~~~~~~~~~~~~~~^~~
+yajl_ext.c:463:15: warning: implicit conversion loses integer precision: 'long' to 'unsigned int' [-Wshorten-64-to-32]
+        len = RSTRING_LEN(input);
+            ~ ^~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1007:6: note: expanded from macro 'RSTRING_LEN'
+     RSTRING_EMBED_LEN(str) : \
+     ^~~~~~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1003:6: note: expanded from macro 'RSTRING_EMBED_LEN'
+     (long)((RBASIC(str)->flags >> RSTRING_EMBED_LEN_SHIFT) & \
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+yajl_ext.c:463:15: warning: implicit conversion loses integer precision: 'long' to 'unsigned int' [-Wshorten-64-to-32]
+        len = RSTRING_LEN(input);
+            ~ ^~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1008:28: note: expanded from macro 'RSTRING_LEN'
+     RSTRING(str)->as.heap.len)
+     ~~~~~~~~~~~~~~~~~~~~~~^~~
+yajl_ext.c:469:19: warning: implicit conversion loses integer precision: 'long' to 'unsigned int' [-Wshorten-64-to-32]
+            len = RSTRING_LEN(parsed);
+                ~ ^~~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1007:6: note: expanded from macro 'RSTRING_LEN'
+     RSTRING_EMBED_LEN(str) : \
+     ^~~~~~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1003:6: note: expanded from macro 'RSTRING_EMBED_LEN'
+     (long)((RBASIC(str)->flags >> RSTRING_EMBED_LEN_SHIFT) & \
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+yajl_ext.c:469:19: warning: implicit conversion loses integer precision: 'long' to 'unsigned int' [-Wshorten-64-to-32]
+            len = RSTRING_LEN(parsed);
+                ~ ^~~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1008:28: note: expanded from macro 'RSTRING_LEN'
+     RSTRING(str)->as.heap.len)
+     ~~~~~~~~~~~~~~~~~~~~~~^~~
+yajl_ext.c:509:15: warning: implicit conversion loses integer precision: 'long' to 'unsigned int' [-Wshorten-64-to-32]
+        len = RSTRING_LEN(chunk);
+            ~ ^~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1007:6: note: expanded from macro 'RSTRING_LEN'
+     RSTRING_EMBED_LEN(str) : \
+     ^~~~~~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1003:6: note: expanded from macro 'RSTRING_EMBED_LEN'
+     (long)((RBASIC(str)->flags >> RSTRING_EMBED_LEN_SHIFT) & \
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+yajl_ext.c:509:15: warning: implicit conversion loses integer precision: 'long' to 'unsigned int' [-Wshorten-64-to-32]
+        len = RSTRING_LEN(chunk);
+            ~ ^~~~~~~~~~~~~~~~~~
+/Users/bishalbaral/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1008:28: note: expanded from macro 'RSTRING_LEN'
+     RSTRING(str)->as.heap.len)
+     ~~~~~~~~~~~~~~~~~~~~~~^~~
+yajl_ext.c:852:22: error: use of undeclared identifier 'rb_cFixnum'
+    rb_define_method(rb_cFixnum, "to_json", rb_yajl_json_ext_fixnum_to_json, -1);
+                     ^
+17 warnings and 1 error generated.
+make: *** [yajl_ext.o] Error 1
+
+make failed, exit code 2

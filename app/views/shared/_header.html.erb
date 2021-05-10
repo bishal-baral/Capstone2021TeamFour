@@ -1,11 +1,20 @@
 <header>
   <script>
-  function openNav() {
-    document.getElementById("left-sidebar").style.width = "160px";
-  }
-  function closeNav() {
-    document.getElementById("left-sidebar").style.width = "60px";
-  }
+    function openNav() {
+      if (max_width.matches) {
+        document.getElementById("nav-links").style.display = "inline";
+      } 
+      document.getElementById("left-sidebar").style.width = "160px";
+    }
+    function closeNav() {
+      if (max_width.matches) {
+            document.getElementById("left-sidebar").style.width = "0px";
+            document.getElementById("nav-links").style.display = "none";
+      } else{
+      document.getElementById("left-sidebar").style.width = "60px";
+      }
+    }
+    var max_width = window.matchMedia("(max-width: 667px)")
   </script>
   <% if logged_in? %>
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
@@ -14,6 +23,8 @@
           <%= fa_icon 'bars' %> 
           <div class="my-nav-text"> Menu</div>
         </div>
+
+        <div id="nav-links">
         <%= link_to home_path do %>
           <%= fa_icon 'home' %> 
           <div class="my-nav-text"> Home</div>
@@ -37,16 +48,24 @@
           <%= fa_icon 'sign-out' %> 
           <div class="my-nav-text"> Log-out</div>
         <% end %>
-      </div>
-      <div class="container">
-        <%= image_tag('weview-logo.png', style: 'height:5%; width:5%;', alt: 'We-View Logo') %>
-        <div class= "mx-auto">
-          <%= link_to "#{current_user.username}'s We-View", home_path, style: "margin-right: 60px;", class: "navbar-brand" %>
+
         </div>
+      </div>
+
+
+
+
+      
+      <div class="container nav-container">
+        <%= image_tag('weview-logo.png', class: 'weview-logo', alt: 'We-View Logo') %>
+        <div class= "mx-auto">
+          <%= link_to "#{current_user.username}'s We-View", home_path, style: "margin-right: 60px;", class: "navbar-brand " %>
+        </div>
+        
         <li class="nav-item btn-group" data-behavior="notifications">
           <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="color:white;">
             <%= fa_icon 'bell', class:'white-text' %>
-            <span data-behavior="unread-count"  class='white-text'></span>
+            <span data-behavior="unread-count"  class='white-text'>0</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
           </div>
@@ -54,20 +73,18 @@
       </div>
     </nav>
   <%else%>
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-      <div class="container">
-        <%= image_tag('weview-logo.png', style: 'height:5%; width:5%;', alt: 'We-View Logo', class:'pr-1 mr-2') %>
+    <nav class="navbar navbar-expand-sm navbar-custom fixed-top ">
+      <div class="container ">
+        <%= image_tag('weview-logo.png', alt: 'We-View Logo', class:'pr-1 mr-2 weview-logo') %>
         <%= link_to 'We-View', root_path, class:'navbar-brand'%>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse d-flex justify-content-end" id="navbarNav">
+
+        <div class="d-flex justify-content-end " >
           <ul class="navbar-nav">
             <li class="nav-item">
-              <%= link_to 'Log in',  login_path, class: 'nav-link' %>
+              <%= link_to 'Log in',  login_path, class: 'nav-link mobile-display-none' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Sign up',  signup_path, class: 'nav-link' %>
+              <%= link_to 'Sign up',  signup_path, class: 'nav-link mobile-display-none' %>
             </li>
           </ul>
         </div>

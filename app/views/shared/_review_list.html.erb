@@ -3,15 +3,15 @@
     <h3 class= "text-center" style="color: red;">None!</h3>
   <% else %>
     <% @reviews.each do |review| %>
-      <div class="container pb-2">
-        <div class="row basic-content-card mt-3">
+      <div class="container pb-2 mobile-padding-adjusted">
+        <div class="row justify-content-center mobile-padding-adjusted basic-content-card mt-3 mobile-text-center ">
           <div class="col-auto ">
             <% if review.cover.attached? %>
               <%= image_tag (url_for review.cover.variant(resize_to_limit: [225, 150]).processed) %>
             <% end %>
           </div>
 
-          <div class="col-10 ">
+          <div class="col-md-10 mobile-padding-adjusted">
             <p>
               <b>
                 <%= link_to review.user.username, friend_profile_path( user_id:review.user.id), method: :post%>
